@@ -9,7 +9,7 @@
     - Eduardo Abarca
     - Gonzalo Ordenes
     - Joakin Roa
-    - 
+    - Luis Toro
  - Semestre: 1-2022
  - Fecha de entrega MER-MR: TBA
     - Implementación de página web que simula una plataforma de servicios digitales de música, lograda a nivel de **Modelo**.
