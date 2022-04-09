@@ -8,7 +8,7 @@
  - Integrantes:
     - Eduardo Abarca
     - Gonzalo Ordenes
-    - 
+    - Joakin Roa
     - 
  - Semestre: 1-2022
  - Fecha de entrega MER-MR: TBA
