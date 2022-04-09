@@ -7,7 +7,7 @@
 ### Base
  - Integrantes:
     - Eduardo Abarca
-    - 
+    - Gonzalo Ordenes
     - 
     - 
  - Semestre: 1-2022
