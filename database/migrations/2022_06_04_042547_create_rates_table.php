@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->integer('score');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('song_id')->references('id')->on('songs');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

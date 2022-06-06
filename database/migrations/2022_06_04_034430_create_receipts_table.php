@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
+            $table->string('name',30);
+            $table->integer('sum');
+            $table->date('payment_date');
+            $table->time('payment_time');
+            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

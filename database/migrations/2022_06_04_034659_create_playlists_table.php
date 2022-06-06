@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('playlists', function (Blueprint $table) {
             $table->id();
+            $table->string('playlist_name',30);
+            $table->time('duration');
+            $table->integer('songs_quantity');
+            $table->string('description',1000);
+            $table->date('create_date');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

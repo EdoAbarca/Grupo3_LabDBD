@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->string('role_name',35);
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

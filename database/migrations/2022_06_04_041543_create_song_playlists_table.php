@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('song_playlists', function (Blueprint $table) {
             $table->id();
+            $table->foreign('playlist_id')->references('id')->on('playlists');
+            $table->foreign('song_id')->references('id')->on('songs');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

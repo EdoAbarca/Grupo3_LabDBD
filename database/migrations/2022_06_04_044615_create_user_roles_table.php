@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('roles_id')->references('id')->on('roles');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }
