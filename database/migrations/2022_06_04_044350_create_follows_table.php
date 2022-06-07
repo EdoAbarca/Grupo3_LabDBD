@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
 
             // no sé si está bien esto
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id1')->nullable();
+            $table->foreign('user_id1')->references('id')->on('users');
 
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id2')->nullable();
+            $table->foreign('user_id2')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ class FollowFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' =>User::all()->random()->id,
-            'user_id' =>User::all()->random()->id,
+            'user_id1' =>User::all()->random()->id,
+            'user_id2' =>User::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }

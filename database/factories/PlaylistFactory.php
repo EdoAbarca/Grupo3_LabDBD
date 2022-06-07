@@ -20,7 +20,7 @@ class PlaylistFactory extends Factory
         return [
             'playlist_name' => $this->faker->lastname(),
             'duration' => $this->faker->time($format = 'H:i:s', $max = 'now'),
-            'songs_quantity' => $this->faker->numberBetween($min=1,$max=100),
+            'songs_quantity' => $this->faker->numberBetween($min=1,$max=250),
             'description' => $this->faker->text($maxNbChars = 200),
             'create_date' => $this->faker->dateTime(),
             'user_id' => User::all()->random()->id,
