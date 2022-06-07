@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('songs_quantity');
             $table->string('description',1000);
             $table->date('create_date');
+
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();

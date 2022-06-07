@@ -19,7 +19,11 @@ return new class extends Migration
             $table->integer('sum');
             $table->date('payment_date');
             $table->time('payment_time');
+
+            $table->unsignedBigInteger('paymentmethod_id')->nullable();
             $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
+
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();

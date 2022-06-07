@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('song_id')->nullable();
             $table->foreign('song_id')->references('id')->on('songs');
             $table->boolean('delete');
             $table->timestamps();

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->date('release_date');
             $table->integer('songs_quantity');
             $table->time('duration');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();
         });

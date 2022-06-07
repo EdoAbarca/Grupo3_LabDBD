@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->boolean('upload_album');
-            $table->boolean('admin');
+            $table->strinh('description',100);
             $table->boolean('delete');
             $table->timestamps();
         });

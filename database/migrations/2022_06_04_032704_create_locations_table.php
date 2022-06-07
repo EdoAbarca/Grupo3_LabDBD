@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('location_name',30);
+            
+            $table->unsignedBigInteger('song_id')->nullable();
+            $table->foreign('song_id')->references('id')->on('songs');
             $table->boolean('delete');
             $table->timestamps();
         });

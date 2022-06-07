@@ -19,6 +19,8 @@ return new class extends Migration
             $table->smallInteger('CVC');
             $table->bigInteger('card_number');
             $table->bigInteger('available_budget'); 
+            
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();
