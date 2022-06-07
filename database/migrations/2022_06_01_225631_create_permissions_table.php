@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->strinh('description',100);
+            $table->string('description',100);
             $table->boolean('delete');
             $table->timestamps();
         });
