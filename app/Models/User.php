@@ -10,6 +10,38 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    public function follow(){
+        return $this->hasMany(follow::class);
+    }
+
+    public function playlist(){
+        return $this->hasMany(playlist::class);
+    }
+
+    public function like(){
+        return $this->hasMany(like::class);
+    }
+
+    public function rate(){
+        return $this->hasMany(rate::class);
+    }
+
+    public function album(){
+        return $this->hasMany(album::class);
+    }
+
+    public function payment_method(){
+        return $this->hasMany(payment_method::class);
+    }
+
+    public function user_role(){
+        return $this->hasMany(user_role::class);
+    }
+
+    public function receipt(){
+        return $this->hasMany(receipt::class);
+    }
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
