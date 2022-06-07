@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Role;
+use App\Models\Song_playlist;
+use App\Models\Song;
+use App\Models\Playlist;
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Song_playlist>
  */
-class RoleFactory extends Factory
+class Song_playlistFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +19,9 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'role_name' => $this->faker->randomElement($array = array ('admin','user','artist')),
+            'playlist_id' =>Playlist::all()->random()->id,
+            'song_id' =>Song::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
-            //
         ];
     }
 }

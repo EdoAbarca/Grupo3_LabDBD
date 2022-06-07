@@ -28,6 +28,7 @@ class ReceiptFactory extends Factory
             'time_date' => $this->faker->time($format = 'H:i:s', $max = 'now'),
             'payment_method_id' => Payment_method::all()->random()->id,
             'user_id' => User::all()->random()->id,
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
             //
         ];
     }

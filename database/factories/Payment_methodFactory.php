@@ -3,14 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-use App\Models\User;
 use App\Models\Payment_method;
-
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Payment_method>
  */
-class Payment_methodFactorFactory extends Factory
+class Payment_methodFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,8 +17,7 @@ class Payment_methodFactorFactory extends Factory
     public function definition()
     {
         return [
-            
-
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
             //
         ];
     }

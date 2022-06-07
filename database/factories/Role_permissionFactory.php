@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Role_permission;
 use App\Models\Role;
+use App\Models\Permission;
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role_permission>
  */
-class RoleFactory extends Factory
+class Role_permissionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +19,9 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'role_name' => $this->faker->randomElement($array = array ('admin','user','artist')),
+            'role_id' =>Role::all()->random()->id,
+            'permission_id' =>Permission::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
-            //
         ];
     }
 }

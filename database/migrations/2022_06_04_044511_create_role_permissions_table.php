@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('rolees_id')->nullable();
+            $table->unsignedBigInteger('roles_id')->nullable();
             $table->foreign('roles_id')->references('id')->on('roles');
 
             $table->unsignedBigInteger('permission_id')->nullable();

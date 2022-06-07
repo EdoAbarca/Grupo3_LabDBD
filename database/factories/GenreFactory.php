@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\Genre;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Genre>
  */
@@ -17,8 +17,8 @@ class GenreFactory extends Factory
     public function definition()
     {
         return [
-            'gene_name' => $this->faker->randomElement($array = array ('reggaeton','pop','rap'))    
-            //
+            'gene_name' => $this->faker->randomElement($array = array ('reggaeton','pop','rap')),    
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }
 }

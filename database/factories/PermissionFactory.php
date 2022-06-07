@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\Permission;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Permission>
  */
@@ -18,6 +18,7 @@ class PermissionFactory extends Factory
     {
         return [
             'description' => $this->faker->text(),
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
             //
         ];
     }
