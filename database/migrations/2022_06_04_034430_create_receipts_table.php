@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('payment_date');
             $table->time('payment_time');
 
-            $table->unsignedBigInteger('paymentmethod_id')->nullable();
-            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
+            $table->unsignedBigInteger('payment_method_id')->nullable();
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods');
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
