@@ -20,7 +20,7 @@ class User_roleFactory extends Factory
     {
         return [
             'user_id' =>User::all()->random()->id,
-            'Role_id' =>Role::all()->random()->id,
+            'role_id' =>Role::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }

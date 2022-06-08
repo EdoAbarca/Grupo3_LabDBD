@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Album::factory(10)->create(); 
+        /*\App\Models\Album::factory(10)->create(); 
         \App\Models\Follow::factory(10)->create();
         \App\Models\Genre::factory(5)->create();
         \App\Models\Like::factory(10)->create();
@@ -48,7 +48,27 @@ class DatabaseSeeder extends Seeder
         \App\Models\Song_playlist::factory(10)->create();
         \App\Models\Song::factory(10)->create();
         \App\Models\User_role::factory(10)->create();
+        \App\Models\User::factory(10)->create();*/
+
+        
+        
         \App\Models\User::factory(10)->create();
+        \App\Models\Permission::factory(10)->create();
+        \App\Models\Role::factory(10)->create();
+        \App\Models\Genre::factory(5)->create();
+        //\App\Models\Receipt::factory(10)->create();
+        \App\Models\Album::factory(10)->create(); 
+        \App\Models\Playlist::factory(10)->create();
+        \App\Models\Song::factory(10)->create();
+        \App\Models\Location::factory(10)->create();
+        \App\Models\Song_playlist::factory(10)->create();
+        \App\Models\Like::factory(10)->create();
+        \App\Models\Rate::factory(10)->create();
+        \App\Models\Song_genre::factory(10)->create();
+        \App\Models\Follow::factory(10)->create();
+        \App\Models\Role_permission::factory(10)->create();
+        \App\Models\User_role::factory(10)->create();
+
         
     }
 }
