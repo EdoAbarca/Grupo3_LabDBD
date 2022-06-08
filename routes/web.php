@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/users','App\Http\Controllers\UserController@index');
+Route::get('/users/{id}','App\Http\Controllers\UserController@show');
+Route::post('/users/create','App\Http\Controllers\UserController@store');
+Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');

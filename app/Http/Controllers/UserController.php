@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -41,8 +41,61 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+        $validator = Validator::make(
+            $request->all(),[
+                'nickname' => 'required|min:2|max:30',
+                'password' => 'required|min:10|max:300',
+                'email' => 'required|min:7|max:200',
+                'biography' => 'required|min:5|max:500',
+                'register_date' => 'required|date|after:birth_date',
+                'birth_date' => 'required|date',
+                'delete' => 'required|boolean',
+            ],
+            [
+                'nickname.required' => 'Debes ingresar un nickname',
+                'nickname.min' => 'El nickname debe tener un largo minimo de 2',
+                'nickname.max' => 'El nickname debe tener un largo maximo de 30',
+                
+                'password.required' => 'Debes ingresar una password',
+                'password.min' => 'La password debe tener un largo minimo de 10',
+                'password.max' => 'La password debe tener un largo maximo de 300',
+
+                'email.required' => 'Debes ingresar un email',
+                'email.min' => 'El email debe tener un largo minimo de 7',
+                'email.max' => 'El email debe tener un largo maximo de 200',
+
+                'biography.required' => 'Debes ingresar una biografia',
+                'biography.min' => 'La biography debe tener un largo minimo de 5',
+                'biography.max' => 'La biography debe tener un largo maximo de 500',
+
+                'register_date.required' => 'Debes ingresar una fecha de registro',
+                'register_date.date' => 'La fecha de registro debe ser una fecha valida',
+                'register_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',
+
+                'birth_date.required' => 'Debes ingresar una fecha de nacimiento',
+                'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"celete" debe ser un booleano',
+            ]
+        );  
+        if($validator->fails()){
+            return response($validator->error());
+        }  
+        $newUser = new User();
+        $newUser->nickname      = $request->nickname;
+        $newUser->password      = $request->password;
+        $newUser->email         = $request->email;
+        $newUser->biography     = $request->biography;
+        $newUser->register_date = $request->register_date;
+        $newUser->birth_date    = $request->birth_date;
+        $newUser->delete        = $request->delete;
+        $newUser->save();
+        return response()->json([
+            'respuesta' => 'Se ha creado un nuevo usuario',
+            'id' => $newUser->id
+        ],200);
     }
 
     /**
@@ -82,7 +135,66 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),[
+                'nickname' => 'required|min:2|max:30',
+                'password' => 'required|min:10|max:300',
+                'email' => 'required|min:7|max:200',
+                'biography' => 'required|min:5|max:500',
+                'register_date' => 'required|date|after:birth_date',
+                'birth_date' => 'required|date',
+                'delete' => 'required|boolean',
+            ],
+            [
+                'nickname.required' => 'Debes ingresar un nickname',
+                'nickname.min' => 'El nickname debe tener un largo minimo de 2',
+                'nickname.max' => 'El nickname debe tener un largo maximo de 30',
+                
+                'password.required' => 'Debes ingresar una password',
+                'password.min' => 'La password debe tener un largo minimo de 10',
+                'password.max' => 'La password debe tener un largo maximo de 300',
+
+                'email.required' => 'Debes ingresar un email',
+                'email.min' => 'El email debe tener un largo minimo de 7',
+                'email.max' => 'El email debe tener un largo maximo de 200',
+
+                'biography.required' => 'Debes ingresar una biografia',
+                'biography.min' => 'La biography debe tener un largo minimo de 5',
+                'biography.max' => 'La biography debe tener un largo maximo de 500',
+
+                'register_date.required' => 'Debes ingresar una fecha de registro',
+                'register_date.date' => 'La fecha de registro debe ser una fecha valida',
+                'register_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',
+
+                'birth_date.required' => 'Debes ingresar una fecha de nacimiento',
+                'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"celete" debe ser un booleano',
+            ]
+        );  
+        if($validator->fails()){
+            return response($validator->error());
+        } 
+        $user = User::find($id);
+        if(empty($user)){
+            return response(json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]));
+        }
+        $user->name = $request->nickname;
+        $user->nickname      = $request->nickname;
+        $user->password      = $request->password;
+        $user->email         = $request->email;
+        $user->biography     = $request->biography;
+        $user->register_date = $request->register_date;
+        $user->birth_date    = $request->birth_date;
+        $user->delete        = $request->delete;
+        return response()->json([
+            'respuesta' => 'Se ha modificado un user',
+            'id' => $user->id,
+        ],200);
+
     }
 
     /**
