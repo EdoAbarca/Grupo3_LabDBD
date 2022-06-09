@@ -81,7 +81,7 @@ class UserController extends Controller
             ]
         );  
         if($validator->fails()){
-            return response($validator->error());
+            return response($validator->errors());
         }  
         $newUser = new User();
         $newUser->nickname      = $request->nickname;
@@ -108,9 +108,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if(empty($user)){
-            return response(json([
+            return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
-            ]));
+            ]);
         }
         return response($user,200);
     }
@@ -170,19 +170,18 @@ class UserController extends Controller
                 'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"celete" debe ser un booleano',
+                'delete.boolean' => '"delete" debe ser un booleano',
             ]
         );  
         if($validator->fails()){
-            return response($validator->error());
+            return response($validator->errors());
         } 
         $user = User::find($id);
         if(empty($user)){
-            return response(json([
+            return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
-            ]));
+            ]);
         }
-        $user->name = $request->nickname;
         $user->nickname      = $request->nickname;
         $user->password      = $request->password;
         $user->email         = $request->email;
@@ -190,6 +189,8 @@ class UserController extends Controller
         $user->register_date = $request->register_date;
         $user->birth_date    = $request->birth_date;
         $user->delete        = $request->delete;
+        $user->save();
+
         return response()->json([
             'respuesta' => 'Se ha modificado un user',
             'id' => $user->id,
@@ -205,6 +206,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if(empty($user)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+         
+        $user->delete();
+
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un user',
+            'id' => $user->id,
+        ],200);
     }
 }
