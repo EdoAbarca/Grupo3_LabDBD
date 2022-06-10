@@ -136,18 +136,18 @@ class AlbumController extends Controller
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
-                'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caractere',
+                'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caracter',
                 'album_name.max' => 'El nombre del album debe tener un largo maximo de 30 caracteres',
 
-                'release_date' => 'Debes ingresar la fecha de lanzamiento del album',
-                'release_date' => 'La fecha de lanzamiento debe ser una fecha valida',
+                'release_date.required' => 'Debes ingresar la fecha de lanzamiento del album',
+                'release_date.date' => 'La fecha de lanzamiento debe ser una fecha valida',
                 
-                'songs_quantity' => 'Debes ingresar el numero de canciones del album',
-                'songs_quantity' => 'El numero de canciones debe ser de un tipo de dato integer',
-                'songs_quantity' => 'El numero de canciones debe tener como minimo valor 1',
+                'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
+                'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
+                'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
 
-                'user_id' => 'Debes ingresar el id del usuario al que le pertenece el album',
-                'user_id' => 'El id del usuario debe ser de un tipo de dato integer',
+                'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
