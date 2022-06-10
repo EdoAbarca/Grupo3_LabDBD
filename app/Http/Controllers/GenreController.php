@@ -49,8 +49,11 @@ class GenreController extends Controller
             ],
             [
                 'genre_name.required' => 'Debes ingresar el nombre del genero',
-                'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 1 caracteres',
+                'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 2 caracteres',
                 'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 30 caracteres',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){
@@ -110,8 +113,11 @@ class GenreController extends Controller
              ],
              [
                  'genre_name.required' => 'Debes ingresar el nombre del genero',
-                 'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 1 caracteres',
+                 'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 2 caracteres',
                  'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 30 caracteres',
+
+                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                 'delete.boolean' => '"delete" debe ser un booleano',
              ]
              );
         if($validator->fails()){
