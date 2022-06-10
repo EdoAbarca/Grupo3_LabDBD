@@ -19,13 +19,14 @@ class SongFactory extends Factory
     {
         return [
             'song_name' => $this->faker->name(),
-            'duration' => $this->faker->time($format = 'H:i:s', $max = 'now'),
-            'stream' => $this->faker->numberBetween($min=1,$max=1000000),
-            'release_date' => $this->faker->dateTime(),
+            'duration' => $this->faker->time($format = 'i:s'),
+            'stream' => $this->faker->numberBetween($min=0),
+            'release_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'parental_advisory' => $this->faker->boolean(),
-            'rate' => $this->faker->numberBetween($min=1,$max=100),
+            'rate' => $this->faker->numberBetween($min=0,$max=100),
             'album_id' =>Album::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }
 }
+// 'duration' => $this->faker->time($format = 'H:i:s', $max = 'now'),

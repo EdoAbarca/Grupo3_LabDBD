@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
             $table->string('method_name',30);
-            $table->smallInteger('CVC');
-            $table->bigInteger('card_number');
+            //$table->smallInteger('CVC');
+            //$table->bigInteger('card_number');
             $table->bigInteger('available_budget'); 
             
             $table->unsignedBigInteger('user_id')->nullable();

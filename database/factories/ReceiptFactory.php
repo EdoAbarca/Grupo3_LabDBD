@@ -22,10 +22,10 @@ class ReceiptFactory extends Factory
     public function definition()
     {
         return [
-            // faker del atributo nombre
-            'sum' => $this->faker->numberBetween($min = 1000, $max = 3000),
+            'name' => $this->faker->randomElement($array = array ('Pago de membresía.')),
+            'sum' => $this->faker->numberBetween($min = 1000, $max = 3000), //Evaluar usar monto fijo
             'payment_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'time_date' => $this->faker->time($format = 'H:i:s', $max = 'now'),
+            'payment_time' => $this->faker->time($format = 'H:i:s', $max = 'now'),
             'payment_method_id' => Payment_method::all()->random()->id,
             'user_id' => User::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)

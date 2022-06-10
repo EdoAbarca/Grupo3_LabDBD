@@ -17,7 +17,7 @@ class GenreFactory extends Factory
     public function definition()
     {
         return [
-            'genre_name' => $this->faker->randomElement($array = array ('reggaeton','pop','rap')),    
+            'genre_name' => $this->faker->randomElement($array = array ('reggaeton','pop','rap','rock','metal','eurodance','disco','jazz')),//>:(
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }

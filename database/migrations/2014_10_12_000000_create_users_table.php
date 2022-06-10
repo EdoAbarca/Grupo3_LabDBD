@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password',300);
             $table->string('email',200); 
             $table->string('biography',500);
-            $table->date('register_date');
+            $table->date('signup_date');
             $table->date('birth_date');
             $table->boolean('delete');
             $table->timestamps();      

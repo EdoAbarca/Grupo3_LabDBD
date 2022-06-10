@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\Permission::factory(10)->create();
         \App\Models\Role::factory(10)->create();
-        \App\Models\Genre::factory(5)->create();
-        //\App\Models\Payment_method::factory(3)->create();
-        //\App\Models\Receipt::factory(10)->create();
+        \App\Models\Genre::factory(10)->create();
+        \App\Models\Payment_method::factory(10)->create();
+        \App\Models\Receipt::factory(10)->create();
         \App\Models\Album::factory(10)->create(); 
         \App\Models\Playlist::factory(10)->create();
         \App\Models\Song::factory(10)->create();
