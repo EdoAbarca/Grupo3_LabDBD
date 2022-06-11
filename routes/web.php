@@ -48,3 +48,8 @@ Route::get('/playlists','App\Http\Controllers\PlaylistController@index');
 Route::get('/playlists/{id}','App\Http\Controllers\PlaylistController@show');
 Route::post('/playlists/create','App\Http\Controllers\PlaylistController@store');
 Route::put('/playlists/update/{id}','App\Http\Controllers\PlaylistController@update');
+
+Route::get('/songs','App\Http\Controllers\SongController@index');
+Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
+Route::post('/songs/create','App\Http\Controllers\SongController@store');
+Route::put('/songs/update/{id}','App\Http\Controllers\SongController@update');
