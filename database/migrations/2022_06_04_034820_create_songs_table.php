@@ -25,6 +25,9 @@ return new class extends Migration
             $table->unsignedBigInteger('album_id')->nullable();
             $table->foreign('album_id')->references('id')->on('albums');
 
+            $table->unsignedBigInteger('location_id')->nullable();
+            $table->foreign('location_id')->references('id')->on('locations');
+
             $table->boolean('delete');
             $table->timestamps();
         });

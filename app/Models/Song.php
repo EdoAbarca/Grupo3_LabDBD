@@ -12,9 +12,6 @@ class Song extends Model
     }
 
     //hay q arreglarlo, cambiamos el mr de location
-    public function location(){
-        return $this->belongsTo(location::class);
-    }
 
     public function rate(){
         return $this->hasMany(rate::class);
@@ -31,6 +28,10 @@ class Song extends Model
     public function like(){
         return $this->hasMany(like::class);
     }
+
+    public function location(){
+        return $this->hasOne(location::class);
+    }    
 
     use HasFactory;
 }

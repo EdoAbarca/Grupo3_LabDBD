@@ -31,7 +31,7 @@ class UserFactory extends Factory
             // 'email_verified_at' => now(),
             // 'remember_token' => Str::random(10),
             // Es parte de lo que crea Laravel por defecto, que se quede por mientras
-            // Y si falla, pa fuera noma, como ella
+            // Y si falla, pa fuera noma, como ella XDD
         ];
     }
 

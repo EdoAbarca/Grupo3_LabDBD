@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     public function song(){
-        return $this->hasMany(location::class);
+        return $this->belongsTo(song::class);
     }
 
     use HasFactory;

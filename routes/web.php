@@ -53,3 +53,8 @@ Route::get('/songs','App\Http\Controllers\SongController@index');
 Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
 Route::post('/songs/create','App\Http\Controllers\SongController@store');
 Route::put('/songs/update/{id}','App\Http\Controllers\SongController@update');
+
+Route::get('/locations','App\Http\Controllers\LocationController@index');
+Route::get('/locations/{id}','App\Http\Controllers\LocationController@show');
+Route::post('/locations/create','App\Http\Controllers\LocationController@store');
+Route::put('/locations/update/{id}','App\Http\Controllers\LocationController@update');

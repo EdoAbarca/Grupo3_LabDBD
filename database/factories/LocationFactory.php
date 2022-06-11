@@ -21,7 +21,6 @@ class LocationFactory extends Factory
     {
         return [
             'location_name' => $this->faker->country(),
-            'song_id' => Song::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }

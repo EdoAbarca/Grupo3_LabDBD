@@ -19,7 +19,7 @@ return new class extends Migration
             $table->time('duration');
             $table->integer('songs_quantity');
             $table->string('description',1000);
-            $table->date('create_date');
+            $table->date('creation_date');
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
