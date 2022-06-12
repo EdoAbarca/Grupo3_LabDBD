@@ -15,8 +15,15 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        $likes = Like::all();
+        if($likes->isEmpty()){
+            return response()->json([
+                'respuesta' => 'No se encuentran likes',
+            ]);
+        }
+        return response($likes,200); 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +43,36 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+                'user_id' => 'required|integer',
+                'song_id' => 'required|integer',
+                'delete' => 'required|boolean', 
+            ],
+            [
+                'user_id.required' => 'Debes ingresar el id del usuario que dio like',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
+
+                'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $newLike= new Like();
+        $newLike->user_id        = $request->user_id;
+        $newLike->song_id        = $request->song_id;
+        $newLike->delete         = $request->delete;
+        $newLike->save();
+        return response()->json([
+            'respuesta' => 'se ha creado un nuevo album',
+            'id'=> $newLike->id,
+        ],201);
     }
 
     /**
@@ -47,7 +83,13 @@ class LikeController extends Controller
      */
     public function show($id)
     {
-        //
+        $like = Like::find($id);
+        if(empty($like)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        return response($like,200);
     }
 
     /**
@@ -70,7 +112,41 @@ class LikeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+                'user_id' => 'required|integer',
+                'song_id' => 'required|integer',
+                'delete' => 'required|boolean', 
+            ],
+            [
+                'user_id.required' => 'Debes ingresar el id del usuario que dio like',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
+
+                'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $like = Like::find($id);
+        if(empty($like)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        $like->user_id        = $request->user_id;
+        $like->song_id        = $request->song_id;
+        $like->delete         = $request->delete;
+        $like->save();
+        return response()->json([
+            'respuesta' => 'se ha modificado un like',
+            'id'=> $like->id,
+        ],200);
     }
 
     /**

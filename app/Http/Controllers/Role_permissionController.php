@@ -15,8 +15,15 @@ class Role_permissionController extends Controller
      */
     public function index()
     {
-        //
+        $roles_permissions = Role_permission::all();
+        if($roles_permissions->isEmpty()){
+            return response()->json([
+                'respuesta' => 'No se encuentran roles de permisos',
+            ]);
+        }
+        return response($roles_permissions,200); 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +43,36 @@ class Role_permissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+                'role_id' => 'required|integer',
+                'permission_id' => 'required|integer',
+                'delete' => 'required|boolean', 
+            ],
+            [
+                'role_id.required' => 'Debes ingresar el id del rol',
+                'role_id.integer' => 'El id del rol debe ser de un tipo de dato integer',
+
+                'permission_id.required' => 'Debes ingresar el id del permiso',
+                'permission_id.integer' => 'El id del permiso debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $newRole_permission= new Role_permission();
+        $newRole_permission->role_id        = $request->role_id;
+        $newRole_permission->permission_id  = $request->permission_id;
+        $newRole_permission->delete         = $request->delete;
+        $newRole_permission->save();
+        return response()->json([
+            'respuesta' => 'se ha creado un nuevo rol de permisos',
+            'id'=> $newRole_permission->id,
+        ],201);
     }
 
     /**
@@ -47,7 +83,13 @@ class Role_permissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $role_permission = Role_permission::find($id);
+        if(empty($role_permission)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        return response($role_permission,200);
     }
 
     /**
@@ -70,7 +112,41 @@ class Role_permissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+                'role_id' => 'required|integer',
+                'permission_id' => 'required|integer',
+                'delete' => 'required|boolean', 
+            ],
+            [
+                'role_id.required' => 'Debes ingresar el id del rol',
+                'role_id.integer' => 'El id del rol debe ser de un tipo de dato integer',
+
+                'permission_id.required' => 'Debes ingresar el id del permiso',
+                'permission_id.integer' => 'El id del permiso debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $role_permission = Role_permission::find($id);
+        if(empty($role_permission)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        $role_permission->user_id        = $request->user_id;
+        $role_permission->song_id        = $request->song_id;
+        $role_permission->delete         = $request->delete;
+        $role_permission->save();
+        return response()->json([
+            'respuesta' => 'se ha modificado un rol de permisos',
+            'id'=> $role_permission->id,
+        ],200);
     }
 
     /**
