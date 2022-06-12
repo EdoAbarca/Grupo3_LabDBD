@@ -68,8 +68,8 @@ class PlaylistController extends Controller
                 'create_date.required' => 'Debes ingresar la fecha de creacion de la playlist',
                 'create_date.date' => 'La fecha de creacion debe ser una fecha valida',
 
-                'user_id' => 'Debes ingresar el id del usuario al que le pertenece el album',
-                'user_id' => 'El id del usuario debe ser de un tipo de dato integer',
+                'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',

@@ -15,7 +15,13 @@ class Song_genreController extends Controller
      */
     public function index()
     {
-        //
+        $song_genres = Song_genre::all();
+        if($song_genres->isEmpty()){
+            return response()->json([
+                'respuesta' => 'No se encuentran los generos de cancion',
+            ]);
+        }
+        return response($song_genres,200);
     }
 
     /**
@@ -36,7 +42,36 @@ class Song_genreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+               'genre_id' => 'required|integer',
+               'song_id' => 'required|integer',
+               'delete' => 'required|boolean', 
+            ],
+            [
+                'genre_id.required' => 'Debes ingresar el id del genero al que pertenece el genero cancion',
+                'genre_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'song_id.required' => 'Debes ingresar el id de la cancion al que le pertenece el genero cancion',
+                'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $newSong_genre= new Song_genre();
+        $newSong_genre->genre_id        = $request->genre_id;
+        $newSong_genre->song_id        = $request->song_id;
+        $newSong_genre->delete         = $request->delete;
+        $newSong_genre->save();
+        return response()->json([
+            'respuesta' => 'se ha creado una nueva lista de reproduccion cancion',
+            'id'=> $newSong_genre->id,
+        ],201);
     }
 
     /**
@@ -47,7 +82,13 @@ class Song_genreController extends Controller
      */
     public function show($id)
     {
-        //
+        $song_genre = Song_genre::find($id);
+        if(empty($song_genre)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        return response($song_genre,200);
     }
 
     /**
@@ -70,7 +111,41 @@ class Song_genreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+               'genre_id' => 'required|integer',
+               'song_id' => 'required|integer',
+               'delete' => 'required|boolean', 
+            ],
+            [
+                'genre_id.required' => 'Debes ingresar el id del genero al que pertenece el genero cancion',
+                'genre_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'song_id.required' => 'Debes ingresar el id de la cancion al que le pertenece el genero cancion',
+                'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $song_genre = Song_genre::find($id);
+        if(empty($song_genre)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $song_genre->genre_id        = $request->genre_id;
+        $song_genre->song_id        = $request->song_id;
+        $song_genre->delete         = $request->delete;
+        $song_genre->save();
+        return response()->json([
+            'respuesta' => 'se ha actualizado el genero cancion',
+        ],201);
     }
 
     /**

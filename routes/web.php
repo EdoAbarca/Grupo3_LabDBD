@@ -29,10 +29,6 @@ Route::post('/roles/create','App\Http\Controllers\RoleController@store');
 Route::put('/roles/update/{id}','App\Http\Controllers\RoleController@update');
 Route::delete('/roles/delete/{id}','App\Http\Controllers\RoleController@destroy');
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 Route::get('/permissions','App\Http\Controllers\PermissionController@index');
 Route::get('/permissions/{id}','App\Http\Controllers\PermissionController@show');
 Route::post('/permissions/create','App\Http\Controllers\PermissionController@store');
@@ -42,7 +38,6 @@ Route::get('/genres','App\Http\Controllers\GenreController@index');
 Route::get('/genres/{id}','App\Http\Controllers\GenreController@show');
 Route::post('/genres/create','App\Http\Controllers\GenreController@store');
 Route::put('/genres/update/{id}','App\Http\Controllers\GenreController@update');
-<<<<<<< Updated upstream
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');
@@ -63,5 +58,18 @@ Route::get('/locations','App\Http\Controllers\LocationController@index');
 Route::get('/locations/{id}','App\Http\Controllers\LocationController@show');
 Route::post('/locations/create','App\Http\Controllers\LocationController@store');
 Route::put('/locations/update/{id}','App\Http\Controllers\LocationController@update');
-=======
->>>>>>> Stashed changes
+
+Route::get('/song_playlists','App\Http\Controllers\Song_playlistController@index');
+Route::get('/song_playlists/{id}','App\Http\Controllers\Song_playlistController@show');
+Route::post('/song_playlists/create','App\Http\Controllers\Song_playlistController@store');
+Route::put('/song_playlists/update/{id}','App\Http\Controllers\Song_playlistController@update');
+
+Route::get('/song_genres','App\Http\Controllers\Song_genreController@index');
+Route::get('/song_genres/{id}','App\Http\Controllers\Song_genreController@show');
+Route::post('/song_genres/create','App\Http\Controllers\Song_genreController@store');
+Route::put('/song_genres/update/{id}','App\Http\Controllers\Song_genreController@update');
+
+Route::get('/follows','App\Http\Controllers\FollowController@index');
+Route::get('/follows/{id}','App\Http\Controllers\FollowController@show');
+Route::post('/follows/create','App\Http\Controllers\FollowController@store');
+Route::put('/follows/update/{id}','App\Http\Controllers\FollowController@update');
