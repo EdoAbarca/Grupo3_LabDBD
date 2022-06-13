@@ -167,8 +167,25 @@ class Payment_methodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $payment_method = Payment_method::find($id);
+        if(empty($payment_method)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($payment_method->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $payment_method->delete = true;
+        $payment_method->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un metodo de pago',
+            'id' => $payment_method->id,
+        ],200);
     }
 }
