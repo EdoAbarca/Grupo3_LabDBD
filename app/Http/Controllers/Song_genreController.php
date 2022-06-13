@@ -119,7 +119,7 @@ class Song_genreController extends Controller
             ],
             [
                 'genre_id.required' => 'Debes ingresar el id del genero al que pertenece el genero cancion',
-                'genre_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+                'genre_id.integer' => 'El id del genero debe ser de un tipo de dato integer',
 
                 'song_id.required' => 'Debes ingresar el id de la cancion al que le pertenece el genero cancion',
                 'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',

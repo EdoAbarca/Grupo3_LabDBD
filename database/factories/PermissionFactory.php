@@ -18,7 +18,8 @@ class PermissionFactory extends Factory
     {
         return [
             'code' => $this->faker->randomElement($array = array('ADM','USR','ART')),
-            'description' => $this->faker->text()
+            'description' => $this->faker->text(),
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
         ];
     }
 }

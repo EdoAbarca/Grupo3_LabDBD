@@ -147,10 +147,10 @@ class ReceiptController extends Controller
                 'name.min'      => 'El nombre de debe tener un largo minimo de 1 caracter',
                 'name.max'      => 'El nombre de  debe tener un largo maximo de 30 caracteres',
                 
-                'user_id.required' => 'Debes ingresar el id del usuario al que se le dio like',
+                'user_id.required' => 'Debes ingresar el id del usuario al que pertenece la boleta',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'payment_method_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'payment_method_id.required' => 'Debes ingresar el id del metodo de pago que contiene la boleta',
                 'payment_method_id.integer' => 'El id del tipo de dato debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',

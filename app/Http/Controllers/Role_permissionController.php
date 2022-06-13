@@ -139,8 +139,8 @@ class Role_permissionController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        $role_permission->user_id        = $request->user_id;
-        $role_permission->song_id        = $request->song_id;
+        $role_permission->role_id        = $request->role_id;
+        $role_permission->permission_id        = $request->permission_id;
         $role_permission->delete         = $request->delete;
         $role_permission->save();
         return response()->json([

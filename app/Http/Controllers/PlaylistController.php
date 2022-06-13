@@ -140,7 +140,7 @@ class PlaylistController extends Controller
                'duration'=> 'required|date_format:H:i:s',
                'songs_quantity' => 'required|integer|min:1',
                'description' => 'required|min:1|max:1000',
-               'create_date' => 'required|date',
+               'creation_date' => 'required|date',
                'user_id' => 'required|integer',
                'delete' => 'required|boolean', 
             ],
@@ -150,7 +150,7 @@ class PlaylistController extends Controller
                 'playlist_name.max' => 'El nombre de la playlist debe tener un largo maximo de 30 caracteres',
 
                 'duration.required' => 'Debes ingresar la duracion total de la playlist',
-                'duration.date_format:H:i:s' => 'La duracion total de la playlist debe seguir el formato: H:i:s',
+                'duration.date_format' => 'La duracion total de la playlist debe seguir el formato: H:i:s',
                 
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones de la playlist',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
@@ -160,8 +160,8 @@ class PlaylistController extends Controller
                 'description.min' => 'La descripcion debe tener un largo minimio de 1 caracter',
                 'description.max' => 'La descripcion debe tener un largo maximo de 1000 caracteres',
 
-                'create_date.required' => 'Debes ingresar la fecha de creacion de la playlist',
-                'create_date.date' => 'La fecha de creacion debe ser una fecha valida',
+                'creation_date.required' => 'Debes ingresar la fecha de creacion de la playlist',
+                'creation_date.date' => 'La fecha de creacion debe ser una fecha valida',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
@@ -185,7 +185,7 @@ class PlaylistController extends Controller
         $playlist->duration       = $request->duration;
         $playlist->songs_quantity = $request->songs_quantity;
         $playlist->description    = $request->description;
-        $playlist->create_date    = $request->create_date;
+        $playlist->creation_date    = $request->creation_date;
         $playlist->user_id        = $request->user_id;
         $playlist->delete         = $request->delete;
         $playlist->save();

@@ -150,7 +150,7 @@ class AlbumController extends Controller
                 'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
 
                 'duration.required' => 'Debes ingresar la duracion total del album',
-                'duration.date_format:H:i:s' => 'La duracion total del album debe seguir el formato: H:i:s',
+                'duration.date_format' => 'La duracion total del album debe seguir el formato: H:i:s',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',

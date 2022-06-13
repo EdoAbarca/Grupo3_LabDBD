@@ -119,10 +119,10 @@ class User_roleController extends Controller
                 'delete' => 'required|boolean', 
             ],
             [
-                'user_id.required' => 'Debes ingresar el id del usuario al que se le dio like',
+                'user_id.required' => 'Debes ingresar el id del usuario al que se le asigno el rol de usuario',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'role_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'role_id.required' => 'Debes ingresar el id del rol al que se le asigno el rol de usuario',
                 'role_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',

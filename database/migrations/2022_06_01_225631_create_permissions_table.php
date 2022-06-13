@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code', 3);
             $table->string('description',1000);
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

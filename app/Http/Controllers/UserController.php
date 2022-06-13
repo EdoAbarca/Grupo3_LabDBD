@@ -48,7 +48,7 @@ class UserController extends Controller
                 'password' => 'required|min:10|max:300',
                 'email' => 'required|min:7|max:200',
                 'biography' => 'required|min:5|max:500',
-                'signup_date' => 'required|date|after:birth_date',
+                'register_date' => 'required|date|after:birth_date',
                 'birth_date' => 'required|date',
                 'delete' => 'required|boolean',
             ],
@@ -161,9 +161,9 @@ class UserController extends Controller
                 'biography.required' => 'Debes ingresar una biografia',
                 'biography.max' => 'La biography debe tener un largo maximo de 500',
 
-                'register_date.required' => 'Debes ingresar una fecha de registro',
-                'register_date.date' => 'La fecha de registro debe ser una fecha valida',
-                'register_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',
+                'signup_date.required' => 'Debes ingresar una fecha de registro',
+                'signup_date.date' => 'La fecha de registro debe ser una fecha valida',
+                'signup_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',
 
                 'birth_date.required' => 'Debes ingresar una fecha de nacimiento',
                 'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
@@ -185,7 +185,7 @@ class UserController extends Controller
         $user->password      = $request->password;
         $user->email         = $request->email;
         $user->biography     = $request->biography;
-        $user->register_date = $request->register_date;
+        $user->signup_date = $request->signup_date;
         $user->birth_date    = $request->birth_date;
         $user->delete        = $request->delete;
         $user->save();
