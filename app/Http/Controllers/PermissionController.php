@@ -44,12 +44,16 @@ class PermissionController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'description'=>'required|min:1|max:1000',
-               'delete'=>'required|boolean', 
+                'code'=>'required|min:3|max:3',
+                'description'=>'required|max:1000',
+                'delete'=>'required|boolean', 
             ],
             [
+                'code.required' => 'Debes ingresar el código de permiso',
+                'code.min' => 'EL código de permiso no debe tener menos de 3 caracteres',
+                'code.max' => 'EL código de permiso no debe tener mas de 3 caracteres',
+
                 'description.required' => 'Debes ingresar una description',
-                'description.min' => 'La description debe tener un largo minimo de 1 caracteres',
                 'description.max' => 'La description debe tener un largo maximo de 1000 caracteres',
             ]
             );
@@ -57,6 +61,7 @@ class PermissionController extends Controller
             return response($validator->errors());
         }
         $newPermission= new Permission();
+        $newPermission->code            =$request->code;
         $newPermission->description     =$request->description;
         $newPermission->delete          =$request->delete;
         $newPermission->save();
@@ -105,24 +110,30 @@ class PermissionController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'description'=>'required|min:1|max:1000',
-               'delete'=>'required|boolean', 
+                'code'=>'required|min:3|max:3',
+                'description'=>'required|max:1000',
+                'delete'=>'required|boolean', 
             ],
             [
+                'code.required' => 'Debes ingresar el código de permiso',
+                'code.min' => 'EL código de permiso no debe tener menos de 3 caracteres',
+                'code.max' => 'EL código de permiso no debe tener mas de 3 caracteres',
+
                 'description.required' => 'Debes ingresar una description',
-                'description.min' => 'La description debe tener un largo minimo de 1 caracteres',
                 'description.max' => 'La description debe tener un largo maximo de 1000 caracteres',
             ]
             );
         if($validator->fails()){
             return response($validator->errors());
         }
+
         $permission= Permission::find($id);
         if(empty($permission)){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+
         $permission->description     =$request->description;
         $permission->delete          =$request->delete;
         $permission->save();

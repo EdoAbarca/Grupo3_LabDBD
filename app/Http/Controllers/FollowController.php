@@ -139,7 +139,7 @@ class FollowController extends Controller
             ]);
         }
         
-        $follow->user_id1        = $request->user_id1;
+        $follow->user_id1       = $request->user_id1;
         $follow->user_id2       = $request->user_id2;
         $follow->delete         = $request->delete;
         return response()->json([

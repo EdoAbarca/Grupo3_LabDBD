@@ -44,13 +44,13 @@ class LocationController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'location_name' => 'required|min:1|max:300',
+               'location_name' => 'required|min:1|max:15',
                'delete' => 'required|boolean', 
             ],
             [
                 'location_name.required' => 'Debes ingresar el nombre de la ubicacion',
                 'location_name.min' => 'El nombre de la ubicacion debe tener un largo minimo de 1 caracter',
-                'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 300 caracteres',
+                'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 15 caracteres',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
@@ -109,13 +109,13 @@ class LocationController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'location_name' => 'required|min:1|max:300',
+               'location_name' => 'required|min:1|max:15',
                'delete' => 'required|boolean', 
             ],
             [
                 'location_name.required' => 'Debes ingresar el nombre de la ubicacion',
                 'location_name.min' => 'El nombre de la ubicacion debe tener un largo minimo de 1 caracter',
-                'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 300 caracteres',
+                'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 15 caracteres',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',

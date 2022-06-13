@@ -45,11 +45,11 @@ class SongController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'song_name' => 'required|min:1|max:30',
-               //'duration' => 'required',
+               'duration'=> 'required|date_format:H:i:s',
                'stream' => 'required|integer|min:0',
                'release_date' => 'required|date',
                'parental_advisory' => 'required|boolean',
-               'rate' => 'required|integer',
+               'rate' => 'required|integer|min:0|max:100',
                'album_id' => 'required|integer',
                'delete' => 'required|boolean', 
             ],
@@ -57,6 +57,9 @@ class SongController extends Controller
                 'song_name.required' => 'Debes ingresar el nombre de la cancion',
                 'song_name.min'      => 'El nombre de la cancion debe tener un largo minimo de 1 caracter',
                 'song_name.max'      => 'El nombre de la cancion debe tener un largo maximo de 30 caracteres',
+
+                'duration.required' => 'Debes ingresar la duracion del album',
+                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
 
                 'stream.required' => 'Debes ingresar el numero de reproducciones de la cancion',
                 'stream.integer'  => 'El numero de reproducciones debe ser un tipo de dato integer',
@@ -70,9 +73,11 @@ class SongController extends Controller
 
                 'rate.required' => 'Debes ingresar la valoracion de la cancion',
                 'rate.integer' => 'La valoracion de la cancion debe ser de un tipo de dato integer',
+                'rate.min' => 'La valoracion de la cancion debe ser un numero mayor o igual a 0',
+                'rate.max' => 'La valoracion de la cancion debe ser un numero menor o igual a 100',
 
-                'album_id' => 'Debes ingresar el id del album al que le pertenece la cancion',
-                'album_id' => 'El id del album debe ser de un tipo de dato integer',
+                'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
+                'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
@@ -81,7 +86,7 @@ class SongController extends Controller
         if($validator->fails()){
             return response($validator->errors());
         }
-
+        
         $newSong = new Song();
         $newSong->song_name         = $request->song_name;
         $newSong->duration          = $request->duration;
@@ -142,7 +147,7 @@ class SongController extends Controller
                'stream' => 'required|integer|min:0',
                'release_date' => 'required|date',
                'parental_advisory' => 'required|boolean',
-               'rate' => 'required|integer',
+               'rate' => 'required|integer|min:0|max:100',
                'album_id' => 'required|integer',
                'delete' => 'required|boolean', 
             ],
@@ -166,9 +171,11 @@ class SongController extends Controller
 
                 'rate.required' => 'Debes ingresar la valoracion de la cancion',
                 'rate.integer' => 'La valoracion de la cancion debe ser de un tipo de dato integer',
+                'rate.min' => 'La valoracion de la cancion debe ser un numero mayor o igual a 0',
+                'rate.max' => 'La valoracion de la cancion debe ser un numero menor o igual a 100',
 
-                'album_id' => 'Debes ingresar el id del album al que le pertenece la cancion',
-                'album_id' => 'El id del album debe ser de un tipo de dato integer',
+                'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
+                'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',

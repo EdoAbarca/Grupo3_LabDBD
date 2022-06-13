@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('location_name',300);
+            $table->string('location_name',15);
             
             $table->boolean('delete');
             $table->timestamps();

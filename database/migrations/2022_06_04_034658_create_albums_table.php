@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
-            $table->string('album_name',30);
+            $table->string('album_name',50);
             $table->date('release_date');
             $table->integer('songs_quantity');
             $table->time('duration');

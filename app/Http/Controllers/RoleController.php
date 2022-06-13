@@ -44,13 +44,13 @@ class RoleController extends Controller
     {
         $validator = Validator::make(
             $request->all(),[
-                'role_name' => 'required|min:2|max:35',
+                'role_name' => 'required|min:3|max:15',
                 'delete' => 'required|boolean',
             ],
             [
                 'role_name.required' => 'Debes ingresar un nombre de rol',
-                'role_name.min' => 'El role_name debe tener un largo minimo de 2',
-                'role_name.max' => 'El role_name debe tener un largo maximo de 35',
+                'role_name.min' => 'El role_name debe tener un largo minimo de 3',
+                'role_name.max' => 'El role_name debe tener un largo maximo de 15',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"celete" debe ser un booleano',
@@ -58,7 +58,7 @@ class RoleController extends Controller
         ); 
         if($validator->fails()){
             return response($validator->errors());
-        }  
+        }
         $newRole = new Role();
         $newRole->role_name = $request->role_name;
         $newRole->delete    = $request->delete;
@@ -108,16 +108,16 @@ class RoleController extends Controller
     {
         $validator = Validator::make(
             $request->all(),[
-                'role_name' => 'required|min:2|max:35',
+                'role_name' => 'required|min:3|max:15',
                 'delete' => 'required|boolean',
             ],
             [
                 'role_name.required' => 'Debes ingresar un nombre de rol',
-                'role_name.min' => 'El role_name debe tener un largo minimo de 2',
-                'role_name.max' => 'El role_name debe tener un largo maximo de 35',
+                'role_name.min' => 'El role_name debe tener un largo minimo de 3',
+                'role_name.max' => 'El role_name debe tener un largo maximo de 15',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                'delete.boolean' => '"celete" debe ser un booleano',
             ]
         ); 
         if($validator->fails()){

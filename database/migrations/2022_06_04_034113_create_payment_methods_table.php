@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('method_name',30);
-            //$table->smallInteger('CVC');
-            //$table->bigInteger('card_number');
+            $table->string('method_name',10);
+            //$table->string('cvv', 3); //Evaluar su retiro 
+            //$table->string('card_number',19); //Evaluar su retiro
+            $table->string('pmp', 300); //Clave para uso metodo de pago
             $table->bigInteger('available_budget'); 
             
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('delete');
             $table->timestamps();

@@ -20,10 +20,12 @@ class Payment_methodFactory extends Factory
     {
         return [
             'method_name'=>$this->faker->randomElement($array = array('credito', 'debito', 'paypal')),
-            'available_budget'=>$this->faker->numberBetween($min=0,$max=(2^32)-1),
+            //'cvv'=> $this->faker->text(), //Evaluar su retiro
+            //'card_number'=> $this->faker->text(), //Evaluar su retiro
+            'pmp'=> $this->faker->password,
+            'available_budget'=>$this->faker->numberBetween($min=0),
             'user_id'=>User::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
-            //Sujeto a modificaciones, especificar en MR en tal caso
         ];
     }
 }

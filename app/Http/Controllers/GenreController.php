@@ -44,13 +44,13 @@ class GenreController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'genre_name'=>'required|min:2|max:30',
+               'genre_name'=>'required|min:3|max:15',
                'delete'=>'required|boolean', 
             ],
             [
                 'genre_name.required' => 'Debes ingresar el nombre del genero',
-                'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 2 caracteres',
-                'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 30 caracteres',
+                'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 3 caracteres',
+                'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 15 caracteres',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
@@ -108,13 +108,13 @@ class GenreController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-                'genre_name'=>'required|min:2|max:30',
+                'genre_name'=>'required|min:3|max:15',
                 'delete'=>'required|boolean', 
              ],
              [
                  'genre_name.required' => 'Debes ingresar el nombre del genero',
-                 'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 2 caracteres',
-                 'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 30 caracteres',
+                 'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 3 caracteres',
+                 'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 15 caracteres',
 
                  'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                  'delete.boolean' => '"delete" debe ser un booleano',

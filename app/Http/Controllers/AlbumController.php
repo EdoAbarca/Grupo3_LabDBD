@@ -44,27 +44,30 @@ class AlbumController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'album_name' => 'required|min:1|max:30',
+               'album_name' => 'required|min:1|max:50',
                'release_date' => 'required|date',
                'songs_quantity' => 'required|integer|min:1',
-               //'duration' => 'required'
+               'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               'delete' => 'required|boolean',
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
-                'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caractere',
-                'album_name.max' => 'El nombre del album debe tener un largo maximo de 30 caracteres',
+                'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caracter',
+                'album_name.max' => 'El nombre del album debe tener un largo maximo de 50 caracteres',
 
                 'release_date' => 'Debes ingresar la fecha de lanzamiento del album',
                 'release_date' => 'La fecha de lanzamiento debe ser una fecha valida',
                 
-                'songs_quantity' => 'Debes ingresar el numero de canciones del album',
-                'songs_quantity' => 'El numero de canciones debe ser de un tipo de dato integer',
-                'songs_quantity' => 'El numero de canciones debe tener como minimo valor 1',
+                'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
+                'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
+                'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
 
-                'user_id' => 'Debes ingresar el id del usuario al que le pertenece el album',
-                'user_id' => 'El id del usuario debe ser de un tipo de dato integer',
+                'duration.required' => 'Debes ingresar la duracion total del album',
+                'duration.date_format:H:i:s' => 'La duracion total del album debe seguir el formato: H:i:s',
+
+                'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
@@ -127,33 +130,33 @@ class AlbumController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'album_name' => 'required|min:1|max:30',
+               'album_name' => 'required|min:1|max:50',
                'release_date' => 'required|date',
                'songs_quantity' => 'required|integer|min:1',
                'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
-               'delete'  => 'required|boolean', 
+               'delete'  => 'required|boolean'
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
                 'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caracter',
-                'album_name.max' => 'El nombre del album debe tener un largo maximo de 30 caracteres',
+                'album_name.max' => 'El nombre del album debe tener un largo maximo de 50 caracteres',
 
-                'release_date.required' => 'Debes ingresar la fecha de lanzamiento del album',
-                'release_date.date' => 'La fecha de lanzamiento debe ser una fecha valida',
+                'release_date' => 'Debes ingresar la fecha de lanzamiento del album',
+                'release_date' => 'La fecha de lanzamiento debe ser una fecha valida',
                 
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
                 'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
 
-                'duration.required' => 'Debes ingresar la duracion del album',
-                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
+                'duration.required' => 'Debes ingresar la duracion total del album',
+                'duration.date_format:H:i:s' => 'La duracion total del album debe seguir el formato: H:i:s',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                'delete.boolean' => '"delete" debe ser un booleano'
             ]
             );
         if($validator->fails()){

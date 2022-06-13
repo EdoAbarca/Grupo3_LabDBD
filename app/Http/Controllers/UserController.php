@@ -77,7 +77,7 @@ class UserController extends Controller
                 'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"celete" debe ser un booleano',
+                'delete.boolean' => '"delete" debe ser un booleano',
             ]
         );  
         if($validator->fails()){
@@ -140,7 +140,7 @@ class UserController extends Controller
                 'nickname' => 'required|min:2|max:30',
                 'password' => 'required|min:10|max:300',
                 'email' => 'required|min:7|max:200',
-                'biography' => 'required|min:5|max:500',
+                'biography' => 'required|max:500',
                 'signup_date' => 'required|date|after:birth_date',
                 'birth_date' => 'required|date',
                 'delete' => 'required|boolean',
@@ -159,7 +159,6 @@ class UserController extends Controller
                 'email.max' => 'El email debe tener un largo maximo de 200',
 
                 'biography.required' => 'Debes ingresar una biografia',
-                'biography.min' => 'La biography debe tener un largo minimo de 5',
                 'biography.max' => 'La biography debe tener un largo maximo de 500',
 
                 'register_date.required' => 'Debes ingresar una fecha de registro',

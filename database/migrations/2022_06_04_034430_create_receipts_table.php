@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->string('name',30);
+            $table->string('name',30); //Pago de suscripción plataforma
             $table->integer('sum');
             $table->date('payment_date');
             $table->time('payment_time');

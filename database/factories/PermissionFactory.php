@@ -17,11 +17,8 @@ class PermissionFactory extends Factory
     public function definition()
     {
         return [
-            //'description' => $this->faker->text(),
-            'upload_album'=>$this->faker->boolean($chanceOfGettingTrue = 50),
-            'admin'=>$this->faker->boolean($chanceOfGettingTrue = 50),
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
-            //Sujeto a modificaciones, especificar en MR en tal caso
+            'code' => $this->faker->randomElement($array = array('ADM','USR','ART')),
+            'description' => $this->faker->text()
         ];
     }
 }
