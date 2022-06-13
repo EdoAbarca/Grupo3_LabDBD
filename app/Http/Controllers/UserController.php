@@ -64,7 +64,7 @@ class UserController extends Controller
                 'email.required' => 'Debes ingresar un email',
                 'email.min' => 'El email debe tener un largo minimo de 7',
                 'email.max' => 'El email debe tener un largo maximo de 200',
-
+                
                 'biography.required' => 'Debes ingresar una biografia',
                 'biography.min' => 'La biography debe tener un largo minimo de 5',
                 'biography.max' => 'La biography debe tener un largo maximo de 500',
@@ -153,7 +153,7 @@ class UserController extends Controller
                 'password.required' => 'Debes ingresar una password',
                 'password.min' => 'La password debe tener un largo minimo de 10',
                 'password.max' => 'La password debe tener un largo maximo de 300',
-
+                    
                 'email.required' => 'Debes ingresar un email',
                 'email.min' => 'El email debe tener un largo minimo de 7',
                 'email.max' => 'El email debe tener un largo maximo de 200',

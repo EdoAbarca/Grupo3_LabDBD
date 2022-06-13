@@ -50,7 +50,7 @@ class LikeController extends Controller
                 'delete' => 'required|boolean', 
             ],
             [
-                'user_id.required' => 'Debes ingresar el id del usuario que dio like',
+                'user_id.required' => 'Debes ingresar el id del usuario que dio like a una cancion',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
                 'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
@@ -70,7 +70,7 @@ class LikeController extends Controller
         $newLike->delete         = $request->delete;
         $newLike->save();
         return response()->json([
-            'respuesta' => 'se ha creado un nuevo album',
+            'respuesta' => 'se ha creado un nuevo follow',
             'id'=> $newLike->id,
         ],201);
     }

@@ -55,13 +55,13 @@ class Payment_methodController extends Controller
                 'method_name.min' => 'El nombre del metodo de pago debe tener un largo minimo de 1 caracter',
                 'method_name.max' => 'El nombre del metodo de pago debe tener un largo maximo de 15 caracteres',
 
-                'pmp.required' => 'Debes ingresar la contraseña del metodo de pago',
-                'pmp.min' => 'La contraseña del metodo de pago debe tener un largo minimo de 8 caracteres',
-                'pmp.max' => 'La contraseña del metodo de pago debe tener un largo maximo de 300 caracteres',
-
                 'available_budget.required' => 'Debes ingresar el presupuesto disponible del metodo de pago',
                 'available_budget.integer' => 'El presupuesto disponible debe ser un tipo de dato integer',
                 'available_budget.min' => 'El presupuesto disponible debe ser como mínimo 0',
+
+                'pmp.required' => 'Debes ingresar la contraseña del metodo de pago',
+                'pmp.min' => 'La contraseña del metodo de pago debe tener un largo minimo de 8 caracteres',
+                'pmp.max' => 'La contraseña del metodo de pago debe tener un largo maximo de 300 caracteres',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el metodo de pago',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',

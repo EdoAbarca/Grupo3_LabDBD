@@ -53,7 +53,7 @@ class GenreController extends Controller
                 'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 15 caracteres',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                'delete.boolean'  => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){

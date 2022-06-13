@@ -55,6 +55,9 @@ class PermissionController extends Controller
 
                 'description.required' => 'Debes ingresar una description',
                 'description.max' => 'La description debe tener un largo maximo de 1000 caracteres',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){

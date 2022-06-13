@@ -46,7 +46,7 @@ class FollowController extends Controller
             $request->all(),[
                'user_id1' => 'required|integer',
                'user_id2' => 'required|integer',
-               'delete' => 'required|boolean', 
+               'delete'   => 'required|boolean', 
             ],
             [
                 'user_id1.required' => 'Debes ingresar el id del usuario 1 al que le pertenece el seguimiento',
@@ -69,7 +69,7 @@ class FollowController extends Controller
         $newfollow->delete         = $request->delete;
         $newfollow->save();
         return response()->json([
-            'respuesta' => 'se ha creado una nueva lista de reproduccion cancion',
+            'respuesta' => 'se ha creado una nueva tabla de seguimiento',
             'id'=> $newfollow->id,
         ],201);
     }

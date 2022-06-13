@@ -56,24 +56,25 @@ class ReceiptController extends Controller
                 'name.required' => 'Debes ingresar el nombre de la boleta',
                 'name.min'      => 'El nombre de debe tener un largo minimo de 1 caracter',
                 'name.max'      => 'El nombre de  debe tener un largo maximo de 30 caracteres',
-                
-                'user_id.required' => 'Debes ingresar el id del usuario al que se le dio like',
-                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
-
-                'payment_method_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
-                'payment_method_id.integer' => 'El id del tipo de dato debe ser de un tipo de dato integer',
-
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
-                
-                'payment_date.required' => 'Debes ingresar la fecha del pago efectuado',
-                'payment_date.date'     => 'La fecha del pago debe ser una fecha valida',
 
                 'sum.required'=> 'Debes ingresar el monto de la boleta',
                 'sum.integer'=> '"sum" debe ser un integer',
 
+                'payment_date.required' => 'Debes ingresar la fecha del pago efectuado',
+                'payment_date.date'     => 'La fecha del pago debe ser una fecha valida',
+
                 'payment_time.required' => 'Debes ingresar la hora del pago efectuado',
-                'payment_time.date_format:H:i:s'     => 'La hora del pago debe ser una hora valida',
+                'payment_time.date_format'     => 'La hora del pago debe ser una hora valida',
+
+                'payment_method_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'payment_method_id.integer' => 'El id del tipo de dato debe ser de un tipo de dato integer',
+                
+                'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece la boleta',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',
+
             ]
             );
         if($validator->fails()){
@@ -147,10 +148,10 @@ class ReceiptController extends Controller
                 'name.min'      => 'El nombre de debe tener un largo minimo de 1 caracter',
                 'name.max'      => 'El nombre de  debe tener un largo maximo de 30 caracteres',
                 
-                'user_id.required' => 'Debes ingresar el id del usuario al que pertenece la boleta',
+                'user_id.required' => 'Debes ingresar el id del usuario al que se le dio like',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'payment_method_id.required' => 'Debes ingresar el id del metodo de pago que contiene la boleta',
+                'payment_method_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
                 'payment_method_id.integer' => 'El id del tipo de dato debe ser de un tipo de dato integer',
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',

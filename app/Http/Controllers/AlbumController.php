@@ -56,8 +56,8 @@ class AlbumController extends Controller
                 'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caracter',
                 'album_name.max' => 'El nombre del album debe tener un largo maximo de 50 caracteres',
 
-                'release_date' => 'Debes ingresar la fecha de lanzamiento del album',
-                'release_date' => 'La fecha de lanzamiento debe ser una fecha valida',
+                'release_date.required' => 'Debes ingresar la fecha de lanzamiento del album',
+                'release_date.date' => 'La fecha de lanzamiento debe ser una fecha valida con el formato: "YYYY:MM:DD',
                 
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
