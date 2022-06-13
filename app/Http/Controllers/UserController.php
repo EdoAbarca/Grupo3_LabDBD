@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        
+        $users = User::where('delete',false)->get();
         if($users->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran usuarios',
@@ -112,6 +113,12 @@ class UserController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($user->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
         return response($user,200);
     }
 
@@ -181,6 +188,13 @@ class UserController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($user->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+
         $user->nickname      = $request->nickname;
         $user->password      = $request->password;
         $user->email         = $request->email;

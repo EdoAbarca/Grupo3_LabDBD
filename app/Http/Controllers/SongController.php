@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        $songs = Song::all();
+        $songs = Song::where('delete',false)->get();
         if($songs->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran canciones',
@@ -117,6 +117,11 @@ class SongController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($song->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($song,200);
     }
 
@@ -191,7 +196,11 @@ class SongController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-
+        if($song->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
 
         $song->song_name         = $request->song_name;
         $song->duration          = $request->duration;

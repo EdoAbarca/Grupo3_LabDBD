@@ -15,7 +15,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::all();
+        $genres = Genre::where('delete',false)->get();
         if($genres->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran generos',
@@ -83,6 +83,11 @@ class GenreController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($genre->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($genre,200);
     }
 
@@ -127,6 +132,11 @@ class GenreController extends Controller
         if(empty($genre)){
             return response()->json([
                 'respuesta' => 'No se encuentra el genero con el id ingresado',
+            ]);
+        }
+        if($genre->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
         $genre->genre_name     =$request->genre_name;

@@ -10,7 +10,7 @@ use App\Models\Follow;
 use App\Models\Genre;
 use App\Models\Like;
 use App\Models\Location;
-//use App\Models\Payment_mehotd;
+use App\Models\Payment_method;
 use App\Models\Permission;
 use App\Models\Playlist;
 use App\Models\Rate;

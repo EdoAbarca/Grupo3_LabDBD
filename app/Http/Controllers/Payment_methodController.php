@@ -15,7 +15,7 @@ class Payment_methodController extends Controller
      */
     public function index()
     {
-        $payment_methods = Payment_method::all();
+        $payment_methods = Payment_method::where('delete',false)->get();
         if($payment_methods->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran metodos de pago',
@@ -101,6 +101,11 @@ class Payment_methodController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($payment_method->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($payment_method,200);
     }
 
@@ -162,7 +167,11 @@ class Payment_methodController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-
+        if($payment_method->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         $payment_method->method_name         = $request->method_name;
         $payment_method->pmp                 = $request->pmp;
         $payment_method->available_budget    = $request->available_budget;

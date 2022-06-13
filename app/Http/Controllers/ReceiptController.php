@@ -15,13 +15,13 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $receipt = Receipt::all();
-        if($receipt->isEmpty()){
+        $receipts = Receipt::where('delete',false)->get();
+        if($receipts->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran boletas',
             ]);
         }
-        return response($receipt,200);
+        return response($receipts,200);
     }
 
     /**
@@ -110,6 +110,11 @@ class ReceiptController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($receipt->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($receipt,200);
     }
 
@@ -175,7 +180,12 @@ class ReceiptController extends Controller
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
-        }  
+        } 
+        if($receipt->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        } 
         $receipt->name;
         $receipt->sum;
         $receipt->payment_time;

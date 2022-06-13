@@ -15,13 +15,13 @@ class Role_permissionController extends Controller
      */
     public function index()
     {
-        $roles_permissions = Role_permission::all();
-        if($roles_permissions->isEmpty()){
+        $role_permissions = Role_permission::where('delete',false)->get();
+        if($role_permissions->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran roles de permisos',
             ]);
         }
-        return response($roles_permissions,200); 
+        return response($role_permissions,200); 
     }
 
 
@@ -89,6 +89,11 @@ class Role_permissionController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($role_permission->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        } 
         return response($role_permission,200);
     }
 
@@ -135,6 +140,11 @@ class Role_permissionController extends Controller
 
         $role_permission = Role_permission::find($id);
         if(empty($role_permission)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($role_permission->delete == true){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);

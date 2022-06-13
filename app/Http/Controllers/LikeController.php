@@ -15,7 +15,7 @@ class LikeController extends Controller
      */
     public function index()
     {
-        $likes = Like::all();
+        $likes = Like::where('delete',false)->get();
         if($likes->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran likes',
@@ -89,6 +89,12 @@ class LikeController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+
+        if($like->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($like,200);
     }
 
@@ -135,6 +141,11 @@ class LikeController extends Controller
 
         $like = Like::find($id);
         if(empty($like)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($like->delete == true){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);

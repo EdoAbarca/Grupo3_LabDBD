@@ -14,8 +14,8 @@ class FollowController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $follows = Follow::all();
+    {   
+        $follows = Follow::where('delete',false)->get();
         if($follows->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran los seguimientos',
@@ -82,13 +82,18 @@ class FollowController extends Controller
      */
     public function show($id)
     {
-        $follows = Follow::find($id);
-        if(empty($follows)){
+        $follow = Follow::find($id);
+        if(empty($follow)){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($follows,200);
+        if($follow->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        return response($follow,200);
     }
 
     /**
@@ -138,7 +143,11 @@ class FollowController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        
+        if($follow->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         $follow->user_id1       = $request->user_id1;
         $follow->user_id2       = $request->user_id2;
         $follow->delete         = $request->delete;

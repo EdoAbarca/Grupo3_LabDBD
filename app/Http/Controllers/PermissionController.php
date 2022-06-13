@@ -15,7 +15,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::where('delete',false)->get();
         if($permissions->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran permisos',
@@ -88,6 +88,11 @@ class PermissionController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($permission->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($permission,200);
     }
 
@@ -139,7 +144,11 @@ class PermissionController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-
+        if($permission->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         $permission->description     =$request->description;
         $permission->delete          =$request->delete;
         $permission->save();

@@ -15,7 +15,7 @@ class User_roleController extends Controller
      */
     public function index()
     {
-        $users_roles = User_role::all();
+        $users_roles = User_role::where('delete',false)->get();
         if($users_roles->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran roles de usuarios',
@@ -89,6 +89,12 @@ class User_roleController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($User_role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
         return response($User_role,200);
     }
 
@@ -139,6 +145,12 @@ class User_roleController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($User_role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
         $User_role->user_id        = $request->user_id;
         $User_role->role_id        = $request->role_id;
         $User_role->delete         = $request->delete;

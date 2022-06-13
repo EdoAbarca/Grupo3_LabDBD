@@ -15,7 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::where('delete',false)->get();
         if($roles->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran roles',
@@ -83,6 +83,12 @@ class RoleController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        
+        if($role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($role,200);
     }
 
@@ -128,7 +134,14 @@ class RoleController extends Controller
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
-        }  
+        } 
+        
+        if($role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        } 
+        
         $role->role_name = $request->role_name;
         $role->delete    = $request->delete;
         $role->save();

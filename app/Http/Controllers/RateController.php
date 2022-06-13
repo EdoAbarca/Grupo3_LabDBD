@@ -15,7 +15,7 @@ class RateController extends Controller
      */
     public function index()
     {
-        $rates = Rate::all();
+        $rates = Rate::where('delete',false)->get();
         if($rates->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran valoraciones.',
@@ -96,6 +96,11 @@ class RateController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($rate->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($rate,200);
     }
 
@@ -148,6 +153,11 @@ class RateController extends Controller
 
         $rate = Rate::find($id);
         if(empty($rate)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($rate->delete == true){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);

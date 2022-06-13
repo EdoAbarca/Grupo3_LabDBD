@@ -15,7 +15,7 @@ class Song_genreController extends Controller
      */
     public function index()
     {
-        $song_genres = Song_genre::all();
+        $song_genres = Song_genre::where('delete',false)->get();
         if($song_genres->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran los generos de cancion',
@@ -88,6 +88,11 @@ class Song_genreController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($song_genre->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($song_genre,200);
     }
 
@@ -134,6 +139,12 @@ class Song_genreController extends Controller
 
         $song_genre = Song_genre::find($id);
         if(empty($song_genre)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+
+        if($song_genre->delete == true){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);

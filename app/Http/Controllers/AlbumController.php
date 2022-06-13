@@ -15,7 +15,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::all();
+        $albums = Album::where('delete',false)->get();
         if($albums->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran albums',
@@ -105,6 +105,11 @@ class AlbumController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($album->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($album,200);
     }
 
@@ -162,14 +167,17 @@ class AlbumController extends Controller
         if($validator->fails()){
             return response($validator->errors());
         }
-
         $album = Album::find($id);
         if(empty($album)){
             return response()->json([
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-
+        if($album->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         $album->album_name     = $request->album_name;
         $album->release_date   = $request->release_date;
         $album->songs_quantity = $request->songs_quantity;

@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::all();
+        $locations = Location::where('delete',false)->get();
         if($locations->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran ubicaciones',
@@ -84,6 +84,11 @@ class LocationController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
+        if($location->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         return response($location,200);
     }
 
@@ -131,7 +136,11 @@ class LocationController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-
+        if($location->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
         $location->location_name = $request->location_name;
         $location->delete        = $request->delete;
         $location->save();   
