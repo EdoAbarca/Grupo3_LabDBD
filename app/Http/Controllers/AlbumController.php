@@ -130,9 +130,9 @@ class AlbumController extends Controller
                'album_name' => 'required|min:1|max:30',
                'release_date' => 'required|date',
                'songs_quantity' => 'required|integer|min:1',
-               //'duration' => 'required'
+               'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               'delete'  => 'required|boolean', 
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
@@ -145,6 +145,9 @@ class AlbumController extends Controller
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
                 'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
+
+                'duration.required' => 'Debes ingresar la duracion del album',
+                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',

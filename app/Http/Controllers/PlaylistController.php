@@ -134,7 +134,7 @@ class PlaylistController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'playlist_name' => 'required|min:1|max:30',
-               //'duration' => 'required'
+               'duration'=> 'required|date_format:H:i:s',
                'songs_quantity' => 'required|integer|min:1',
                'description' => 'required|min:1|max:1000',
                'create_date' => 'required|date',
@@ -145,6 +145,9 @@ class PlaylistController extends Controller
                 'playlist_name.required' => 'Debes ingresar el nombre de la playlist',
                 'playlist_name.min' => 'El nombre de la playlist debe tener un largo minimo de 1 caracter',
                 'playlist_name.max' => 'El nombre de la playlist debe tener un largo maximo de 30 caracteres',
+
+                'duration.required' => 'Debes ingresar la duracion de la playlist',
+                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
                 
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones de la playlist',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
