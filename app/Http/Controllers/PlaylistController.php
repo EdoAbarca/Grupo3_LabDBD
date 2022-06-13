@@ -195,8 +195,25 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $playlist = Playlist::find($id);
+        if(empty($playlist)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($playlist->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $playlist->delete = true;
+        $playlist->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado una lista de reproduccion',
+            'id' => $playlist->id,
+        ],200);
     }
 }

@@ -155,8 +155,25 @@ class LikeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $like = Like::find($id);
+        if(empty($like)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($like->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $like->delete = true;
+        $like->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un like',
+            'id' => $like->id,
+        ],200);
     }
 }

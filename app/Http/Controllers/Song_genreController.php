@@ -154,8 +154,25 @@ class Song_genreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $song_genre = Song_genre::find($id);
+        if(empty($song_genre)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($song_genre->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $song_genre->delete = true;
+        $song_genre->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un genero cancion',
+            'id' => $song_genre->id,
+        ],200);
     }
 }

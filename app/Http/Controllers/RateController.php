@@ -169,8 +169,25 @@ class RateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $rate = Rate::find($id);
+        if(empty($rate)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($rate->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $rate->delete = true;
+        $rate->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado una valoracion',
+            'id' => $rate->id,
+        ],200);
     }
 }

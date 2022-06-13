@@ -204,8 +204,25 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $song = Song::find($id);
+        if(empty($song)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($song->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $song->delete = true;
+        $song->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado una cancion',
+            'id' => $song->id,
+        ],200);
     }
 }

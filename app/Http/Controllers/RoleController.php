@@ -146,8 +146,25 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $role = Role::find($id);
+        if(empty($role)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $role->delete = true;
+        $role->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un rol',
+            'id' => $role->id,
+        ],200);
     }
 }

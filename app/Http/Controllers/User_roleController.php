@@ -155,8 +155,25 @@ class User_roleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $user_role = User_role::find($id);
+        if(empty($user_role)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($user_role->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $user_role->delete = true;
+        $user_role->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un rol de usuario',
+            'id' => $user_role->id,
+        ],200);
     }
 }

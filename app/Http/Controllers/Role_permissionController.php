@@ -155,8 +155,25 @@ class Role_permissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $role_permission = Role_permission::find($id);
+        if(empty($role_permission)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($role_permission->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $role_permission->delete = true;
+        $role_permission->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un rol de permisos',
+            'id' => $role_permission->id,
+        ],200);
     }
 }

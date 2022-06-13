@@ -204,7 +204,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $user = User::find($id);
         if(empty($user)){
@@ -212,9 +212,14 @@ class UserController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-         
-        $user->delete();
-
+        if($user->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $user->delete = true;
+        $user->save();
         return response()->json([
             'respuesta' => 'Se ha eliminado un user',
             'id' => $user->id,

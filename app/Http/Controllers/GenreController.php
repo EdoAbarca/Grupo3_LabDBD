@@ -144,8 +144,25 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $genre = Genre::find($id);
+        if(empty($genre)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($genre->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $genre->delete = true;
+        $genre->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un genero',
+            'id' => $genre->id,
+        ],200);
     }
 }

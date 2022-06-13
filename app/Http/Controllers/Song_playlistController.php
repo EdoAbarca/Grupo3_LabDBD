@@ -155,8 +155,25 @@ class Song_playlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $song_playlist = Song_playlist::find($id);
+        if(empty($song_playlist)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($song_playlist->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $song_playlist->delete = true;
+        $song_playlist->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado una cancion de lista de reproduccion',
+            'id' => $song_playlist->id,
+        ],200);
     }
 }

@@ -138,8 +138,25 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $permission = Permission::find($id);
+        if(empty($permission)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($permission->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $permission->delete = true;
+        $permission->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un permiso',
+            'id' => $permission->id,
+        ],200);
     }
 }

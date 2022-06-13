@@ -154,8 +154,25 @@ class FollowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $follow = Follow::find($id);
+        if(empty($follow)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($follow->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $follow->delete = true;
+        $follow->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un seguimiento',
+            'id' => $follow->id,
+        ],200);
     }
 }

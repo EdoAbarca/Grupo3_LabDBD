@@ -148,8 +148,25 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $location = Location::find($id);
+        if(empty($location)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($location->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $location->delete = true;
+        $location->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado una ubicacion',
+            'id' => $location->id,
+        ],200);
     }
 }

@@ -183,8 +183,25 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $album = Album::find($id);
+        if(empty($album)){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        if($album->delete == true){
+            return response()->json([
+                'respuesta' => 'No se encuentra el id ingresado',
+            ]);
+        }
+        
+        $album->delete = true;
+        $album->save();
+        return response()->json([
+            'respuesta' => 'Se ha eliminado un album',
+            'id' => $album->id,
+        ],200);
     }
 }
