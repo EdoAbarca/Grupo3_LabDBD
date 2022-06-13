@@ -118,3 +118,10 @@ Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');
 Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');
 Route::delete('/users/delete/{id}','App\Http\Controllers\UserController@delete');
+Route::delete('/users/delete/{id}','App\Http\Controllers\UserController@destroy');
+
+Route::get('/payment_methods','App\Http\Controllers\Payment_methodController@index');
+Route::get('/payment_methods/{id}','App\Http\Controllers\Payment_methodController@show');
+Route::post('/payment_methods/create','App\Http\Controllers\Payment_methodController@store');
+Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
+Route::delete('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@destroy');
