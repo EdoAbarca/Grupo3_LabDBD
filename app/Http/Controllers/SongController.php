@@ -51,6 +51,7 @@ class SongController extends Controller
                'parental_advisory' => 'required|boolean',
                'rate' => 'required|integer|min:0|max:100',
                'album_id' => 'required|integer',
+               'location_id' => 'required|integer',
                'delete' => 'required|boolean', 
             ],
             [
@@ -79,6 +80,9 @@ class SongController extends Controller
                 'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
                 'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
 
+                'location_id.required' => 'Debes ingresar el id de la ubicacion a la que pertenece la cancion',
+                'location_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
             ]
@@ -95,6 +99,7 @@ class SongController extends Controller
         $newSong->parental_advisory = $request->parental_advisory;
         $newSong->rate              = $request->rate;
         $newSong->album_id          = $request->album_id;
+        $newSong->location_id       = $request->location_id;
         $newSong->delete            = $request->delete;
         $newSong->save();
         return response()->json([
@@ -154,6 +159,7 @@ class SongController extends Controller
                'parental_advisory' => 'required|boolean',
                'rate' => 'required|integer|min:0|max:100',
                'album_id' => 'required|integer',
+               'location_id' => 'required|integer',
                'delete' => 'required|boolean', 
             ],
             [
@@ -182,6 +188,9 @@ class SongController extends Controller
                 'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
                 'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
 
+                'location_id.required' => 'Debes ingresar el id de la ubicacion a la que pertenece la cancion',
+                'location_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
             ]
@@ -209,6 +218,7 @@ class SongController extends Controller
         $song->parental_advisory = $request->parental_advisory;
         $song->rate              = $request->rate;
         $song->album_id          = $request->album_id;
+        $song->location_id       = $request->location_id;
         $song->delete            = $request->delete;
         $song->save();
         return response()->json([

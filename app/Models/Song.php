@@ -11,8 +11,6 @@ class Song extends Model
         return $this->belongsTo(album::class);
     }
 
-    //hay q arreglarlo, cambiamos el mr de location
-
     public function rate(){
         return $this->hasMany(rate::class);
     }
