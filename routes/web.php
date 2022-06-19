@@ -129,3 +129,7 @@ Route::get('/payment_methods/{id}','App\Http\Controllers\Payment_methodControlle
 Route::post('/payment_methods/create','App\Http\Controllers\Payment_methodController@store');
 Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
 Route::delete('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
