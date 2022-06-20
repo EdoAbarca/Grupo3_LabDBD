@@ -20,7 +20,6 @@ use App\Models\Role;
 use App\Models\Song_genre;
 use App\Models\Song_playlist;
 use App\Models\Song;
-use App\Models\User_role;
 use App\Models\User;
 
 
@@ -33,7 +32,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
         \App\Models\User::factory(10)->create();
         \App\Models\Permission::factory(10)->create();
         \App\Models\Role::factory(10)->create();
@@ -50,8 +48,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Song_genre::factory(10)->create();
         \App\Models\Follow::factory(10)->create();
         \App\Models\Role_permission::factory(10)->create();
-        \App\Models\User_role::factory(10)->create();
-
-        
     }
 }

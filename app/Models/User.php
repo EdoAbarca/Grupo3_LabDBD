@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -34,12 +35,12 @@ class User extends Authenticatable
         return $this->hasMany(payment_method::class);
     }
 
-    public function user_role(){
-        return $this->hasMany(user_role::class);
+    public function role(){
+        return $this->hasOne(role::class);
     }
 
     public function receipt(){
-        return $this->hasMany(receipt::class);
+        return $this->hasOne(receipt::class);
     }
 
     use HasApiTokens, HasFactory, Notifiable;

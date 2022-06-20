@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +16,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/')->name('home');
+Route::get('/home');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest');
+
+Route::post('/login', function(){
+    $credentials = request()->validate([
+        'email' => 'required|email|string',
+        'password' => 'required|min:8|max:30|string'
+   ],[
+        'email.required' => 'Correo debe ser ingresado',
+        'email.email' => 'El formato del correo no es correcto',
+        'password.max' => 'La contraseña debe ser de largo máximo :max',
+        'password.min' => 'La contraseña debe ser de largo mínimo :min',
+        'password.required' => 'Contraseña debe ser ingresada'
+
+    ]);
+
+    if(Auth::attempt($credentials)){
+        request()->session()->regenerate();
+        return redirect('/')->with('status','Sesión iniciada correctamente');
+    }
+    return redirect('login')->withErrors('Los datos ingresados no se encontraron en las credenciales almacenadas');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::post('/logout', function(){
+    Auth::logout();
+    request()->session()->invalidate();
+    return redirect('/');
 });
+
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');
@@ -129,7 +158,3 @@ Route::get('/payment_methods/{id}','App\Http\Controllers\Payment_methodControlle
 Route::post('/payment_methods/create','App\Http\Controllers\Payment_methodController@store');
 Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
 Route::delete('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@destroy');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('biography',500);
             $table->date('signup_date');
             $table->date('birth_date');
+            $table->unsignedInteger('role_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->boolean('delete');
             $table->timestamps();      
         });

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Role;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -24,6 +25,7 @@ class UserFactory extends Factory
             'biography' => $this->faker->text(),
             'signup_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'birth_date' => $this->faker->dateTimeBetween($startDate = '-100 years', $endDate = 'now', $timezone = null),
+            'role_id' => Role::all()->random()->id, //Falta cubrir esto a nivel de controlador
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
              
 

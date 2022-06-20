@@ -11,8 +11,8 @@ class Role extends Model
         return $this->hasMany(role_permission::class);
     }
 
-    public function user_role(){
-        return $this->hasMany(user_role::class);
+    public function user(){
+        return $this->hasMany(user::class);
     }
 
     use HasFactory;
