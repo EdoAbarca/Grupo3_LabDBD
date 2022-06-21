@@ -33,11 +33,14 @@ Route::get('/register', function () {
 })->name('register')->middleware('guest');
 
 
+
 Route::get('/login', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
-Route::post('/login', function(){
+Route::post('/login','App\Http\Controllers\LoginController@authenticate');
+
+/*Route::post('/login', function(){
     $credentials = request()->validate([
         'email' => 'required|email|string',
         'password' => 'required|min:8|max:30|string'
@@ -54,7 +57,7 @@ Route::post('/login', function(){
         return redirect('/')->with('status','Sesión iniciada correctamente');
     }
     return redirect('login')->withErrors('Los datos ingresados no se encontraron en las credenciales almacenadas');
-});
+});*/
 
 Route::post('/logout', function(){
     Auth::logout();

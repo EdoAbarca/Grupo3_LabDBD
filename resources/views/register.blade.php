@@ -43,7 +43,7 @@
 
 		</div>
 		<div class="text-center">
-			<a class="btn btn-outline-success" href="/">Cancelar</a>
+			<a class="btn btn-outline-success" href="/home">Cancelar</a>
 		</div>
 	</form>
 
