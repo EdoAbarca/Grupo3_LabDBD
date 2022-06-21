@@ -16,8 +16,27 @@ use Illuminate\Validation\ValidationException;
 |
 */
 
-Route::get('/')->name('home');
-Route::get('/home');
+//Route::get('/')->name('home');
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest');
+
+/*Route::get('/home');*/
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/register', function () {
+    return view('register');
+})->name('register')->middleware('guest');
+
+
+
+
+
+
 
 Route::get('/login', function () {
     return view('login');

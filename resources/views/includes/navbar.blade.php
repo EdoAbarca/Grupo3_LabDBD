@@ -6,6 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      @auth
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <!-- <a class="nav-link dropdown-toggle" href="/suscription" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ¿Suscripcion? </a>-->
@@ -15,6 +16,7 @@
           </ul>
         </li>
       </ul>
+      @endauth
       @guest
       <a href="/login" class="btn btn-outline-success" role="button">Iniciar Sesión</a>
       <a href="/register" class="btn btn-outline-success" role="button">Registrarse</a>
