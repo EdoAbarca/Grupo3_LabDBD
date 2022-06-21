@@ -11,17 +11,11 @@
 </head>
 
 <body style="margin-bottom:22px">
-<<<<<<< Updated upstream
 
-</body>
+
     @include('includes.navbar')
     <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
     @include('includes.footer')
-=======
-@include('includes.navbar')
-<!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
-@include('includes.footer')
 </body>
->>>>>>> Stashed changes
 
 </html>

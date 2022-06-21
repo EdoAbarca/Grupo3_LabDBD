@@ -43,6 +43,7 @@ Route::get('/login', function () {
 })->name('login')->middleware('guest');
 
 Route::post('/login', function(){
+    //$credentials1 = request();
     $credentials = request()->validate([
         'email' => 'required|email|string',
         'password' => 'required|min:8|max:30|string'
@@ -54,8 +55,9 @@ Route::post('/login', function(){
         'password.required' => 'Contraseña debe ser ingresada'
 
     ]);
-
+    error_log(print_r(request()));
     if(Auth::attempt($credentials)){
+        
         request()->session()->regenerate();
         return redirect('/')->with('status','Sesión iniciada correctamente');
     }
