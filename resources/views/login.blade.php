@@ -35,10 +35,10 @@
 				@endif
 				<form method="POST" action="/login">
 					<div class="field">
-						<input id="email" name="email" type="text" required placeholder="Email">
+						<input id="email" name=email type="text" required placeholder="Email">
 					</div>
 					<div class="field">
-						<input id="password" name="password" type="password" required placeholder="Password">
+						<input id="password" name=password type="password" required placeholder="Password">
 					</div>
 					<div class="text-center">
 						<input id="botonLog" class="btn btn-outline-success" type="submit" value="Login">

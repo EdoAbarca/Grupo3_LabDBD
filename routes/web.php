@@ -42,16 +42,20 @@ Route::post('/login','App\Http\Controllers\LoginController@authenticate');
 
 /*Route::post('/login', function(){
     $credentials = request()->validate([
-        'email' => 'required|email|string',
-        'password' => 'required|min:8|max:30|string'
-   ],[
-        'email.required' => 'Correo debe ser ingresado',
-        'email.email' => 'El formato del correo no es correcto',
-        'password.max' => 'La contraseña debe ser de largo máximo :max',
-        'password.min' => 'La contraseña debe ser de largo mínimo :min',
-        'password.required' => 'Contraseña debe ser ingresada'
+        'password' => 'required|min:8|max:300',
+        'email' => 'required|min:7|max:200',
+    ],
+    [
+        'password.required' => 'Debes ingresar una password',
+        'password.min' => 'La password debe tener un largo minimo de 10',
+        'password.max' => 'La password debe tener un largo maximo de 300',
+
+        'email.required' => 'Debes ingresar un email',
+        'email.min' => 'El email debe tener un largo minimo de 7',
+        'email.max' => 'El email debe tener un largo maximo de 200',
 
     ]);
+
     if(Auth::attempt($credentials)){
         request()->session()->regenerate();
         return redirect('/')->with('status','Sesión iniciada correctamente');

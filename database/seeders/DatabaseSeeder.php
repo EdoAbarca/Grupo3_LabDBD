@@ -32,9 +32,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\Role::factory(10)->create();
         \App\Models\User::factory(10)->create();
         \App\Models\Permission::factory(10)->create();
-        \App\Models\Role::factory(10)->create();
         \App\Models\Genre::factory(10)->create();
         \App\Models\Payment_method::factory(10)->create();
         \App\Models\Receipt::factory(10)->create();
