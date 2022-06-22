@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
 
     public function role(){
-        return $this->hasOne(role::class);
+        return $this->belongsTo(role::class);
     }
 
     public function receipt(){

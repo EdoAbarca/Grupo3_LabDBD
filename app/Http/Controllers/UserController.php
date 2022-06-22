@@ -46,7 +46,7 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),[
                 'nickname' => 'required|min:2|max:30',
-                'password' => 'required|min:10|max:300',
+                'password' => 'required|min:8|max:300',
                 'email' => 'required|min:7|max:200',
                 //'biography' => 'required|min:5|max:500',
                 //'signup_date' => 'required|date|after:birth_date',
