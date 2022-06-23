@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -86,7 +87,7 @@ class UserController extends Controller
         }  
         $newUser = new User();
         $newUser->nickname      = $request->nickname;
-        $newUser->password      = $request->password;
+        $newUser->password      = Hash::make($request->password);
         $newUser->email         = $request->email;
         $newUser->biography     = "";
         $newUser->signup_date   = date('y-m-d');

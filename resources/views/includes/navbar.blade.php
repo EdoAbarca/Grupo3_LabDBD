@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,7 +21,7 @@
       <a href="/register" class="btn btn-outline-success" role="button">Registrarse</a>
       @endguest
       @auth
-      <label for="validationDefault02" class="form-label">$ {{auth()->user()->username}} </label>
+      <label for="validationDefault02" class="form-label">{{auth()->user()->username}} </label>
       <!-- <a href="/profile" class="btn btn-outline-success" role="button">Perfil</a>-->
       <form style="display: inline" action="/logout" method="POST">
         <a href="#" class="btn btn-outline-success" onclick="this.closest('form').submit()">Cerrar Sesión</a>

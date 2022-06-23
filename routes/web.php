@@ -38,30 +38,27 @@ Route::get('/login', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
-Route::post('/login','App\Http\Controllers\LoginController@authenticate');
+//Route::post('/login','App\Http\Controllers\LoginController@authenticate');
 
-/*Route::post('/login', function(){
+Route::post('/login', function(){
     $credentials = request()->validate([
-        'password' => 'required|min:8|max:300',
-        'email' => 'required|min:7|max:200',
-    ],
-    [
-        'password.required' => 'Debes ingresar una password',
-        'password.min' => 'La password debe tener un largo minimo de 10',
-        'password.max' => 'La password debe tener un largo maximo de 300',
-
-        'email.required' => 'Debes ingresar un email',
-        'email.min' => 'El email debe tener un largo minimo de 7',
-        'email.max' => 'El email debe tener un largo maximo de 200',
+        'email' => 'required|email|string',
+        'password' => 'required|min:8|max:20|string'
+   ],[
+        'email.required' => 'Debes ingresar un correo',
+        'email.email' => 'El formato del correo no es correcto',
+        'password.max' => 'Debe ser de largo máximo :max',
+        'password.min' => 'Debe ser de un largo mínimo :min',
+        'password.required' => 'Debes ingresar una contraseña'
 
     ]);
 
     if(Auth::attempt($credentials)){
         request()->session()->regenerate();
-        return redirect('/')->with('status','Sesión iniciada correctamente');
+        return redirect('/home')->with('status','Iniciaste sesión correctamente');
     }
-    return redirect('login')->withErrors('Los datos ingresados no se encontraron en las credenciales almacenadas');
-});*/
+    return redirect('login')->withErrors('Los datos ingresados no concuerdan con nuestra base de datos');
+});
 
 Route::post('/logout', function(){
     Auth::logout();
