@@ -17,7 +17,7 @@
       </ul>
       @endauth
       @guest
-      <a href="/login" class="btn btn-outline-success" role="button">Iniciar Sesión</a>
+      <a href="/login" class="btn btn-outline-success" role="button" >Iniciar Sesión</a>
       <a href="/register" class="btn btn-outline-success" role="button">Registrarse</a>
       @endguest
       @auth
