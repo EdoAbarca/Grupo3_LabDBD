@@ -17,10 +17,45 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
+
+.p {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: #f1f1f1;
+		font-family: "Century Gothic";
+	}
+
+	.input {
+		border: 10px;
+		display: block;
+		font-size: 15px;
+		line-height: 1.5rem;
+		font-weight: normal;
+		width: 100%;
+		box-sizing: border-box;
+		font-family: "Century Gothic";
+		-webkit-tap-highlight-color: transparent;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		border-radius: 4px;
+		padding: 14px;
+		background-color: #f1f1f1;
+		box-shadow: inset 0 0 0 1px var(--essential-subdued, #878787);
+		color: #313060;
+	}
+
+	.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh;
+}
 </style>
 
 <body>
-	
+	@include('includes.navbar')
+
 	<!-- Registro -->
 	@if(session('status'))
 	<br>
@@ -36,20 +71,32 @@
 		@endforeach
 	</ul>
 	@endif
-	<div class="row">
-		<div class="col-md-4"></div>
+	<div class="abs-center">
+		<div class="col-md-0"></div>
 		<div class="col-md-4">
-			<div class="card" >
+			<div class="card px-5 py-5" style="background-color:#313060" >
 				<form class="login" method="POST" action="/users/create">
-					<h5 style="color:green; font-size:20px;">Registro de nuevo usuario</h5>
+					<h5 style="color:white; font-size:25px;">Registro</h5>
 
-					<div><input class="controls" type="text" id="nickname" name="nickname" size="45" placeholder="Ingrese un nombre de usuario" required></div>
+					<div class="field">
+						<p class="p">Nombre Usuario</p>
+						<input class="controls" type="text" id="nickname" name="nickname" size="45" placeholder="Nombre de Usuario" required>
+					</div>
 
-					<div><input class="controls" type="text" id="password" name="password" size="45" placeholder="Ingrese una contraseña" required></div>
+					<div class="field">
+						<p class="p">Contraseña</p>
+						<input class="controls" type="text" id="password" name="password" size="45" placeholder="Contraseña" required>
+					</div>
 
-					<div><input class="controls" type="text" id="birth_date" name="birth_date" size="45" placeholder="Ingrese su fecha de nacimiento: AAAA-MM-DD" required></div>
+					<div class="field">
+						<p class="p">Fecha de Nacimiento</p>
+						<input class="controls" type="text" id="birth_date" name="birth_date" size="45" placeholder="Fecha de nacimiento: AAAA-MM-DD" required>
+					</div>
 
-					<div><input class="controls" type="text" id="email" name="email" size="45" placeholder="Ingrese su email" required></div>
+					<div>
+						<p class="p">Correo Electronico</p>
+						<input class="controls" type="text" id="email" name="email" size="45" placeholder="Correo Electronico" required>
+					</div>
 
 					<a class="btn btn-outline-success" href="/home">Cancelar</a>
 					

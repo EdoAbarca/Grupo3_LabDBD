@@ -42,17 +42,27 @@
 		box-shadow: inset 0 0 0 1px var(--essential-subdued, #878787);
 		color: #313060;
 	}
+
+	.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
 </style>
 
 <body style="background-color:#f1f1f1">
 
 	@include('includes.navbar')
 
-	<div class="row" style="background-color:#f1f1f1">
+	<div class="abs-center" style="background-color:#f1f1f1" >
 
-		<div class="col-md-4"></div>
+		<div class="col-md-0"></div>
 		<div class="col-md-4">
 			<div class="card px-5 py-5" style="background-color:#313060">
+				<h5 style="color:white; font-size:25px;">Inicio Sesión</h5>
 				<!--<div class="col-md-12" style= "color:#f1f1f1">Iniciar Sesión</div>-->
 				@if(session('status'))
 				<br>
@@ -68,21 +78,23 @@
 					@endforeach
 				</ul>
 				@endif
-				<form method="POST" action="/login">
-					<div class="field">
-						<p class="p">Correo Electrónico</p>
-						<input class="input" id="email" name=email type="text" required placeholder="Correo Electrónico">
-					</div>
-					<div class="field">
-						<p class="p">Contraseña</p>
-						<input class="input" id="password" name=password type="password" required placeholder="Contraseña">
-					</div>
-					<div class="text-center">
-						<input id="botonLog" class="btn btn-outline-success" type="submit" value="Iniciar Sesión">
-					</div>
-					<div class="signup-link" style="color:#f1f1f1">¿No eres miembro? <a href="/register" style="color:#f1f1f1">Regístrate aquí</a>
-					</div>
-				</form>
+				<div class="row">
+					<form method="POST" action="/login" style="text-align: center">
+						<div class="field">
+							<p class="p">Correo Electrónico</p>
+							<input class="input" id="email" name=email type="text" required placeholder="Correo Electrónico">
+						</div>
+						<div class="field">
+							<p class="p">Contraseña</p>
+							<input class="input" id="password" name=password type="password" required placeholder="Contraseña">
+						</div>
+						<div class="text-center">
+							<input id="botonLog" class="btn btn-outline-success" type="submit" value="Iniciar Sesión">
+						</div>
+						<div class="signup-link" style="color:#f1f1f1">¿No eres miembro? <a href="/register" style="color:#f1f1f1">Regístrate aquí</a>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
