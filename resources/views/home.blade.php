@@ -46,18 +46,19 @@ body{
 
 
   @include('includes.navbar')
-  <ul class="menu">
-    <li><a href="#">Nombre plataforma</a></li>
-    <p>Descubre Música</p>
-    <li><a href="#">Canciones más escuchadas</a></li>
-    <li><a href="#">Buscador</a></li>
-    <p>Tu Biblioteca de música</p>
-    <li><a href="#">Canciones que te gustan</a></li>
-    <li><a href="#">Lista de reproducción 1</a></li>
-    <li><a href="#">Lista de reproducción 1</a></li>
-    <li><a href="#">Lista de reproducción 1</a></li>
-  </ul>
-
+  @auth
+    <ul class="menu">
+      <li><a href="#">Nombre plataforma</a></li>
+      <p>Descubre Música</p>
+      <li><a href="#">Canciones más escuchadas</a></li>
+      <li><a href="#">Buscador</a></li>
+      <p>Tu Biblioteca de música</p>
+      <li><a href="#">Canciones que te gustan</a></li>
+      <li><a href="#">Lista de reproducción 1</a></li>
+      <li><a href="#">Lista de reproducción 1</a></li>
+      <li><a href="#">Lista de reproducción 1</a></li>
+    </ul>
+  @endauth
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.footer')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

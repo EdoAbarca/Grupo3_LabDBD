@@ -16,23 +16,27 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $credentials = request()->validate([
+            'email' => 'required|email|string',
+            'password' => 'required|min:8|max:20|string'
+       ],[
+            'email.required' => 'Debes ingresar un correo',
+            'email.email' => 'El formato del correo no es correcto',
+            'password.max' => 'Debe ser de largo máximo :max',
+            'password.min' => 'Debe ser de un largo mínimo :min',
+            'password.required' => 'Debes ingresar una contraseña'
+    
         ]);
 
         //$password = Hash::make($request->password);
         //$credentials = $request->only('email',$password);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
-            return redirect()->intended('dashboard');
+        if(Auth::attempt($credentials)){
+            request()->session()->regenerate();
+            return redirect('/home')->with('status','Iniciaste sesión correctamente');
         }
  
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return redirect('login')->withErrors('Los datos ingresados no concuerdan con nuestra base de datos');
     }
 
     

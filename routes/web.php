@@ -38,32 +38,14 @@ Route::get('/login', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
-//Route::post('/login','App\Http\Controllers\LoginController@authenticate');
+Route::post('/login','App\Http\Controllers\LoginController@authenticate');
 
-Route::post('/login', function(){
-    $credentials = request()->validate([
-        'email' => 'required|email|string',
-        'password' => 'required|min:8|max:20|string'
-   ],[
-        'email.required' => 'Debes ingresar un correo',
-        'email.email' => 'El formato del correo no es correcto',
-        'password.max' => 'Debe ser de largo máximo :max',
-        'password.min' => 'Debe ser de un largo mínimo :min',
-        'password.required' => 'Debes ingresar una contraseña'
 
-    ]);
-
-    if(Auth::attempt($credentials)){
-        request()->session()->regenerate();
-        return redirect('/home')->with('status','Iniciaste sesión correctamente');
-    }
-    return redirect('login')->withErrors('Los datos ingresados no concuerdan con nuestra base de datos');
-});
 
 Route::post('/logout', function(){
     Auth::logout();
     request()->session()->invalidate();
-    return redirect('/');
+    return redirect('/home');
 });
 
 
