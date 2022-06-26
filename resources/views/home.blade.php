@@ -50,6 +50,48 @@ body{
   box-shadow: 16em 7px 0 rgb(49,48,96) inset; /* tamaño y color de la barra que aparece cuando pasas el mouse*/
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1em;
+  grid-auto-rows: minmax(200px,auto);
+
+  justify-items: stretch;
+}
+
+.grid > div{
+  background: #6148cf;
+  padding: 1em;
+}
+
+.grid > div:hover{
+  border: 1px solid #f1c40f;
+}
+
+.element1{
+  grid-row: 1/3;
+}
+
+.element3{
+  grid-column: 2/4;
+}
+
+
+
+/*.nested-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: 100px;
+  gap: 1em
+}
+
+.nested.grid > div{
+  border: 1px solid black;
+  background: #f1c40f;
+  padding: 1em;
+}*/
+
+
 </style>
 
 
@@ -63,7 +105,15 @@ body{
   <a class="btn btn-outline-success" href="/playlist">Lista reproducción</a>
   @endguest
   @auth
-    <ul class="menu">
+    <div class="grid">
+      <div class="element1">element1</div>
+      <div class="element2">element2</div>
+      <div class="element3">element3</div>
+
+    </div>
+
+
+    <!--<ul class="menu">
       <li><a href="#">Nombre plataforma</a></li>
       <p>Descubre Música</p>
       <li><a href="#">Canciones más escuchadas</a></li>
@@ -73,7 +123,7 @@ body{
       <li><a href="#">Lista de reproducción 1</a></li>
       <li><a href="#">Lista de reproducción 2</a></li>
       <li><a href="#">Lista de reproducción 3</a></li>
-    </ul>
+    </ul>-->
   @endauth
   @include('includes.footer')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
