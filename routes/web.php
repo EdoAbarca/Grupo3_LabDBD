@@ -15,8 +15,10 @@ use Illuminate\Validation\ValidationException;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
-//Route::get('/')->name('home');
 Route::get('/home', function () {
     return view('home');
 });
@@ -25,22 +27,13 @@ Route::get('/login', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
-/*Route::get('/home');*/
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/register', function () {
     return view('register');
 })->name('register')->middleware('guest');
 
-
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest');
+//Route::get('/register','App\Http\Controllers\LocationController@index');
 
 Route::post('/login','App\Http\Controllers\LoginController@authenticate');
-
-
 
 Route::post('/logout', function(){
     Auth::logout();
@@ -48,6 +41,20 @@ Route::post('/logout', function(){
     return redirect('/home');
 });
 
+//Mientras tanto
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
+Route::get('/playlist', function () {
+    return view('playlist');
+})->name('playlist');
+//Route::get('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
+//Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');

@@ -80,31 +80,41 @@
 
 					<div class="field">
 						<p class="p">Nombre Usuario</p>
-						<input class="controls" type="text" id="nickname" name="nickname" size="45" placeholder="Nombre de Usuario" required>
+						<input class="controls" type="text" id="nickname" name=nickname value = "" size="45" placeholder="Nombre de Usuario" required>
 					</div>
 
 					<div class="field">
 						<p class="p">Contraseña</p>
-						<input class="controls" type="text" id="password" name="password" size="45" placeholder="Contraseña" required>
+						<input class="controls" type="text" id="password" name=password value = "" size="45" placeholder="Contraseña" required>
 					</div>
+
+					<!-- <div class="field">
+						<p class="p">Contraseña</p>
+						<input class="controls" type="password" id="password" name=password value = "" size="45" placeholder="Contraseña" required>
+					</div>-->
 
 					<div class="field">
 						<p class="p">Fecha de Nacimiento</p>
-						<input class="controls" type="text" id="birth_date" name="birth_date" size="45" placeholder="Fecha de nacimiento: AAAA-MM-DD" required>
+						<input class="controls" type="text" id="birth_date" name=birth_date value = "" size="45" placeholder="Fecha de nacimiento: AAAA-MM-DD" required>
 					</div>
 
 					<div>
 						<p class="p">Correo Electronico</p>
-						<input class="controls" type="text" id="email" name="email" size="45" placeholder="Correo Electronico" required>
+						<input class="controls" type="text" id="email" name=email value = "" size="45" placeholder="Correo electronico" required>
 					</div>
+
+					<!-- <div class="text-center">
+						<select name=location_id id="location_id" aria-label="Default select example">
+							<option selected>Selecciona una ubicacion</option>
+							@foreach($locations as $l)
+							<option value="{{$l->id}}">{{$l->id}}</option>
+							@endforeach
+						</select>
+					</div>-->
 
 					<a class="btn btn-outline-success" href="/home">Cancelar</a>
 					
 					<input id="boton-registro" class="btn btn-outline-success" type="submit" name="" value="Registrarse">
-
-
-			
-
 
 				</form>
 				</div>
