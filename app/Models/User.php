@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->belongsTo(role::class);
     }
 
+    public function location(){
+        return $this->belongsTo(location::class);
+    }
+
     public function receipt(){
         return $this->hasOne(receipt::class);
     }

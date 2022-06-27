@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('birth_date');
             $table->unsignedInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles');
+            $table->unsignedInteger('location_id')->nullable();
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->boolean('delete');
             $table->timestamps();      
         });

@@ -53,6 +53,8 @@ class UserController extends Controller
                 //'signup_date' => 'required|date|after:birth_date',
                 'birth_date' => 'required|date',
                 //'delete' => 'required|boolean',
+                //'location_id' => 'required',
+                //'role_id' => 'required'
             ],
             [
                 'nickname.required' => 'Debes ingresar un nickname',
@@ -93,6 +95,8 @@ class UserController extends Controller
         $newUser->signup_date   = date('y-m-d');
         $newUser->birth_date    = $request->birth_date;
         $newUser->delete        = 0;
+        $newUser->location_id   = $request->location_id;
+        $newUser->role_id       = $request->role_id;
         $newUser->save();
         return response()->json([
             'respuesta' => 'Se ha creado un nuevo usuario',
@@ -203,6 +207,8 @@ class UserController extends Controller
         $user->signup_date = $request->signup_date;
         $user->birth_date    = $request->birth_date;
         $user->delete        = $request->delete;
+        $newUser->location_id   = $request->location_id;
+        $newUser->role_id       = $request->role_id;
         $user->save();
 
         return response()->json([

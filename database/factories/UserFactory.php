@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Location;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -20,20 +21,14 @@ class UserFactory extends Factory
     {
         return [
             'nickname' => $this->faker->name(),
-            'password' => $this->faker->password,//'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => $this->faker->password,
             'email' => $this->faker->unique()->safeEmail(),
             'biography' => $this->faker->text(),
             'signup_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'birth_date' => $this->faker->dateTimeBetween($startDate = '-100 years', $endDate = 'now', $timezone = null),
-            'role_id' => Role::all()->random()->id, //Falta cubrir esto a nivel de controlador
+            'role_id' => Role::all()->random()->id,
+            'location_id' => Location::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
-             
-
-            // no sé si va lo del email verifed y remember token
-            // 'email_verified_at' => now(),
-            // 'remember_token' => Str::random(10),
-            // Es parte de lo que crea Laravel por defecto, que se quede por mientras
-            // Y si falla, pa fuera noma, como ella XDD
         ];
     }
 

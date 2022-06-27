@@ -103,7 +103,25 @@
 						<input class="controls" type="text" id="email" name=email value = "" size="45" placeholder="Correo electronico" required>
 					</div>
 
-
+					<div class="text-center">
+						<select name=location_id id="location_id" aria-label="Default select example">
+							<option selected>Selecciona una ubicación</option>
+							@foreach($locations as $l)
+							<option value="{{$l->id}}">{{$l->location_name}}</option>
+							@endif
+							@endforeach
+						</select>
+					</div>
+					
+					<div class="text-center">
+						<select name=role_id id="role_id" aria-label="Default select example">
+							<option selected>Selecciona un rol</option>
+							@foreach($roles as $r)
+							<option value="{{$r->id}}">{{$l->role_name}}</option>
+							@endif
+							@endforeach
+						</select>
+					</div>
 
 					<a class="btn btn-outline-success" href="/home">Cancelar</a>
 					
