@@ -117,7 +117,7 @@
 						<select name=role_id id="role_id" aria-label="Default select example">
 							<option selected>Selecciona un rol</option>
 							@foreach($roles as $r)
-							<option value="{{$r->id}}">{{$l->role_name}}</option>
+							<option value="{{$r->id}}">{{$r->role_name}}</option>
 							
 							@endforeach
 						</select>
