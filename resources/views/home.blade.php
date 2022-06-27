@@ -121,15 +121,17 @@
         <li><a href="#">Canciones más escuchadas</a></li>
         <li><a href="#">Buscador</a></li>
         <p>Tu Biblioteca de música</p>
-        <li><a href="#">Canciones que te gustan</a></li>
+        <li><a  class="btn btnsuccess" href="/favsongs">Canciones que te gustan</a></li>
         <li><a href="#">Lista de reproducción 1</a></li>
         <li><a href="#">Lista de reproducción 2</a></li>
         <li><a href="#">Lista de reproducción 3</a></li>
       </ul>
     </div>
     <div class="element2">
+      <h4 class="mb-3">Descrubre nueva música</h4>
+      <div class="row text-center mb-2">
       @foreach($songs as $song)
-      <div class="col-4 d-flex justify-content-center">
+      <div class="col-2 d-flex justify-content-center">
         <div class="card" style="width: 10rem;">
           <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
           <div class="card-body">
@@ -140,7 +142,8 @@
         </div>
       </div>
 
-      @endforeach
+    @endforeach
+      </div>
     </div>
     <div class="element3">
       <a class="btn btn-outline-success" href="/profile">Perfil</a>

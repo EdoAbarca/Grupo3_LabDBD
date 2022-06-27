@@ -51,6 +51,10 @@ Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middlewa
 Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
+
+Route::get('/favsongs', function () {
+    return view('favsongs');
+})->name('favsongs');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 //Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 
@@ -138,7 +142,7 @@ Route::post('/song_playlists/create','App\Http\Controllers\Song_playlistControll
 Route::put('/song_playlists/update/{id}','App\Http\Controllers\Song_playlistController@update');
 Route::delete('/song_playlists/delete/{id}','App\Http\Controllers\Song_playlistController@delete');
 
-Route::get('/songs','App\Http\Controllers\SongController@index');
+Route::get('/home','App\Http\Controllers\SongController@index');
 Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
 Route::post('/songs/create','App\Http\Controllers\SongController@store');
 Route::put('/songs/update/{id}','App\Http\Controllers\SongController@update');
