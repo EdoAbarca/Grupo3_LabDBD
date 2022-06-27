@@ -46,9 +46,7 @@ Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
 Route::get('/playlist', function () {
     return view('playlist');
