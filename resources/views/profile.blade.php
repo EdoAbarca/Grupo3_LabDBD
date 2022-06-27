@@ -10,21 +10,72 @@
   <title>Profile</title>
 
   <!-- <link href="{{ asset('css/profile.css') }}" rel="stylesheet"> -->
+  
 </head>
 
+<style>
+  .head{
+    text-align: center;
+    height:300px;
+    padding:12px;
+  }
+  .avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;    
+  }
+  .user-name{
+    font-size:18px;
+    margin-top:14px;
+  }
+  </style>
+  
 <body style="margin-bottom:22px">
 
 
   @include('includes.navbar')
+  <div class="head">
+    <img 
+      class="avatar"
+      src= "https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" 
+      />
+      <!-- Nombre Usuario -->
+      <h1 class="user-name">Luis Toro</h1>
+      <!-- Ubicacion Usuario -->
+      <small class="text-muted">
+                <i class="fa fa-map-marker"></i>Ubicacion
+              </small>
+      <!-- Numero de personas siguiendo -->
+     <div class="col-xs-6">
+        <span class="m-b-xs h4 block">55</span>
+        <small class="text-muted">Siguiendo</small>
+      </div>
+      <!-- Numero de seguidores -->
+      <div class="col-xs-6">
+        <span class="m-b-xs h4 block">55</span>
+        <small class="text-muted">Seguidores</small>
+      </div>
+      <div class="text-center">
+							<input id="botonLog" class="btn btn-outline-success" type="submit" value="Seguir">
+						</div>
+               
+  </div>
+  <div>
+    <!-- Biografia -->
+    <h3>Biografia</h3>
+    <p>xcdddddddddddddddddddddddddd </p>
+  </div>
+  
   <!-- Aquí irá la vista al perfil del usuario logueado -->
-  <aside class="aside-lg bg-light lter b-r">
+  
+  <!--<aside class="aside-lg bg-light lter b-r"> 
     <section class="vbox">
       <section class="scrollable">
         <div class="wrapper">
           <div class="text-center m-b m-t">
             <a href="#" class="thumb-lg">
               <img class="img-circle">
-              <!--src="profile.png" -->
+              src="profile.png" 
             </a>
             <div>
               <div class="h3 m-t-xs m-b-xs"> Nombre usuario </div>
@@ -50,7 +101,7 @@
             </div>
           </div>
           <div class="btn-group btn-group-justified m-b">
-            <a class="btn btn-success btn-rounded" data-toggle="button"><!-- Boton para follow, adaptar para crear y borrar seguimiento -->
+            <a class="btn btn-success btn-rounded" data-toggle="button">
               <span class="text">
                 <i class="fa fa-eye"></i> Seguir
               </span>
@@ -73,8 +124,9 @@
         </div>
       </section>
     </section>
-  </aside>
+  </aside>-->
 
+  
   @include('includes.footer')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
