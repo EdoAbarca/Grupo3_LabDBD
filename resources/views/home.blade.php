@@ -129,7 +129,7 @@
     </div>
     <div class="element2">
       <h4 class="mb-3">Descrubre nueva música</h4>
-      <div class="row text-center mb-2" method=GET action="/home">
+      <div class="row text-center mb-2" method="GET" action="/home">
       @foreach($songs as $song)
       <div class="col-2 d-flex justify-content-center">
         <div class="card" style="width: 10rem;">

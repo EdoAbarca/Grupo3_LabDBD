@@ -207,8 +207,8 @@ class UserController extends Controller
         $user->signup_date = $request->signup_date;
         $user->birth_date    = $request->birth_date;
         $user->delete        = $request->delete;
-        $newUser->location_id   = $request->location_id;
-        $newUser->role_id       = $request->role_id;
+        $user->location_id   = $request->location_id;
+        $user->role_id       = $request->role_id;
         $user->save();
 
         return response()->json([

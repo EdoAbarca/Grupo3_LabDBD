@@ -47,6 +47,8 @@ Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middlewa
 Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
+
+Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
 //Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 

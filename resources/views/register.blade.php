@@ -108,7 +108,7 @@
 							<option selected>Selecciona una ubicación</option>
 							@foreach($locations as $l)
 							<option value="{{$l->id}}">{{$l->location_name}}</option>
-							@endif
+							
 							@endforeach
 						</select>
 					</div>
@@ -118,7 +118,7 @@
 							<option selected>Selecciona un rol</option>
 							@foreach($roles as $r)
 							<option value="{{$r->id}}">{{$l->role_name}}</option>
-							@endif
+							
 							@endforeach
 						</select>
 					</div>
