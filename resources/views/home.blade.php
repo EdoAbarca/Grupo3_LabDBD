@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Home</title>
 
   <!-- <link href="{{ asset('css/home.css') }}" rel="stylesheet"> -->
@@ -13,38 +14,47 @@
 
 <style>
   body {
-    background: #f1f1f1; /* color de fondo*/
+    background: #f1f1f1;
+    /* color de fondo*/
     font-family: "Century Gothic";
   }
 
   .menu {
-    list-style: none; /* le quita los puntos a la "lista"*/
-    line-height: 42px; /* espacio entre los titulos*/
+    list-style: none;
+    /* le quita los puntos a la "lista"*/
+    line-height: 42px;
+    /* espacio entre los titulos*/
     /*margin: 0em; /* separación con el borde izquierdo*/
     /*outline: 1px solid blue;*/
-    padding-left: 0; /* quita el borde de la izquierda*/
-    width: 16em; /* tamaño de la caja*/
+    padding-left: 0;
+    /* quita el borde de la izquierda*/
+    width: 16em;
+    /* tamaño de la caja*/
     font-size: 15px;
   }
 
   .menu a {
-    color: black; /* color de las letras*/
-    display: block; /* todo el box es "cliqueable", no solo donde está la palabra*/
-    text-decoration: none; /* le quita el subrayado*/
+    color: black;
+    /* color de las letras*/
+    display: block;
+    /* todo el box es "cliqueable", no solo donde está la palabra*/
+    text-decoration: none;
+    /* le quita el subrayado*/
     /*text-transform: uppercase;   todo en mayusuculas*/
   }
 
   .menu li {
     /*outline: 1px solid green;*/
     /*border-left: 3px solid rgba(255,255,255,.2); color del borde*/
-    box-shadow:  12px 0 rgb(49, 48, 96) inset;
+    box-shadow: 12px 0 rgb(49, 48, 96) inset;
     padding-left: 1em;
-    margin-bottom: 16px; /* margen del botón*/
+    margin-bottom: 16px;
+    /* margen del botón*/
     /*--webkit-transition: all.3s; /* transición
     -o-transition: all.3s;
     transition: all.3s;*/
   }
-  
+
   .menu li:hover {
     /* lo hace cuando pasas el mouse por encima*/
     box-shadow: 16em 1px 0 rgb(49, 48, 96) inset;
@@ -55,7 +65,9 @@
 
   .grid {
     display: grid;
-    grid-template-columns: /*repeat(5,1fr);*/ 260px;
+    grid-template-columns:
+      /*repeat(5,1fr);*/
+      260px;
     /*gap: 1em; 
     /*grid-template-rows: 700px;*/
 
@@ -119,19 +131,20 @@
       @foreach($songs as $song)
       <div class="col-4 d-flex justify-content-center">
         <div class="card" style="width: 10rem;">
-        <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
-        <div class="card-body">
-          <h5 class="card-title">{{$song->song_name}}</h5>
-          <a href="#" class="btn btn-primary">Ir a la canción</a>
+          <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
+          <div class="card-body">
+            <h5 class="card-title">{{$song->song_name}}</h5>
+            <a href="#" class="btn btn-primary">Ir a la canción</a>
 
-        </div>
+          </div>
         </div>
       </div>
 
-    @endforeach
+      @endforeach
     </div>
     <div class="element3">
-      <a class="btn btn-outline-success" href="/profile">Perfil</a></div>
+      <a class="btn btn-outline-success" href="/profile">Perfil</a>
+    </div>
 
   </div>
 
@@ -149,7 +162,9 @@
     </ul>-->
   @endauth
   @include('includes.footer')
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
