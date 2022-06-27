@@ -31,6 +31,8 @@ Route::get('/register', function () {
     return view('register');
 })->name('register')->middleware('guest');
 
+Route::get('/home','App\Http\Controllers\SongController@index');
+
 //Route::get('/register','App\Http\Controllers\LocationController@index');
 
 Route::post('/login','App\Http\Controllers\LoginController@authenticate');
@@ -52,11 +54,19 @@ Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
 
+<<<<<<< Updated upstream
 Route::get('/favsongs', function () {
     return view('favsongs');
 })->name('favsongs');
+=======
+Route::get('/playingsong', function () {
+    return view('playingsong');
+})->name('playingsong');
+
+>>>>>>> Stashed changes
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 //Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
+
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');

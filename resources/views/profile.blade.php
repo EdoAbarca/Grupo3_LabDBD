@@ -65,7 +65,7 @@
   <div class="head">
     <img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />
     <!-- Nombre Usuario -->
-    <h1 class="user-name">{{$u->name}}</h1>
+    <h1 class="user-name">{{$u->nick_name}}</h1>
     <!-- Rol Usuario -->
     <h1 class="role-user">{{$r->role_name}}</h1>
     <!-- Ubicacion Usuario -->
