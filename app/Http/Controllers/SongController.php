@@ -53,6 +53,7 @@ class SongController extends Controller
                'album_id' => 'required|integer',
                'location_id' => 'required|integer',
                //'delete' => 'required|boolean', 
+               'URL' => 'required',
             ],
             [
                 'song_name.required' => 'Debes ingresar el nombre de la cancion',
@@ -71,6 +72,8 @@ class SongController extends Controller
 
                 'parental_advisory.required' => 'Debes ingresar si la cancion tiene restriccion de edad o no',
                 'parental_advisory.boolean'  => '"Parental_advisory" debe ser un tipo de dato booleano',
+
+                'URL.required' => 'Debes ingresar el URL de la cancion',
 
                 //'rate.required' => 'Debes ingresar la valoracion de la cancion',
                 //'rate.integer' => 'La valoracion de la cancion debe ser de un tipo de dato integer',
@@ -101,6 +104,7 @@ class SongController extends Controller
         $newSong->album_id          = $request->album_id;
         $newSong->location_id       = $request->location_id;
         $newSong->delete            = 0;
+        $newSong->URL               = $request->URL;
         $newSong->save();
         return response()->json([
             'respuesta' => 'se ha creado una nueva cancion',
@@ -161,6 +165,7 @@ class SongController extends Controller
                'album_id' => 'required|integer',
                'location_id' => 'required|integer',
                'delete' => 'required|boolean', 
+               'URL' => 'required',
             ],
             [
                 'song_name.required' => 'Debes ingresar el nombre de la cancion',
@@ -193,6 +198,8 @@ class SongController extends Controller
 
                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',
+
+                'URL.required' => 'Debes ingresar el URL de la cancion',
             ]
             );
         if($validator->fails()){
@@ -220,6 +227,7 @@ class SongController extends Controller
         $song->album_id          = $request->album_id;
         $song->location_id       = $request->location_id;
         $song->delete            = $request->delete;
+        $song->URL               = $request->URL;
         $song->save();
         return response()->json([
             'respuesta' => 'se ha modificado una cancion',

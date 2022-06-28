@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->boolean('parental_advisory');
             $table->integer('rate');
+            $table->string('URL')->nullable();
 
             $table->unsignedBigInteger('album_id')->nullable();
             $table->foreign('album_id')->references('id')->on('albums');

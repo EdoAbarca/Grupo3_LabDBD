@@ -20,7 +20,7 @@
   <div class="container">
     <h1>Creación álbum</h1>
     <hr>
-    <form role="form" class="upload_song" method="POST" action="/album/create">
+    <form role="form" class="upload_song" method="POST" action="/albums/create">
       <div class="well">
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-6">
