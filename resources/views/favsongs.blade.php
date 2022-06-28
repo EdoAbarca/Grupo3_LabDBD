@@ -25,10 +25,10 @@
 
 }
 
-.grid > div{
+/*.grid > div{
   background: #6148cf;
   padding: 1em;
-}
+}*/
 
 /*.grid > div:hover{
   border: 1px solid #f1c40f;
@@ -52,6 +52,45 @@
   grid-column: 1/3;
 }
 
+
+body{
+  background-color: #f1f1f1;
+  font-family: "Century Gothic";
+
+}
+
+#main-container{
+  margin: 150px auto;
+  width: 1000px;
+}
+
+table{
+  background-color: white;
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td{
+  /*border: solid 1px black;*/
+  padding: 20;
+}
+
+thead{
+  background-color: #313060;
+  border-bottom: slid 5pc #0f362d;
+  color: white;
+}
+
+tr:nth-child(even){
+  background-color: #ddd;
+}
+
+tr:hover td{
+  background-color: #369681;
+  color: white;
+}
+
 </style>
 
 
@@ -61,11 +100,34 @@
     @include('includes.navbar')
     <div class="grid">
       <div class="element1">
-        <h1>Canciones que te gustan</h1>
+        <h1 style=" color:#313060">Canciones que te gustan</h1>
+        <div id="main-container">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">Álbum</th>
+              <th scope="col">Duración</th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($likes as $like)
+            @if($like->user_id == auth()->user()->id)
+              @foreach($songs as $song)
+                @if($like->song_id == $song->song_id)
+                  <tr>
+                    <td>{{$song->song_name}}</td>
+                  </tr>
+                @endif
+              @endforeach  
+            @endif
+          @endforeach      
+          </tbody>
+
+        </table>
       </div>
-      <div class="element2">element2</div>
-      <div class="element3">element3</div>
-      <div class="element4">element4</div>
+      </div>
+
     </div>
 
     <!-- Aquí irá la muestra de las canciones favoritas del usuario logueado -->

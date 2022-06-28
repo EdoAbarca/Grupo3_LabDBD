@@ -77,21 +77,16 @@
 			<div class="card px-5 py-5" style="background-color:#313060" >
 				<form class="login" method="POST" action="/users/create">
 					<h5 style="color:white; font-size:25px;">Registro</h5>
-
+					
 					<div class="field">
 						<p class="p">Nombre Usuario</p>
 						<input class="controls" type="text" id="nickname" name=nickname value = "" size="45" placeholder="Nombre de Usuario" required>
 					</div>
-
+					
 					<div class="field">
 						<p class="p">Contraseña</p>
 						<input class="controls" type="text" id="password" name=password value = "" size="45" placeholder="Contraseña" required>
 					</div>
-
-					<!-- <div class="field">
-						<p class="p">Contraseña</p>
-						<input class="controls" type="password" id="password" name=password value = "" size="45" placeholder="Contraseña" required>
-					</div>-->
 
 					<div class="field">
 						<p class="p">Fecha de Nacimiento</p>

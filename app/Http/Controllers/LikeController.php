@@ -47,7 +47,7 @@ class LikeController extends Controller
             $request->all(),[
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
-                'delete' => 'required|boolean', 
+                //'delete' => 'required|boolean', 
             ],
             [
                 'user_id.required' => 'Debes ingresar el id del usuario que dio like a una cancion',
@@ -56,8 +56,8 @@ class LikeController extends Controller
                 'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
                 'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){
@@ -67,10 +67,10 @@ class LikeController extends Controller
         $newLike= new Like();
         $newLike->user_id        = $request->user_id;
         $newLike->song_id        = $request->song_id;
-        $newLike->delete         = $request->delete;
+        $newLike->delete         = 0;
         $newLike->save();
         return response()->json([
-            'respuesta' => 'se ha creado un nuevo follow',
+            'respuesta' => 'se ha creado un nuevo like',
             'id'=> $newLike->id,
         ],201);
     }
