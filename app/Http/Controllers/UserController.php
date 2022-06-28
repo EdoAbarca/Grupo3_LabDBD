@@ -200,15 +200,15 @@ class UserController extends Controller
         }
         
 
-        $user->nickname      = $request->nickname;
-        $user->password      = $request->password;
-        $user->email         = $request->email;
-        $user->biography     = $request->biography;
-        $user->signup_date = $request->signup_date;
-        $user->birth_date    = $request->birth_date;
-        $user->delete        = $request->delete;
-        $user->location_id   = $request->location_id;
-        $user->role_id       = $request->role_id;
+        $user->nickname         = $request->nickname;
+        $user->password         = $request->password;
+        $user->email            = $request->email;
+        $user->biography        = $request->biography;
+        $user->signup_date      = $request->signup_date;
+        $user->birth_date       = $request->birth_date;
+        $user->delete           = $request->delete;
+        $user->location_id      = $request->location_id;
+        $user->role_id          = $request->role_id;
         $user->save();
 
         return response()->json([

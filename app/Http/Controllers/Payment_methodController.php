@@ -44,15 +44,15 @@ class Payment_methodController extends Controller
     {
         $validator=Validator::make(
             $request->all(),[
-               'method_name' => 'required|min:1|max:10',
+               'method_name' => 'required|min:3|max:15',
                'available_budget' => 'required|integer|min:0',
                'pmp' => 'required|min:8|max:300',
-               'user_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               //'user_id' => 'required|integer',
+               //'delete' => 'required|boolean', 
             ],
             [
                 'method_name.required' => 'Debes ingresar el nombre del metodo de pago',
-                'method_name.min' => 'El nombre del metodo de pago debe tener un largo minimo de 1 caracter',
+                'method_name.min' => 'El nombre del metodo de pago debe tener un largo minimo de 3 caracteres',
                 'method_name.max' => 'El nombre del metodo de pago debe tener un largo maximo de 15 caracteres',
 
                 'available_budget.required' => 'Debes ingresar el presupuesto disponible del metodo de pago',
@@ -63,11 +63,11 @@ class Payment_methodController extends Controller
                 'pmp.min' => 'La contraseña del metodo de pago debe tener un largo minimo de 8 caracteres',
                 'pmp.max' => 'La contraseña del metodo de pago debe tener un largo maximo de 300 caracteres',
 
-                'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el metodo de pago',
-                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
+                //'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el metodo de pago',
+                //'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){
@@ -79,7 +79,7 @@ class Payment_methodController extends Controller
         $newPayment_method->pmp                 = $request->pmp;
         $newPayment_method->available_budget    = $request->available_budget;
         $newPayment_method->user_id             = $request->user_id;
-        $newPayment_method->delete              = $request->delete;
+        $newPayment_method->delete              = 0;
         $newPayment_method->save();
         return response()->json([
             'respuesta' => 'se ha creado un nuevo metodo de pago',

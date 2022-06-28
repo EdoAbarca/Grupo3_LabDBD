@@ -33,7 +33,7 @@
 </style>
 
 <body style="margin-bottom:22px">
-
+  <!-- Aquí irá la vista al perfil del usuario logueado (A la espera de adaptar a todos los usuarios)-->
   @php
   $followers_count=0;
   $follows_count=0;
@@ -65,7 +65,7 @@
   <div class="head">
     <img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />
     <!-- Nombre Usuario -->
-    <h1 class="user-name">{{$u->nick_name}}</h1>
+    <h1 class="user-name">{{$u->nickname}}</h1>
     <!-- Rol Usuario -->
     <h1 class="role-user">{{$r->role_name}}</h1>
     <!-- Ubicacion Usuario -->
@@ -101,65 +101,7 @@
 
   <a class="btn btn-outline-success" href="/home">Volver</a>
 
-  <!-- Aquí irá la vista al perfil del usuario logueado -->
 
-  <!--<aside class="aside-lg bg-light lter b-r"> 
-    <section class="vbox">
-      <section class="scrollable">
-        <div class="wrapper">
-          <div class="text-center m-b m-t">
-            <a href="#" class="thumb-lg">
-              <img class="img-circle">
-              src="profile.png" 
-            </a>
-            <div>
-              <div class="h3 m-t-xs m-b-xs"> Nombre usuario </div>
-              <small class="text-muted">
-                <i class="fa fa-map-marker"></i> Ubicacion usuario
-              </small>
-            </div>
-          </div>
-          <div class="panel wrapper">
-            <div class="row text-center">
-              <div class="col-xs-6">
-                <a href="#">
-                  <span class="m-b-xs h4 block">245</span>
-                  <small class="text-muted">Seguidores</small>
-                </a>
-              </div>
-              <div class="col-xs-6">
-                <a href="#">
-                  <span class="m-b-xs h4 block">55</span>
-                  <small class="text-muted">Siguiendo</small>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="btn-group btn-group-justified m-b">
-            <a class="btn btn-success btn-rounded" data-toggle="button">
-              <span class="text">
-                <i class="fa fa-eye"></i> Seguir
-              </span>
-              <span class="text-active">
-                <i class="fa fa-eye"></i> Siguiendo
-              </span>
-            </a>
-            <a class="btn btn-dark btn-rounded">
-              <i class="fa fa-comment-o"></i> Canciones
-            </a>
-          </div>
-          <div>
-            <small class="text-uc text-xs text-muted">Rol</small>
-            <p>Artist</p> 
-            <small class="text-uc text-xs text-muted">Descripción</small>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin
-              venenatis ipsum ac feugiat.</p>
-            <div class="line"></div>
-          </div>
-        </div>
-      </section>
-    </section>
-  </aside>-->
 
 
   @include('includes.footer')

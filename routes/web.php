@@ -15,13 +15,9 @@ use Illuminate\Validation\ValidationException;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/','App\Http\Controllers\SongController@index');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'App\Http\Controllers\SongController@index');
 
 Route::get('/login', function () {
     return view('login');
@@ -48,7 +44,22 @@ Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
 
-Route::get('/home','App\Http\Controllers\SongController@index');
+Route::get('/upload_song', function () {
+    return view('upload_song');
+})->name('upload_song');
+
+Route::get('/create_role', function () {
+    return view('create_role');
+})->name('create_role');
+
+Route::get('/create_payment_method', function () {
+    return view('create_payment_method');
+})->name('create_payment_method');
+
+Route::get('/create_album', function () {
+    return view('create_album');
+})->name('create_album');
+
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
 //Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 

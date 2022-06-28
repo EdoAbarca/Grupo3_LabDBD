@@ -108,9 +108,15 @@
   @include('includes.navbar')
   <!-- Mientras tanto -->
   @guest
-  <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
   <a class="btn btn-outline-success" href="/profile">Perfil</a>
   <a class="btn btn-outline-success" href="/playlist">Lista reproducción</a>
+  <!--Forms-->
+  <a class="btn btn-outline-success" href="/upload_song">Subir canción</a>
+  <a class="btn btn-outline-success" href="/upload_payment_method">Agregar método de pago</a>
+  <a class="btn btn-outline-success" href="/create_playlist">Crear playlist</a>
+  <a class="btn btn-outline-success" href="/create_role">Crear rol</a>
+  <a class="btn btn-outline-success" href="/create_album">Crear álbum</a>
+  <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
   @endguest
   @auth
   <div class="grid">
