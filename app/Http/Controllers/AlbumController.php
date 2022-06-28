@@ -49,7 +49,7 @@ class AlbumController extends Controller
                'songs_quantity' => 'required|integer|min:1',
                'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
-               'delete' => 'required|boolean',
+               //'delete' => 'required|boolean',
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
@@ -69,8 +69,8 @@ class AlbumController extends Controller
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano',
             ]
             );
         if($validator->fails()){
@@ -83,7 +83,7 @@ class AlbumController extends Controller
         $newAlbum->songs_quantity = $request->songs_quantity;
         $newAlbum->duration       = $request->duration;
         $newAlbum->user_id        = $request->user_id;
-        $newAlbum->delete         = $request->delete;
+        $newAlbum->delete         = 0;
         $newAlbum->save();
         return response()->json([
             'respuesta' => 'se ha creado un nuevo album',
@@ -140,7 +140,7 @@ class AlbumController extends Controller
                'songs_quantity' => 'required|integer|min:1',
                'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
-               'delete'  => 'required|boolean'
+               //'delete'  => 'required|boolean'
             ],
             [
                 'album_name.required' => 'Debes ingresar el nombre del album',
@@ -160,8 +160,8 @@ class AlbumController extends Controller
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano'
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano'
             ]
             );
         if($validator->fails()){
@@ -183,7 +183,7 @@ class AlbumController extends Controller
         $album->songs_quantity = $request->songs_quantity;
         $album->duration       = $request->duration;
         $album->user_id        = $request->user_id;
-        $album->delete         = $request->delete;
+        $album->delete         = 0;
         $album->save();
         return response()->json([
             'respuesta' => 'se ha modificado un album',

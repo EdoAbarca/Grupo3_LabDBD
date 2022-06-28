@@ -20,23 +20,53 @@
   <div class="container">
     <h1>Creación álbum</h1>
     <hr>
-    <form role="form" class="upload_song" method="POST" action="/albums/create">
+    <form role="form" class="create_album" method="POST" action="/albums/create">
       <div class="well">
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
               <label for="nombre" class="col-form-label col-sm-4">Nombre album:</label>
               <div class="col-sm-8">
-                <input type="text" name="song_name" id=song_name class="form-control" placeholder="" tabindex="1">
+                <input type="text" name="album_name" id=album_name class="form-control" value="" placeholder="Nombre del Album" tabindex="1">
               </div>
             </div>
           </div>
 
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
-              <label for="id" class="col-form-label col-sm-4">ID:</label> <!-- Este después debe desaparecer -->
+              <label for="user_id" class="col-form-label col-sm-4">ID:</label> <!-- Este después debe desaparecer -->
               <div class="col-sm-8">
-                <input type="number" name="amount" id=user_id class="form-control" value = "{{auth()->user()->id}}" readonly="readonly">
+                <input type="number" name="user_id" id="user_id" class="form-control" value = "{{auth()->user()->id}}" readonly="readonly">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+              <label for="duration" class="col-form-label col-sm-4">Duracion:</label> <!-- Este después debe desaparecer -->
+              <div class="col-sm-8">
+                <input type="text" name="duration" id="duration" class="form-control" value = "">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+              <label for="songs_quantity" class="col-form-label col-sm-4">Numero de canciones:</label> <!-- Este después debe desaparecer -->
+              <div class="col-sm-8">
+                <input type="number" name="songs_quantity" id="songs_quantity" class="form-control" value = "">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+              <label for="release_date" class="col-form-label col-sm-4">Fecha de publicacion:</label> <!-- Este después debe desaparecer -->
+              <div class="col-sm-8">
+                <input type="text" name="release_date" id="release_date" class="form-control" value = "">
               </div>
             </div>
           </div>
