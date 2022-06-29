@@ -123,7 +123,7 @@
       <ul class="menu">
         <p>Nombre plataforma</p>
         <p>Descubre Música</p>
-        <li><a href="#">Canciones más escuchadas</a></li>
+        <li><a class="btn btnsuccess" href="/songranking">Canciones más escuchadas</a></li>
         <li><a href="#">Buscador</a></li>
         <p>Tu Biblioteca de música</p>
         <li><a class="btn btnsuccess" href="/favsongs">Canciones que te gustan</a></li>

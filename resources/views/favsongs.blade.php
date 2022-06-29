@@ -87,7 +87,7 @@ tr:nth-child(even){
 }
 
 tr:hover td{
-  background-color: #369681;
+  background-color: #313060;
   color: white;
 }
 

@@ -28,7 +28,7 @@ class SongFactory extends Factory
             'rate' => $this->faker->numberBetween($min=0,$max=100),
             'album_id' =>Album::all()->random()->id,
             'location_id' =>Location::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

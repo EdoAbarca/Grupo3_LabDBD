@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Receipt::factory(10)->create();
         \App\Models\Album::factory(10)->create(); 
         \App\Models\Playlist::factory(10)->create();
-        \App\Models\Song::factory(10)->create();
+        \App\Models\Song::factory(150)->create();
         \App\Models\Song_playlist::factory(10)->create();
         \App\Models\Like::factory(10)->create();
         \App\Models\Rate::factory(10)->create();

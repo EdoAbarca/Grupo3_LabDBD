@@ -62,6 +62,9 @@ Route::get('/create_album', function () {
 
 Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middleware('auth');
 
+Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth');
+
+
 Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
 //Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
