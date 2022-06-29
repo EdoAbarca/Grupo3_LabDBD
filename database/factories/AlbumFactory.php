@@ -24,7 +24,7 @@ class AlbumFactory extends Factory
             'songs_quantity' => $this->faker->numberBetween($min=1,$max=20),
             'duration' => $this->faker->time($format = 'H:i:s', $max = 'now'), //, $max = 'now' ???
             'user_id' =>User::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

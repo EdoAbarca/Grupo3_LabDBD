@@ -145,7 +145,7 @@
               <form class="like" method="POST" action="/likes/create">
 
                 <div>
-                  <input class="invisible" id="song_id" name="song_id" value="{{$song->song_id}}">
+                  <input class="invisible" id="song_id" name="song_id" value="{{$song->id}}">
                 </div>
 
                 <div>

@@ -114,10 +114,16 @@ tr:hover td{
           @foreach($likes as $like)
             @if($like->user_id == auth()->user()->id)
               @foreach($songs as $song)
-                @if($like->song_id == $song->song_id)
+                @if($like->song_id == $song->id)
                   <tr>
-                    <td>{{$song->song_name}}</td>
-                  </tr>
+                    <td>{{$song->song_name}}</td>    
+                    @foreach($albums as $album)
+                      @if($album->id == $song->album_id)
+                        <td>{{$album->album_name}}</td>
+                        <td>{{$song->duration}}
+                      @endif
+                    @endforeach   
+                    </tr>
                 @endif
               @endforeach  
             @endif

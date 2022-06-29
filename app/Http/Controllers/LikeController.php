@@ -69,10 +69,11 @@ class LikeController extends Controller
         $newLike->song_id        = $request->song_id;
         $newLike->delete         = 0;
         $newLike->save();
-        return response()->json([
-            'respuesta' => 'se ha creado un nuevo like',
-            'id'=> $newLike->id,
-        ],201);
+        return redirect('/home');
+            //response()->json([
+            //'respuesta' => 'se ha creado un nuevo like',
+            //'id'=> $newLike->id,
+        
     }
 
     /**
