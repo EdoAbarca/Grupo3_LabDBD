@@ -93,7 +93,7 @@ class SongController extends Controller
         if($validator->fails()){
             return response($validator->errors());
         }
-        
+       
         $newSong = new Song();
         $newSong->song_name         = $request->song_name;
         $newSong->duration          = $request->duration;
@@ -106,10 +106,12 @@ class SongController extends Controller
         $newSong->delete            = 0;
         $newSong->URL               = $request->URL;
         $newSong->save();
-        return response()->json([
+        /*return response()->json([
             'respuesta' => 'se ha creado una nueva cancion',
             'id'=> $newSong->id,
-        ],201);
+        ],201);*/
+       
+        return redirect('/upload_song');
     }
 
     /**

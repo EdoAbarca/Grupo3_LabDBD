@@ -85,10 +85,11 @@ class AlbumController extends Controller
         $newAlbum->user_id        = $request->user_id;
         $newAlbum->delete         = 0;
         $newAlbum->save();
-        return response()->json([
+        /*return response()->json([
             'respuesta' => 'se ha creado un nuevo album',
             'id'=> $newAlbum->id,
-        ],201);
+        ],201);*/
+        return redirect('/upload_song');
     }
 
     /**

@@ -44,9 +44,11 @@ Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
 
-Route::get('/upload_song', function () {
+/*Route::get('/upload_song', function () {
     return view('upload_song');
-})->name('upload_song');
+})->name('upload_song');*/
+
+Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index');
 
 Route::get('/create_role', function () {
     return view('create_role');
@@ -156,7 +158,7 @@ Route::delete('/song_playlists/delete/{id}','App\Http\Controllers\Song_playlistC
 
 Route::get('/songs','App\Http\Controllers\SongController@index');
 Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
-Route::post('/songs/create','App\Http\Controllers\SongController@store');
+Route::post('/songs/create','App\Http\Controllers\SongController@store'); 
 Route::put('/songs/update/{id}','App\Http\Controllers\SongController@update');
 Route::delete('/songs/delete/{id}','App\Http\Controllers\SongController@delete');
 
