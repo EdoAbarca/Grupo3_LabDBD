@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         $role= Role::find($request->user()->id_role);
-        if(strcasecmp($role->name,"admin")===0){
+        if(strcasecmp($role->role_name,"admin")===0){
             return $next($request);
         }
         return redirect('home')->with('status','No tienes permisos para acceder a esta ruta');

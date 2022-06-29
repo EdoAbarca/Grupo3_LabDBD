@@ -33,6 +33,9 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){
             request()->session()->regenerate();
+            if($request->email=='javiertoroflores@gmail.com'){
+                return redirect('/crud')->with('status','Iniciaste sesión correctamente');
+            }
             return redirect('/home')->with('status','Iniciaste sesión correctamente');
         }
  

@@ -19,4 +19,13 @@ class SongrankingController extends Controller
 
         return view('songranking', ['users'=>$users,'songs'=>$songs,'albums'=>$albums, 'ordenados'=>$ordenados]);
     }
+
+    public function index2()
+    {
+        $users = User::where('delete',false)->get();
+        $songs = Song::where('delete',false)->get();
+        $albums = Album::where('delete',false)->get();
+
+        return view('favsongs', ['users'=>$users,'songs'=>$songs,'albums'=>$albums]);
+    }
 }

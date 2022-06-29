@@ -165,6 +165,7 @@
     </div>
     <div class="element3">
       <a class="btn btn-outline-success" href="/profile">Perfil</a>
+      <a class="btn btn-outline-success" href="/crud">Administración de plataforma</a>
     </div>
 
   </div>
