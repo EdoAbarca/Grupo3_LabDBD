@@ -69,6 +69,7 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth');
 
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
+Route::get('/crud/user', 'App\Http\Controllers\AdmincrudController@user');
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');

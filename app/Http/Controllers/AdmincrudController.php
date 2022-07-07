@@ -18,4 +18,11 @@ class AdmincrudController extends Controller
 
         return view('crud', ['users'=>$users,'songs'=>$songs,'likes'=>$likes,'albums'=>$albums]);
     }
+
+    public function user()
+    {
+        $users = User::where('delete',false)->get();
+
+        return view('crud/user', ['users'=>$users]);
+    }
 }
