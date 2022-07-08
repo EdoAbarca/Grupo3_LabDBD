@@ -13,6 +13,7 @@ use App\Models\Payment_method;
 use App\Models\Rate;
 use App\Models\Song_genre;
 use App\Models\Playlist;
+use App\Models\Follow;
 
 class AdmincrudController extends Controller
 {
@@ -96,5 +97,13 @@ class AdmincrudController extends Controller
         $playlists = $playlists->sortBy('id');
         $playlists->values()->all();
         return view('/crud/playlist_crud/playlist_index', ['playlists'=>$playlists]);
+    }
+
+    public function follow_index()
+    {
+        $follows = Follow::where('delete',false)->get();
+        $follows = $follows->sortBy('id');
+        $follows->values()->all();
+        return view('/crud/follow_crud/follow_index', ['follows'=>$follows]);
     }
 }

@@ -152,6 +152,18 @@ Route::get('/crud/song_genre_crud/song_genre_show', function () {
     return view('/crud/song_genre_crud/song_genre_show');
 });
 
+ // FOLLOW
+ Route::get('/crud/follow_crud/follow_index', 'App\Http\Controllers\AdmincrudController@follow_index');
+ Route::get('/crud/follow_crud/follow_create', function () {
+     return view('/crud/follow_crud/follow_create');
+ });
+ Route::get('/crud/follow_crud/follow_update', function () {
+     return view('/crud/followcrud/follow_update');
+ });
+ Route::get('/crud/follow_crud/follow_show', function () {
+     return view('/crud/follow_crud/follow_show');
+ });
+
  // ALBUM
 Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
 Route::get('/crud/album_crud/album_create', function () {
@@ -160,7 +172,6 @@ Route::get('/crud/album_crud/album_create', function () {
 Route::get('/crud/album_crud/album_update', function () {
     return view('/crud/album_crud/album_update');
 });
-
 Route::get('/crud/album_crud/album_show', function () {
     return view('/crud/album_crud/album_show');
 });
@@ -191,7 +202,7 @@ Route::put('/albums/delete/{id}','App\Http\Controllers\AlbumController@delete');
 Route::get('/follows','App\Http\Controllers\FollowController@index');
 Route::get('/follows/{id}','App\Http\Controllers\FollowController@show');
 Route::post('/follows/create','App\Http\Controllers\FollowController@store');
-//Route::get('/follows/edit/{id}','App\Http\Controllers\FollowController@edit');
+Route::get('/follows/edit/{id}','App\Http\Controllers\FollowController@edit');
 Route::put('/follows/update/{id}','App\Http\Controllers\FollowController@update');
 Route::put('/follows/delete/{id}','App\Http\Controllers\FollowController@delete');
 

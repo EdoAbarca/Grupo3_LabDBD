@@ -201,6 +201,15 @@
           </div>
         </div>
 
+        <div class="col-3 d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg" class="card-img-top">
+            <div class="card-body">
+              <a href="/crud/follow_crud/follow_index" class="btn btn-primary">Follows</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

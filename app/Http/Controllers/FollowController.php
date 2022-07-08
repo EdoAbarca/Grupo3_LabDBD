@@ -46,7 +46,7 @@ class FollowController extends Controller
             $request->all(),[
                'user_id1' => 'required|integer',
                'user_id2' => 'required|integer',
-               'delete'   => 'required|boolean', 
+               /*'delete'   => 'required|boolean', */
             ],
             [
                 'user_id1.required' => 'Debes ingresar el id del usuario 1 al que le pertenece el seguimiento',
@@ -55,8 +55,8 @@ class FollowController extends Controller
                 'user_id2.required' => 'Debes ingresar el id del usuario 2 al que le pertenece el seguimiento',
                 'user_id2.integer' => 'El id del usuario 2 debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -66,12 +66,10 @@ class FollowController extends Controller
         $newfollow= new Follow();
         $newfollow->user_id1        = $request->user_id1;
         $newfollow->user_id2       = $request->user_id2;
-        $newfollow->delete         = $request->delete;
+        $newfollow->delete         = 0;
         $newfollow->save();
-        return response()->json([
-            'respuesta' => 'se ha creado una nueva tabla de seguimiento',
-            'id'=> $newfollow->id,
-        ],201);
+        return redirect('/crud/follow_crud/follow_index');
+
     }
 
     /**
@@ -93,7 +91,7 @@ class FollowController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($follow,200);
+        return view('crud/follow_crud/follow_show', compact('follow'));
     }
 
     /**
@@ -104,7 +102,8 @@ class FollowController extends Controller
      */
     public function edit($id)
     {
-        //
+        $follow = Follow::find($id);
+        return view('crud/follow_crud/follow_update', compact('follow'));  
     }
 
     /**
@@ -120,7 +119,7 @@ class FollowController extends Controller
             $request->all(),[
                'user_id1' => 'required|integer',
                'user_id2' => 'required|integer',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean', */
             ],
             [
                 'user_id1.required' => 'Debes ingresar el id del usuario 1 al que le pertenece el seguimiento',
@@ -129,8 +128,8 @@ class FollowController extends Controller
                 'user_id2.required' => 'Debes ingresar el id del usuario 2 al que le pertenece el seguimiento',
                 'user_id2.integer' => 'El id del usuario 2 debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -150,11 +149,10 @@ class FollowController extends Controller
         }
         $follow->user_id1       = $request->user_id1;
         $follow->user_id2       = $request->user_id2;
-        $follow->delete         = $request->delete;
-        return response()->json([
-            'respuesta' => 'se ha actualizado el segumiento',
-            'id'=> $follow->id,
-        ],201);
+        $follow->delete         = 0;
+        $follow->save();
+        return redirect('/crud/follow_crud/follow_index');
+
     }
 
     /**
@@ -179,9 +177,7 @@ class FollowController extends Controller
         
         $follow->delete = true;
         $follow->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un seguimiento',
-            'id' => $follow->id,
-        ],200);
+        return redirect('/crud/follow_crud/follow_index');
+
     }
 }
