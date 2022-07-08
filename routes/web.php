@@ -69,9 +69,14 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
-Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user');
-Route::post('/crud/user_crud/user_create', 'App\Http\Controllers\AdmincrudController@user');
+Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index');
+Route::get('/crud/user_crud/user_create', function () {
+    return view('/crud/user_crud/user_create');
+});
 
+Route::get('/crud/user_crud/user_update', function () {
+    return view('/crud/user_crud/user_update');
+});
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
@@ -177,6 +182,7 @@ Route::get('/users','App\Http\Controllers\UserController@index');
 Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');
 Route::post('/users/create2','App\Http\Controllers\UserController@create');
+Route::get('/users/edit/{id}','App\Http\Controllers\UserController@edit');
 Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');
 Route::put('/users/delete/{id}','App\Http\Controllers\UserController@delete');
 

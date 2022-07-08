@@ -40,7 +40,9 @@
               <td>{{$user->nickname}}</td>
               <td>{{$user->email}}</td>
               <td>
-                <a href="" class="btn btn-primary">Editar</a>
+                <!--<a href="/users/edit/{{$user->id}}" class="btn btn-primary">Editar</a> -->
+                <form action="/users/edit/{{$user->id}}" method="GET">
+                  <button type="submit" class="btn btn-primary">Editar</a> 
               </td>
               <td>
                 <form action="/users/delete/{{$user->id}}" method="POST">

@@ -18,7 +18,7 @@
 
     <div class="row">
  <div class="col-sm-8 offset-sm-2">
-    <h1 class="display-3">Crear Usuario</h1>
+    <h1 class="display-3">Editar Usuario</h1>
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -29,10 +29,12 @@
         </ul>
       </div><br />
     @endif
-      <form method="POST" action="/users/create2">
+      <form method="POST" action="/users/update/{{$user->id}}">
+      @csrf
+       @method('PUT')
           <div class="form-group">    
               <label for="nickname">Nombre de usuario:</label>
-              <input type="text" class="form-control" name="nickname" value=""/>
+              <input type="text" class="form-control" name="nickname" value="" placeholder="123"/>
           </div>
  
           <div class="form-group">
@@ -51,6 +53,11 @@
           </div>
 
           <div class="form-group">
+              <label for="biography">Biografia:</label>
+              <input type="text" class="form-control" name="biography" value=""/>
+          </div>
+
+          <div class="form-group">
               <label for="location">Ubicacion:</label>
               <input type="text" class="form-control" name="location_id" value=""/>
           </div>
@@ -59,7 +66,7 @@
               <label for="role">Rol:</label>
               <input type="text" class="form-control" name="role_id" value=""/>
           </div>
-          <button type="submit" class="btn btn-primary">Crear Usuario</button>
+          <button type="submit" class="btn btn-primary">Editar Usuario</button>
       </form>
   </div>
 </div>

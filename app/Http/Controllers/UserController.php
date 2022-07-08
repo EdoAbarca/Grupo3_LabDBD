@@ -40,10 +40,10 @@ class UserController extends Controller
                 'email' => 'required|min:7|max:200',
                 //'biography' => 'required|min:5|max:500',
                 //'signup_date' => 'required|date|after:birth_date',
-                'birth_date' => 'required|date',
+                //'birth_date' => 'required|date',
                 //'delete' => 'required|boolean',
-                'location_id' => 'required',
-                'role_id' => 'required'
+                //'location_id' => 'required',
+                //'role_id' => 'required'
             ],
             [
                 'nickname.required' => 'Debes ingresar un nickname',
@@ -186,7 +186,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('crud/user_crud/user_update', compact('user'));  
     }
 
     /**
@@ -204,9 +205,9 @@ class UserController extends Controller
                 'password' => 'required|min:10|max:300',
                 'email' => 'required|min:7|max:200',
                 'biography' => 'required|max:500',
-                'signup_date' => 'required|date|after:birth_date',
+                //'signup_date' => 'required|date|after:birth_date',
                 'birth_date' => 'required|date',
-                'delete' => 'required|boolean',
+                //'delete' => 'required|boolean',
             ],
             [
                 'nickname.required' => 'Debes ingresar un nickname',
@@ -224,15 +225,15 @@ class UserController extends Controller
                 'biography.required' => 'Debes ingresar una biografia',
                 'biography.max' => 'La biography debe tener un largo maximo de 500',
 
-                'signup_date.required' => 'Debes ingresar una fecha de registro',
+                /*'signup_date.required' => 'Debes ingresar una fecha de registro',
                 'signup_date.date' => 'La fecha de registro debe ser una fecha valida',
-                'signup_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',
+                'signup_date.after' => 'La fecha de registro debe ser posterior a la fecha de nacimiento del usuario',*/
 
                 'birth_date.required' => 'Debes ingresar una fecha de nacimiento',
                 'birth_date.date' => 'La fecha de nacimiento debe ser una fecha valida',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
         );  
         if($validator->fails()){
@@ -255,9 +256,9 @@ class UserController extends Controller
         $user->password         = $request->password;
         $user->email            = $request->email;
         $user->biography        = $request->biography;
-        $user->signup_date      = $request->signup_date;
+        $user->signup_date      = date('y-m-d');
         $user->birth_date       = $request->birth_date;
-        $user->delete           = $request->delete;
+        $user->delete           = 0;
         $user->location_id      = $request->location_id;
         $user->role_id          = $request->role_id;
         $user->save();

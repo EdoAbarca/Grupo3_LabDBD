@@ -19,7 +19,7 @@ class AdmincrudController extends Controller
         return view('crud', ['users'=>$users,'songs'=>$songs,'likes'=>$likes,'albums'=>$albums]);
     }
 
-    public function user()
+    public function user_index()
     {
         $users = User::where('delete',false)->get();
         $users = $users->sortBy('id');
