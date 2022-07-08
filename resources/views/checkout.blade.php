@@ -50,8 +50,8 @@
                 <br>
                 <div class="col-12">
                     <div class="text-center">
-                      <a class="btn btn-outline-success" href="/home">Cancelar</a>
-                     <!--  <input id="boton-registro" class="btn btn-outline-success" type="submit" name="" value="Realizar pago">-->
+                        <a class="btn" href="/home">Cancelar</a>
+                        <input id="boton-pago" class="btn btn-outline-success" type="submit" value="Realizar pago">
                     </div>
                 </div>
             </form>

@@ -62,18 +62,30 @@ body {
           <table class="table table-fixed">
             <thead>
               <tr>
-                <th scope="col" class="col-3">Nombre playlist</th>
-                <th scope="col" class="col-3">Fecha creación</th>
-                <th scope="col" class="col-3">Número canciones</th>
-                <th scope="col" class="col-3">Opción</th>
+                <td>ID</td>
+                <td>Nombre playlist</td>
+                <td>Fecha creación</td>
+                <td colspan=2>Acciones</td>
               </tr>
             </thead>
             <tbody>
+              @foreach($playlists as $p)
+              @if($p->user_id == auth()->user()->id)
               <tr>
-                <th scope="row" class="col-3"></th>
-                <td class="col-3"></td>
-                <td class="col-3"></td>
-                <td class="col-3"></td>
+                <td>{{$p->id}}</td>
+                <td>{{$p->playlist_name}}</td>
+                <td>{{$p->creation_date}}</td>
+                <td>
+                <form action="/playlists/show/{{$p->id}}" method="GET">
+                  <button type="submit" class="btn btn-primary">Ver</button> 
+              </td>
+              <td>
+                <form action="/playlists/delete/{{$p->id}}" method="POST">
+                  @csrf
+                  @method('PUT')
+                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                </form>
+              </td>
               </tr>
             </tbody>
           </table>

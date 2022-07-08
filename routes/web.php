@@ -36,19 +36,11 @@ Route::post('/logout', function(){
 });
 
 //Mientras tanto
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
+Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
-Route::get('/playlist', function () {
-    return view('playlist');
-})->name('playlist');
-
-/*Route::get('/upload_song', function () {
-    return view('upload_song');
-})->name('upload_song');*/
+Route::get('/playlist', 'App\Http\Controllers\PlaylistController@show');
 
 Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index');
 
@@ -98,8 +90,6 @@ Route::get('/crud/role_crud/role_update', function () {
 });
 
 Route::get('/home','App\Http\Controllers\SongController@index');
-//Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
-//Route::post('/checkout', 'App\Http\Controllers\CheckoutController@store')->middleware('auth');
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');

@@ -42,6 +42,7 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
+        /* 
         $validator=Validator::make(
             $request->all(),[
                 'name' => 'required|min:1|max:30',
@@ -79,21 +80,19 @@ class ReceiptController extends Controller
             );
         if($validator->fails()){
             return response($validator->errors());
-        }
+        }*/
 
         $newReceipt= new Receipt();
-        $newReceipt->name           =$request->name;
-        $newReceipt->sum            =$request->sum;
-        $newReceipt->payment_time            =$request->payment_time;
-        $newReceipt->payment_date            =$request->payment_date;
-        $newReceipt->user_id        = $request->user_id;
-        $newReceipt->payment_method_id        = $request->payment_method_id;
-        $newReceipt->delete         = $request->delete;
+        $newReceipt->name               = "Pago de suscripción.";
+        $newReceipt->sum                = 2990;
+        $newReceipt->payment_time       = time('H:i:s');
+        $newReceipt->payment_date       = date('y-m-d');
+        $newReceipt->user_id            = $request->user_id;
+        $newReceipt->payment_method_id  = $request->payment_method_id;
+        $newReceipt->delete             = 0;
         $newReceipt->save();
-        return response()->json([
-            'respuesta' => 'se ha creado un nuevo rol de usuario',
-            'id'=> $newReceipt->id,
-        ],201);
+
+        return view('home');
     }
 
     /**
