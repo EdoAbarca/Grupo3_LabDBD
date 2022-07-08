@@ -115,4 +115,11 @@ class AdmincrudController extends Controller
         $receipts->values()->all();
         return view('/crud/receipt_crud/receipt_index', ['receipts'=>$receipts]);
     }
+        public function song_index()
+    {
+        $songs = Song::where('delete',false)->get();
+        $songs = $songs->sortBy('id');
+        $songs->values()->all();
+        return view('/crud/song_crud/song_index', ['songs'=>$songs]);
+    }
 }

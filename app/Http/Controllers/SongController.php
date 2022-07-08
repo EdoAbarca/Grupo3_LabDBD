@@ -29,9 +29,73 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+               'song_name' => 'required|min:1|max:30',
+               'duration'=> 'required|date_format:H:i:s',
+               //'stream' => 'required|integer|min:0',
+               //'release_date' => 'required|date',
+               'parental_advisory' => 'required|boolean',
+               //'rate' => 'required|integer|min:0|max:100',
+               'album_id' => 'required|integer',
+               'location_id' => 'required|integer',
+               //'delete' => 'required|boolean', 
+               'URL' => 'required',
+            ],
+            [
+                'song_name.required' => 'Debes ingresar el nombre de la cancion',
+                'song_name.min'      => 'El nombre de la cancion debe tener un largo minimo de 1 caracter',
+                'song_name.max'      => 'El nombre de la cancion debe tener un largo maximo de 30 caracteres',
+
+                'duration.required' => 'Debes ingresar la duracion del album',
+                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
+
+                //'stream.required' => 'Debes ingresar el numero de reproducciones de la cancion',
+                //'stream.integer'  => 'El numero de reproducciones debe ser un tipo de dato integer',
+                //'stream.min'      => 'El numero de reproducciones debe ser un numero mayor o igual a 0',
+
+                //'release_date.required' => 'Debes ingresar la fecha de lanzamiento de la cancion',
+                //'release_date.date'     => 'La fecha de lanzamiento debe ser una fecha valida',
+
+                'parental_advisory.required' => 'Debes ingresar si la cancion tiene restriccion de edad o no',
+                'parental_advisory.boolean'  => '"Parental_advisory" debe ser un tipo de dato booleano',
+
+                'URL.required' => 'Debes ingresar el URL de la cancion',
+
+                //'rate.required' => 'Debes ingresar la valoracion de la cancion',
+                //'rate.integer' => 'La valoracion de la cancion debe ser de un tipo de dato integer',
+                //'rate.min' => 'La valoracion de la cancion debe ser un numero mayor o igual a 0',
+                //'rate.max' => 'La valoracion de la cancion debe ser un numero menor o igual a 100',
+
+                //'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
+                //'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
+
+                //'location_id.required' => 'Debes ingresar el id de la ubicacion a la que pertenece la cancion',
+                //'location_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+       
+        $newSong = new Song();
+        $newSong->song_name         = $request->song_name;
+        $newSong->duration          = $request->duration;
+        $newSong->stream            = 0;
+        $newSong->release_date      = date('y-m-d');
+        $newSong->parental_advisory = $request->parental_advisory;
+        $newSong->rate              = 0;
+        $newSong->album_id          = $request->album_id;
+        $newSong->location_id       = $request->location_id;
+        $newSong->delete            = 0;
+        $newSong->URL               = $request->URL;
+        $newSong->save();
+        return redirect('crud/song_crud/song_index');
     }
 
     /**
@@ -133,7 +197,7 @@ class SongController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($song,200);
+        return view('crud/song_crud/song_show', compact('song'));
     }
 
     /**
@@ -144,7 +208,8 @@ class SongController extends Controller
      */
     public function edit($id)
     {
-        //
+        $song = Song::find($id);
+        return view('crud/song_crud/song_update', compact('song'));  
     }
 
     /**
@@ -160,13 +225,13 @@ class SongController extends Controller
             $request->all(),[
                'song_name' => 'required|min:1|max:30',
                'duration'=> 'required|date_format:H:i:s',
-               'stream' => 'required|integer|min:0',
-               'release_date' => 'required|date',
+               //'stream' => 'required|integer|min:0',
+               //'release_date' => 'required|date',
                'parental_advisory' => 'required|boolean',
-               'rate' => 'required|integer|min:0|max:100',
+               //'rate' => 'required|integer|min:0|max:100',
                'album_id' => 'required|integer',
                'location_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               //'delete' => 'required|boolean', 
                'URL' => 'required',
             ],
             [
@@ -177,20 +242,20 @@ class SongController extends Controller
                 'duration.required' => 'Debes ingresar la duracion del album',
                 'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
 
-                'stream.required' => 'Debes ingresar el numero de reproducciones de la cancion',
+                /*'stream.required' => 'Debes ingresar el numero de reproducciones de la cancion',
                 'stream.integer'  => 'El numero de reproducciones debe ser un tipo de dato integer',
-                'stream.min'      => 'El numero de reproducciones debe ser un numero mayor o igual a 0',
+                'stream.min'      => 'El numero de reproducciones debe ser un numero mayor o igual a 0',*/
 
-                'release_date.required' => 'Debes ingresar la fecha de lanzamiento de la cancion',
-                'release_date.date'     => 'La fecha de lanzamiento debe ser una fecha valida',
+                //'release_date.required' => 'Debes ingresar la fecha de lanzamiento de la cancion',
+                //'release_date.date'     => 'La fecha de lanzamiento debe ser una fecha valida',
 
                 'parental_advisory.required' => 'Debes ingresar si la cancion tiene restriccion de edad o no',
                 'parental_advisory.boolean'  => '"Parental_advisory" debe ser un tipo de dato booleano',
 
-                'rate.required' => 'Debes ingresar la valoracion de la cancion',
+                /*'rate.required' => 'Debes ingresar la valoracion de la cancion',
                 'rate.integer' => 'La valoracion de la cancion debe ser de un tipo de dato integer',
                 'rate.min' => 'La valoracion de la cancion debe ser un numero mayor o igual a 0',
-                'rate.max' => 'La valoracion de la cancion debe ser un numero menor o igual a 100',
+                'rate.max' => 'La valoracion de la cancion debe ser un numero menor o igual a 100',*/
 
                 'album_id.required' => 'Debes ingresar el id del album al que le pertenece la cancion',
                 'album_id.integer' => 'El id del album debe ser de un tipo de dato integer',
@@ -198,8 +263,8 @@ class SongController extends Controller
                 'location_id.required' => 'Debes ingresar el id de la ubicacion a la que pertenece la cancion',
                 'location_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
 
                 'URL.required' => 'Debes ingresar el URL de la cancion',
             ]
@@ -222,19 +287,16 @@ class SongController extends Controller
 
         $song->song_name         = $request->song_name;
         $song->duration          = $request->duration;
-        $song->stream            = $request->stream;
-        $song->release_date      = $request->release_date;
+        $song->stream            = 0;
+        $song->release_date      = date('y-m-d');
         $song->parental_advisory = $request->parental_advisory;
-        $song->rate              = $request->rate;
+        $song->rate              = 0;
         $song->album_id          = $request->album_id;
         $song->location_id       = $request->location_id;
-        $song->delete            = $request->delete;
+        $song->delete            = 0;
         $song->URL               = $request->URL;
         $song->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado una cancion',
-            'id'=> $song->id,
-        ]);
+        return redirect('/crud/song_crud/song_index');
     }
 
     /**
@@ -259,9 +321,6 @@ class SongController extends Controller
         
         $song->delete = true;
         $song->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado una cancion',
-            'id' => $song->id,
-        ],200);
+        return redirect('/crud/song_crud/song_index');
     }
 }

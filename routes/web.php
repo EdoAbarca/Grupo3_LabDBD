@@ -200,6 +200,19 @@ Route::get('/crud/playlist_crud/playlist_show', function () {
     return view('/crud/playlist_crud/playlist_show');
 });
 
+// SONG
+Route::get('/crud/song_crud/song_index', 'App\Http\Controllers\AdmincrudController@song_index');
+
+Route::get('/crud/song_crud/song_create', function () {
+    return view('/crud/song_crud/song_create');
+});
+Route::get('/crud/song_crud/song_update', function () {
+    return view('/crud/song_crud/song_update');
+});
+Route::get('/crud/song_crud/song_show', function () {
+    return view('/crud/song_crud/song_show');
+});
+
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 
@@ -292,8 +305,9 @@ Route::put('/song_playlists/delete/{id}','App\Http\Controllers\Song_playlistCont
 
 Route::get('/songs','App\Http\Controllers\SongController@index');
 Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
-Route::post('/songs/create','App\Http\Controllers\SongController@store'); 
-//Route::get('/songs/edit/{id}','App\Http\Controllers\SongController@edit');
+Route::post('/songs/create','App\Http\Controllers\SongController@store');
+Route::post('/songs/create2','App\Http\Controllers\SongController@create');  
+Route::get('/songs/edit/{id}','App\Http\Controllers\SongController@edit');
 Route::put('/songs/update/{id}','App\Http\Controllers\SongController@update');
 Route::put('/songs/delete/{id}','App\Http\Controllers\SongController@delete');
 
