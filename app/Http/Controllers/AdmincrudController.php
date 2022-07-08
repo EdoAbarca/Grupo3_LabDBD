@@ -36,4 +36,12 @@ class AdmincrudController extends Controller
         $roles->values()->all();
         return view('/crud/role_crud/role_index', ['roles'=>$roles]);
     }
+    
+    public function album_index()
+    {
+        $albums = Album::where('delete',false)->get();
+        $albums = $albums->sortBy('id');
+        $albums->values()->all();
+        return view('/crud/album_crud/album_index', ['albums'=>$albums]);
+    }
 }
