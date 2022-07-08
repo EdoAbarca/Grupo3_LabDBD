@@ -86,7 +86,7 @@ class RoleController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($role,200);
+        return view('crud/role_crud/role_show', compact('role'));
     }
 
     /**

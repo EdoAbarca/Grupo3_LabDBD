@@ -42,6 +42,14 @@
                   <button type="submit" class="btn btn-primary">Editar</button>
                 </form>
               </td>
+
+              <td>
+                <form action="/roles/{{$role->id}}" method="GET">
+                  <button type="submit" class="btn btn-primary">Ver</button>
+                  </form>
+              </td>
+              <td>
+
               <td>
                 <form action="/roles/delete/{{$role->id}}" method="POST">
                   @csrf
