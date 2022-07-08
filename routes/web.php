@@ -128,6 +128,18 @@ Route::get('/crud/payment_method_crud/payment_method_show', function () {
     return view('/crud/payment_method_crud/payment_method_show');
 });
 
+// RATE
+Route::get('/crud/rate_crud/rate_index', 'App\Http\Controllers\AdmincrudController@rate_index');
+Route::get('/crud/rate_crud/rate_create', function () {
+    return view('/crud/rate_crud/rate_create');
+});
+Route::get('/crud/rate_crud/rate_update', function () {
+    return view('/crud/rate_crud/rate_update');
+});
+Route::get('/crud/rate_crud/rate_show', function () {
+    return view('/crud/rate_crud/rate_show');
+});
+
  // ALBUM
 Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
 Route::get('/crud/album_crud/album_create', function () {
@@ -204,7 +216,7 @@ Route::put('/playlists/delete/{id}','App\Http\Controllers\PlaylistController@del
 Route::get('/rates','App\Http\Controllers\RateController@index');
 Route::get('/rates/{id}','App\Http\Controllers\RateController@show');
 Route::post('/rates/create','App\Http\Controllers\RateController@store');
-//Route::get('/rates/edit/{id}','App\Http\Controllers\RateController@edit');
+Route::get('/rates/edit/{id}','App\Http\Controllers\RateController@edit');
 Route::put('/rates/update/{id}','App\Http\Controllers\RateController@update');
 Route::put('/rates/delete/{id}','App\Http\Controllers\RateController@delete');
 

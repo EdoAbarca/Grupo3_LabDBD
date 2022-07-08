@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\Location;
 use App\Models\Genre;
 use App\Models\Payment_method;
+use App\Models\Rate;
 
 class AdmincrudController extends Controller
 {
@@ -70,5 +71,13 @@ class AdmincrudController extends Controller
         $payment_methods = $payment_methods->sortBy('id');
         $payment_methods->values()->all();
         return view('/crud/payment_method_crud/payment_method_index', ['payment_methods'=>$payment_methods]);
+    }
+
+    public function rate_index()
+    {
+        $rates = Rate::where('delete',false)->get();
+        $rates = $rates->sortBy('id');
+        $rates->values()->all();
+        return view('/crud/rate_crud/rate_index', ['rates'=>$rates]);
     }
 }

@@ -48,7 +48,7 @@ class RateController extends Controller
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
                 'score' => 'required|integer|min:0|max:100',
-                'delete' => 'required|boolean',
+                /*'delete' => 'required|boolean',*/
             ],
             [
                 'user_id.required' => 'Debes ingresar el id del usuario el cual envio la valoracion',
@@ -62,8 +62,8 @@ class RateController extends Controller
                 'score.min' => 'El puntaje minimo asignable es 0',
                 'score.max' => 'El puntaje maximo asignable es 100',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -74,12 +74,10 @@ class RateController extends Controller
         $newRate->user_id        = $request->user_id;
         $newRate->song_id        = $request->song_id;
         $newRate->score          = $request->score;
-        $newRate->delete         = $request->delete;
+        $newRate->delete         = 0;
         $newRate->save();
-        return response()->json([
-            'respuesta' => 'se ha creado una nueva valoracion',
-            'id'=> $newRate->id,
-        ],201);
+        return redirect('/crud/rate_crud/rate_index');
+
     }
 
     /**
@@ -101,7 +99,8 @@ class RateController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($rate,200);
+        return view('crud/rate_crud/rate_show', compact('rate'));
+
     }
 
     /**
@@ -112,7 +111,8 @@ class RateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rate = Rate::find($id);
+        return view('crud/rate_crud/rate_update', compact('rate'));  
     }
 
     /**
@@ -129,7 +129,7 @@ class RateController extends Controller
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
                 'score' => 'required|integer|min:0|max:100',
-                'delete' => 'required|boolean',
+                /*'delete' => 'required|boolean',*/
             ],
             [
                 'user_id.required' => 'Debes ingresar el id del usuario el cual envio la valoracion',
@@ -143,8 +143,8 @@ class RateController extends Controller
                 'score.min' => 'El puntaje minimo asignable es 0',
                 'score.max' => 'El puntaje maximo asignable es 100',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -165,12 +165,10 @@ class RateController extends Controller
         $rate->user_id        = $request->user_id;
         $rate->song_id        = $request->song_id;
         $rate->score          = $request->score;
-        $rate->delete         = $request->delete;
+        $rate->delete         = 0;
         $rate->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado una valoracion',
-            'id'=> $rate->id,
-        ],200);
+        return redirect('/crud/rate_crud/rate_index');
+
     }
 
     /**
@@ -195,9 +193,7 @@ class RateController extends Controller
         
         $rate->delete = true;
         $rate->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado una valoracion',
-            'id' => $rate->id,
-        ],200);
+        return redirect('/crud/rate_crud/rate_index');
+
     }
 }
