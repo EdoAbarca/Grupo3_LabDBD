@@ -99,7 +99,8 @@
 					</div>
 
 					<div class="text-center">
-						<select name=location_id id="location_id" size="45" aria-label="Default select example">
+						<!-- <select class="form-select" name=location_id id="location_id" size="45" aria-label="Default select example"> -->
+						<select class="form-select" name=location_id id="location_id" aria-label="Default select example">
 							<option selected>Selecciona una ubicación</option>
 							@foreach($locations as $l)
 							<option value="{{$l->id}}">{{$l->location_name}}</option>
@@ -108,11 +109,12 @@
 					</div>
 					
 					<div class="text-center">
-						<select name=role_id id="role_id" size="45" aria-label="Default select example">
+						<select class="form-select" name=role_id id="role_id" aria-label="Default select example">
+						<!--<select class="form-select" name=role_id id="role_id" size="45" aria-label="Default select example"> -->
 							<option selected>Selecciona un rol</option>
-							@foreach($roles as $r)
-							<option value="{{$r->id}}">{{$r->role_name}}</option>
-							@endforeach
+               				<option value="admin">Administrador</option>
+							<option value="artist">Artista</option>
+                			<option value="user">Usuario</option>
 						</select>
 					</div>
 

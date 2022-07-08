@@ -47,16 +47,6 @@
           </div>
 
           
-          <!--<div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group row">
-                  <label for="parental_advisory" class="col-form-label col-sm-4">Parental advisory:</label> 
-                  <div class="col-sm-8">
-                    <input type="text" name="parental_advisory" id="parental_advisory" class="form-control" placeholder="Restriccion de edad">
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
               <select class="form-select" name="parental_advisory" aria-label="Default select example">

@@ -14,9 +14,13 @@
 
 <body style="margin-bottom:22px">
 
+<script> 
+music = new Audio('adf.wav');
+music.play();
 
+</script>
     @include('includes.navbar')
-    <p></p>
+    <!-- Aquí irá la vista que mostrará los resultados de la busqueda realizada -->
     @include('includes.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

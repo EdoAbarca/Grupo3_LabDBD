@@ -22,7 +22,8 @@ class AdmincrudController extends Controller
     public function user()
     {
         $users = User::where('delete',false)->get();
-
-        return view('crud/user', ['users'=>$users]);
+        $users = $users->sortBy('id');
+        $users->values()->all();
+        return view('/crud/user_crud/user_index', ['users'=>$users]);
     }
 }

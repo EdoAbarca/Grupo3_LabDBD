@@ -105,7 +105,7 @@
           <div class="card" style="width: 18rem;">
             <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg" class="card-img-top">
             <div class="card-body">
-              <a href="crud/user" class="btn btn-primary">Usuarios</a>
+              <a href="/crud/user_crud/user_index" class="btn btn-primary">Usuarios</a>
             </div>
           </div>
         </div>
