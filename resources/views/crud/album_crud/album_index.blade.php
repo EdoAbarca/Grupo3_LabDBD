@@ -17,7 +17,7 @@
       <div class="col-sm-12">
         <h1 class="display-3">Albums</h1>
         <div>
-          <a href="" class="btn btn-primary mb-3">Crear Album</a>
+          <a href="/crud/album_crud/album_create" class="btn btn-primary mb-3">Crear Album</a>
         </div>
 
         <div class="alert alert-success">
@@ -42,7 +42,6 @@
               <td>{{$album->songs_quantity}}</td>
               <td>{{$album->user_id}}</td>
               <td>
-                <!--<a href="/users/edit/{{$user->id}}" class="btn btn-primary">Editar</a> -->
                 <form action="/albums/edit/{{$album->id}}" method="GET">
                   <button type="submit" class="btn btn-primary">Editar</button>
                   </form>
