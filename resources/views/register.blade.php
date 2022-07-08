@@ -112,9 +112,9 @@
 						<select class="form-select" name=role_id id="role_id" aria-label="Default select example">
 						<!--<select class="form-select" name=role_id id="role_id" size="45" aria-label="Default select example"> -->
 							<option selected>Selecciona un rol</option>
-               				<option value="admin">Administrador</option>
-							<option value="artist">Artista</option>
-                			<option value="user">Usuario</option>
+               				<option value=1>Administrador</option>
+							<option value=2>Artista</option>
+                			<option value=3>Usuario</option>
 						</select>
 					</div>
 

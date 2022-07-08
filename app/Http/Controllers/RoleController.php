@@ -63,10 +63,7 @@ class RoleController extends Controller
         $newRole->role_name = $request->role_name;
         $newRole->delete    = $request->delete;
         $newRole->save();
-        return response()->json([
-            'respuesta' => 'Se ha creado un nuevo nombre de rol',
-            'id' => $newRole->id
-        ],200);
+        return redirect('/crud/user_crud/user_index');
     }
 
     /**
@@ -100,7 +97,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('crud/role_crud/role_update', compact('role'));  
     }
 
     /**
@@ -146,10 +144,7 @@ class RoleController extends Controller
         $role->delete    = $request->delete;
         $role->save();
 
-        return response()->json([
-            'respuesta' => 'Se ha modificado un role_name',
-            'id' => $role->id,
-        ],200);
+        return redirect('/crud/role_crud/role_index');
 
     }
 
@@ -175,9 +170,7 @@ class RoleController extends Controller
         
         $role->delete = true;
         $role->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un rol',
-            'id' => $role->id,
-        ],200);
+        return redirect('/crud/role_crud/role_index');
+
     }
 }

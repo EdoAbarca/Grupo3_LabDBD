@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Like;
 use App\Models\Song;
 use App\Models\Album;
+use App\Models\Role;
 
 class AdmincrudController extends Controller
 {
@@ -15,8 +16,9 @@ class AdmincrudController extends Controller
         $likes = Like::where('delete',false)->get();
         $songs = Song::where('delete',false)->get();
         $albums = Album::where('delete',false)->get();
+        $roles = Role::where('delete',false)->get();
 
-        return view('crud', ['users'=>$users,'songs'=>$songs,'likes'=>$likes,'albums'=>$albums]);
+        return view('crud', ['users'=>$users,'songs'=>$songs,'likes'=>$likes,'albums'=>$albums, 'roles'=>$roles]);
     }
 
     public function user_index()
@@ -25,5 +27,13 @@ class AdmincrudController extends Controller
         $users = $users->sortBy('id');
         $users->values()->all();
         return view('/crud/user_crud/user_index', ['users'=>$users]);
+    }
+
+    public function role_index()
+    {
+        $roles = Role::where('delete',false)->get();
+        $roles = $roles->sortBy('id');
+        $roles->values()->all();
+        return view('/crud/role_crud/role_index', ['roles'=>$roles]);
     }
 }

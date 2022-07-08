@@ -73,11 +73,13 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
+
+
+// USER
 Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index');
 Route::get('/crud/user_crud/user_create', function () {
     return view('/crud/user_crud/user_create');
 });
-
 Route::get('/crud/user_crud/user_update', function () {
     return view('/crud/user_crud/user_update');
 });
@@ -86,6 +88,14 @@ Route::get('/crud/user_crud/user_show', function () {
     return view('/crud/user_crud/user_show');
 });
 
+// ROLE
+Route::get('/crud/role_crud/role_index', 'App\Http\Controllers\AdmincrudController@role_index');
+Route::get('/crud/role_crud/role_create', function () {
+    return view('/crud/role_crud/role_create');
+});
+Route::get('/crud/role_crud/role_update', function () {
+    return view('/crud/role_crud/role_update');
+});
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
@@ -148,20 +158,16 @@ Route::delete('/rates/delete/{id}','App\Http\Controllers\RateController@delete')
 Route::get('/receipts','App\Http\Controllers\ReceiptController@index');
 Route::get('/receipts/{id}','App\Http\Controllers\ReceiptController@show');
 Route::post('/receipts/create','App\Http\Controllers\ReceiptController@store');
+Route::get('/receipts/edit/{id}','App\Http\Controllers\ReceiptController@edit');
 Route::put('/receipts/update/{id}','App\Http\Controllers\ReceiptController@update');
 Route::delete('/receipts/delete/{id}','App\Http\Controllers\ReceiptController@delete');
-
-Route::get('/role_permissions','App\Http\Controllers\Role_permissionController@index');
-Route::get('/role_permissions/{id}','App\Http\Controllers\Role_permissionController@show');
-Route::post('/role_permissions/create','App\Http\Controllers\Role_permissionController@store');
-Route::put('/role_permissions/update/{id}','App\Http\Controllers\Role_permissionController@update');
-Route::delete('/role_permissions/delete/{id}','App\Http\Controllers\Role_permissionController@delete');
 
 Route::get('/roles','App\Http\Controllers\RoleController@index');
 Route::get('/roles/{id}','App\Http\Controllers\RoleController@show');
 Route::post('/roles/create','App\Http\Controllers\RoleController@store');
 Route::put('/roles/update/{id}','App\Http\Controllers\RoleController@update');
-Route::delete('/roles/delete/{id}','App\Http\Controllers\RoleController@delete');
+Route::get('/roles/edit/{id}','App\Http\Controllers\RoleController@edit');
+Route::put('/roles/delete/{id}','App\Http\Controllers\RoleController@delete');
 
 Route::get('/song_genres','App\Http\Controllers\Song_genreController@index');
 Route::get('/song_genres/{id}','App\Http\Controllers\Song_genreController@show');
