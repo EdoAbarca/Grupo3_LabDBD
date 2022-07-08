@@ -165,6 +165,18 @@ Route::get('/crud/album_crud/album_show', function () {
     return view('/crud/album_crud/album_show');
 });
 
+// PLAYLIST
+Route::get('/crud/playlist_crud/playlist_index', 'App\Http\Controllers\AdmincrudController@playlist_index');
+Route::get('/crud/playlist_crud/playlist_create', function () {
+    return view('/crud/playlist_crud/playlist_create');
+});
+Route::get('/crud/playlist_crud/playlist_update', function () {
+    return view('/crud/playlist_crud/playlist_update');
+});
+Route::get('/crud/playlist_crud/playlist_show', function () {
+    return view('/crud/playlist_crud/playlist_show');
+});
+
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 
@@ -220,8 +232,10 @@ Route::put('/permissions/delete/{id}','App\Http\Controllers\PermissionController
 
 Route::get('/playlists','App\Http\Controllers\PlaylistController@index');
 Route::get('/playlists/{id}','App\Http\Controllers\PlaylistController@show');
+Route::get('/playlists2/{id}','App\Http\Controllers\PlaylistController@show2');
 Route::post('/playlists/create','App\Http\Controllers\PlaylistController@store');
-//Route::get('/playlists/edit/{id}','App\Http\Controllers\PlaylistController@edit');
+Route::post('/playlists/create2','App\Http\Controllers\PlaylistController@create');
+Route::get('/playlists/edit/{id}','App\Http\Controllers\PlaylistController@edit');
 Route::put('/playlists/update/{id}','App\Http\Controllers\PlaylistController@update');
 Route::put('/playlists/delete/{id}','App\Http\Controllers\PlaylistController@delete');
 
