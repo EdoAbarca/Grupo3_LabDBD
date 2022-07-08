@@ -64,6 +64,10 @@ Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album');
 
+Route::get('/play_bar', function () {
+    return view('play_bar');
+});
+
 Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middleware('auth');
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
@@ -77,6 +81,11 @@ Route::get('/crud/user_crud/user_create', function () {
 Route::get('/crud/user_crud/user_update', function () {
     return view('/crud/user_crud/user_update');
 });
+
+Route::get('/crud/user_crud/user_show', function () {
+    return view('/crud/user_crud/user_show');
+});
+
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 //Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');

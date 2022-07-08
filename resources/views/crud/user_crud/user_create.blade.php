@@ -52,12 +52,12 @@
 
           <div class="form-group">
               <label for="location">Ubicacion:</label>
-              <input type="text" class="form-control" name="location_id" value=""/>
+              <input type="number" class="form-control" name="location_id" value=""/>
           </div>
 
           <div class="form-group">
               <label for="role">Rol:</label>
-              <input type="text" class="form-control" name="role_id" value=""/>
+              <input type="number" class="form-control" name="role_id" value=""/>
           </div>
           <button type="submit" class="btn btn-primary">Crear Usuario</button>
       </form>

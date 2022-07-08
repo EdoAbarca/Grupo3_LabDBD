@@ -7,18 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Search</title>
+    <title>Play_bar</title>
 
     <!-- <link href="{{ asset('css/search.css') }}" rel="stylesheet"> -->
 </head>
 
 <body style="margin-bottom:22px">
 
-<script> 
-music = new Audio('adf.wav');
-music.play();
-
+<script src="/audiojs/audio.min.js"></script>
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
 </script>
+
+<audio src="/mp3/juicy.mp3" preload="auto" ></audio>
     @include('includes.navbar')
     <!-- Aquí irá la vista que mostrará los resultados de la busqueda realizada -->
     @include('includes.footer')

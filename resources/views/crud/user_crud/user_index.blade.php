@@ -42,9 +42,17 @@
               <td>
                 <!--<a href="/users/edit/{{$user->id}}" class="btn btn-primary">Editar</a> -->
                 <form action="/users/edit/{{$user->id}}" method="GET">
-                  <button type="submit" class="btn btn-primary">Editar</a> 
+                  <button type="submit" class="btn btn-primary">Editar</button>
+                  </form>
+              </td>
+            
+              <td>
+                <form action="/users/{{$user->id}}" method="GET">
+                  <button type="submit" class="btn btn-primary">Ver</button>
+                  </form>
               </td>
               <td>
+             
                 <form action="/users/delete/{{$user->id}}" method="POST">
                   @csrf
                   @method('PUT')

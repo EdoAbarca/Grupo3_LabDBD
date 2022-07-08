@@ -175,8 +175,10 @@ class UserController extends Controller
             ]);
         }
         
-        return response($user,200);
+        return view('crud/user_crud/user_show', compact('user'));
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.
