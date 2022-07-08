@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'birth_date' => $this->faker->dateTimeBetween($startDate = '-100 years', $endDate = 'now', $timezone = null),
             'role_id' => Role::all()->random()->id,
             'location_id' => Location::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 

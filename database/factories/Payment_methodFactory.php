@@ -25,7 +25,7 @@ class Payment_methodFactory extends Factory
             'pmp'=> $this->faker->password,
             'available_budget'=>$this->faker->numberBetween($min=0),
             'user_id'=>User::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

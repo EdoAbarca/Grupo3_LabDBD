@@ -21,7 +21,7 @@ class Song_playlistFactory extends Factory
         return [
             'playlist_id' =>Playlist::all()->random()->id,
             'song_id' =>Song::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

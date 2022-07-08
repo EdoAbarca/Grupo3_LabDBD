@@ -21,7 +21,7 @@ class Role_permissionFactory extends Factory
         return [
             'role_id' =>Role::all()->random()->id,
             'permission_id' =>Permission::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

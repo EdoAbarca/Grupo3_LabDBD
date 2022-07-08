@@ -18,7 +18,7 @@ class GenreFactory extends Factory
     {
         return [
             'genre_name' => $this->faker->randomElement($array = array ('reggaeton','pop','rap','rock','metal','eurodance','disco','jazz')),
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

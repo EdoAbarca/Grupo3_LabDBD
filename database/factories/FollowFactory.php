@@ -20,7 +20,7 @@ class FollowFactory extends Factory
         return [
             'user_id1' =>User::all()->random()->id, //Usuario seguidor
             'user_id2' =>User::all()->random()->id, //Usuario seguido
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

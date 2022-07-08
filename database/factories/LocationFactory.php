@@ -21,7 +21,7 @@ class LocationFactory extends Factory
     {
         return [
             'location_name' => $this->faker->country(),
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue =  0)
         ];
     }
 }

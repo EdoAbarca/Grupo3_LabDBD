@@ -24,7 +24,7 @@ class PlaylistFactory extends Factory
             'description' => $this->faker->text($maxNbChars = 200),
             'creation_date' => $this->faker->dateTime(),
             'user_id' => User::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }

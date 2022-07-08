@@ -21,7 +21,7 @@ class LikeFactory extends Factory
         return [
             'user_id' =>User::all()->random()->id,
             'song_id' =>Song::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 50)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
         ];
     }
 }
