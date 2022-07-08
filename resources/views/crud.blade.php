@@ -132,7 +132,8 @@
           <div class="card" style="width: 18rem;">
             <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg" class="card-img-top">
             <div class="card-body">
-              <a href="#" class="btn btn-primary">Géneros</a>
+            <a href="/crud/genre_crud/genre_index" class="btn btn-primary">Generos</a>
+
             </div>
           </div>
         </div>

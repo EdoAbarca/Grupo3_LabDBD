@@ -45,15 +45,15 @@ class GenreController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'genre_name'=>'required|min:3|max:15',
-               'delete'=>'required|boolean', 
+               /*'delete'=>'required|boolean', */
             ],
             [
                 'genre_name.required' => 'Debes ingresar el nombre del genero',
                 'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 3 caracteres',
                 'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 15 caracteres',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean'  => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean'  => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -61,12 +61,10 @@ class GenreController extends Controller
         }
         $newGenre= new Genre();
         $newGenre->genre_name     =$request->genre_name;
-        $newGenre->delete        =$request->delete;
+        $newGenre->delete        =0;
         $newGenre->save();
-        return response()->json([
-            'respuesta' => 'se ha creado un nuevo genero',
-            'id'=> $newGenre->id,
-        ],201);
+        return redirect('/crud/genre_crud/genre_index');
+
     }
 
     /**
@@ -88,7 +86,8 @@ class GenreController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($genre,200);
+        return view('crud/genre_crud/genre_show', compact('genre'));
+
     }
 
     /**
@@ -99,7 +98,8 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genre = Genre::find($id);
+        return view('crud/genre_crud/genre_update', compact('genre'));  
     }
 
     /**
@@ -114,15 +114,15 @@ class GenreController extends Controller
         $validator=Validator::make(
             $request->all(),[
                 'genre_name'=>'required|min:3|max:15',
-                'delete'=>'required|boolean', 
+                /*'delete'=>'required|boolean', */
              ],
              [
                  'genre_name.required' => 'Debes ingresar el nombre del genero',
                  'genre_name.min' => 'El nombre del genero debe tener un largo minimo de 3 caracteres',
                  'genre_name.max' => 'El nombre del genero debe tener un largo maximo de 15 caracteres',
 
-                 'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                 'delete.boolean' => '"delete" debe ser un booleano',
+                 /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                 'delete.boolean' => '"delete" debe ser un booleano',*/
              ]
              );
         if($validator->fails()){
@@ -140,12 +140,10 @@ class GenreController extends Controller
             ]);
         }
         $genre->genre_name     =$request->genre_name;
-        $genre->delete          =$request->delete;
+        $genre->delete          =0;
         $genre->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado un permiso',
-            'id'=> $genre->id
-        ],200);
+        return redirect('/crud/genre_crud/genre_index');
+
     }
 
     /**
@@ -170,9 +168,7 @@ class GenreController extends Controller
         
         $genre->delete = true;
         $genre->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un genero',
-            'id' => $genre->id,
-        ],200);
+        return redirect('/crud/genre_crud/genre_index');
+
     }
 }

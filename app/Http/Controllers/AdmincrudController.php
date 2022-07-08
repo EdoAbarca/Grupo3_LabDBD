@@ -8,6 +8,7 @@ use App\Models\Song;
 use App\Models\Album;
 use App\Models\Role;
 use App\Models\Location;
+use App\Models\Genre;
 
 class AdmincrudController extends Controller
 {
@@ -52,5 +53,13 @@ class AdmincrudController extends Controller
         $locations = $locations->sortBy('id');
         $locations->values()->all();
         return view('/crud/location_crud/location_index', ['locations'=>$locations]);
+    }
+
+    public function genre_index()
+    {
+        $genres = Genre::where('delete',false)->get();
+        $genres = $genres->sortBy('id');
+        $genres->values()->all();
+        return view('/crud/genre_crud/genre_index', ['genres'=>$genres]);
     }
 }

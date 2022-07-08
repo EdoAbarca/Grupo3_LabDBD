@@ -15,9 +15,9 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1 class="display-3">Ubicaciones</h1>
+        <h1 class="display-3">Generos</h1>
         <div>
-          <a href="/crud/location_crud/location_create" class="btn btn-primary mb-3">Crear Ubicación</a>
+          <a href="/crud/genre_crud/genre_create" class="btn btn-primary mb-3">Crear Genero</a>
         </div>
 
         <div class="alert alert-success">
@@ -33,24 +33,24 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($locations as $location)
+            @foreach($genres as $genre)
             <tr>
-              <td>{{$location->id}}</td>
-              <td>{{$location->location_name}}</td>
+              <td>{{$genre->id}}</td>
+              <td>{{$genre->genre_name}}</td>
               <td>
-                <form action="/locations/edit/{{$location->id}}" method="GET">
+                <form action="/genres/edit/{{$genre->id}}" method="GET">
                   <button type="submit" class="btn btn-primary">Editar</button>
                   </form>
               </td>
             
               <td>
-                <form action="/locations/{{$location->id}}" method="GET">
+                <form action="/genres/{{$genre->id}}" method="GET">
                   <button type="submit" class="btn btn-primary">Ver</button>
                   </form>
               </td>
               <td>
              
-                <form action="/locations/delete/{{$location->id}}" method="POST">
+                <form action="/genres/delete/{{$genre->id}}" method="POST">
                   @csrf
                   @method('PUT')
                   <button class="btn btn-danger" type="submit">Eliminar</button>
