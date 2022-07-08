@@ -158,11 +158,23 @@ Route::get('/crud/song_genre_crud/song_genre_show', function () {
      return view('/crud/follow_crud/follow_create');
  });
  Route::get('/crud/follow_crud/follow_update', function () {
-     return view('/crud/followcrud/follow_update');
+     return view('/crud/follow_crud/follow_update');
  });
  Route::get('/crud/follow_crud/follow_show', function () {
      return view('/crud/follow_crud/follow_show');
  });
+
+  // RECEIPT
+  Route::get('/crud/receipt_crud/receipt_index', 'App\Http\Controllers\AdmincrudController@receipt_index');
+  Route::get('/crud/receipt_crud/receipt_create', function () {
+      return view('/crud/receipt_crud/receipt_create');
+  });
+  Route::get('/crud/receipt_crud/receipt_update', function () {
+      return view('/crud/receipt_crud/receipt_update');
+  });
+  Route::get('/crud/receipt_crud/receipt_show', function () {
+      return view('/crud/receipt_crud/receipt_show');
+  });
 
  // ALBUM
 Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
@@ -234,13 +246,6 @@ Route::get('/payment_methods/edit/{id}','App\Http\Controllers\Payment_methodCont
 Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
 Route::put('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@delete');
 
-Route::get('/permissions','App\Http\Controllers\PermissionController@index');
-Route::get('/permissions/{id}','App\Http\Controllers\PermissionController@show');
-Route::post('/permissions/create','App\Http\Controllers\PermissionController@store');
-//Route::get('/permissions/edit/{id}','App\Http\Controllers\PermissionsController@edit');
-Route::put('/permissions/update/{id}','App\Http\Controllers\PermissionController@update');
-Route::put('/permissions/delete/{id}','App\Http\Controllers\PermissionController@delete');
-
 Route::get('/playlists','App\Http\Controllers\PlaylistController@index');
 Route::get('/playlists/{id}','App\Http\Controllers\PlaylistController@show');
 Route::get('/playlists2/{id}','App\Http\Controllers\PlaylistController@show2');
@@ -310,6 +315,6 @@ Route::put('/users/delete/{id}','App\Http\Controllers\UserController@delete');
 Route::get('/payment_methods','App\Http\Controllers\Payment_methodController@index');
 Route::get('/payment_methods/{id}','App\Http\Controllers\Payment_methodController@show');
 Route::post('/payment_methods/create','App\Http\Controllers\Payment_methodController@store');
-//Route::get('/payment_methods/edit/{id}','App\Http\Controllers\Payment_methodController@edit');
+Route::get('/payment_methods/edit/{id}','App\Http\Controllers\Payment_methodController@edit');
 Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
 Route::put('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@delete');

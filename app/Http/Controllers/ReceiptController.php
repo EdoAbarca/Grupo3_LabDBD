@@ -42,7 +42,7 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        /* 
+
         $validator=Validator::make(
             $request->all(),[
                 'name' => 'required|min:1|max:30',
@@ -51,7 +51,7 @@ class ReceiptController extends Controller
                 'payment_time'=>'required|date_format:H:i:s',
                 'payment_method_id' => 'required|integer',
                 'user_id' => 'required|integer',    
-                'delete' => 'required|boolean', 
+                /*'delete' => 'required|boolean', */
             ],
             [
                 'name.required' => 'Debes ingresar el nombre de la boleta',
@@ -73,14 +73,14 @@ class ReceiptController extends Controller
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece la boleta',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
 
             ]
             );
         if($validator->fails()){
             return response($validator->errors());
-        }*/
+        }
 
         $newReceipt= new Receipt();
         $newReceipt->name               = "Pago de suscripción.";
@@ -92,7 +92,8 @@ class ReceiptController extends Controller
         $newReceipt->delete             = 0;
         $newReceipt->save();
 
-        return view('home');
+        return redirect('/crud/receipt_crud/receipt_index');
+
     }
 
     /**
@@ -114,7 +115,7 @@ class ReceiptController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($receipt,200);
+        return view('crud/receipt_crud/receipt_show', compact('receipt'));
     }
 
     /**
@@ -125,7 +126,8 @@ class ReceiptController extends Controller
      */
     public function edit($id)
     {
-        //
+        $receipt = Receipt::find($id);
+        return view('crud/receipt_crud/receipt_update', compact('receipt'));  
     }
 
     /**
@@ -145,7 +147,7 @@ class ReceiptController extends Controller
                 'payment_time'=>'required|date_format:H:i:s',
                 'payment_method_id' => 'required|integer',
                 'user_id' => 'required|integer',    
-                'delete' => 'required|boolean', 
+                /*'delete' => 'required|boolean', */
             ],
             [
                 'name.required' => 'Debes ingresar el nombre de la boleta',
@@ -158,8 +160,8 @@ class ReceiptController extends Controller
                 'payment_method_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
                 'payment_method_id.integer' => 'El id del tipo de dato debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
                 
                 'payment_date.required' => 'Debes ingresar la fecha del pago efectuado',
                 'payment_date.date'     => 'La fecha del pago debe ser una fecha valida',
@@ -185,18 +187,16 @@ class ReceiptController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         } 
-        $receipt->name;
-        $receipt->sum;
-        $receipt->payment_time;
-        $receipt->payment_date;
-        $receipt->user_id;       
-        $receipt->payment_method_id;       
-        $receipt->delete;     
+        $receipt->name              = $request->name;
+        $receipt->sum               = $request->sum;
+        $receipt->payment_time      = $request->payment_time;
+        $receipt->payment_date      = $request->payment_date;
+        $receipt->user_id           = $request->user_id  ;       
+        $receipt->payment_method_id = $request->payment_method_id;       
+        $receipt->delete = 0;     
         $receipt->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado una boleta',
-            'id'=> $receipt->id,
-        ],201);
+        return redirect('/crud/receipt_crud/receipt_index');
+
     
     }
 
@@ -222,9 +222,7 @@ class ReceiptController extends Controller
         
         $receipt->delete = true;
         $receipt->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado una boleta',
-            'id' => $receipt->id,
-        ],200);
+        return redirect('/crud/receipt_crud/receipt_index');
+
     }
 }

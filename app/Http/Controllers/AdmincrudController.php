@@ -14,6 +14,7 @@ use App\Models\Rate;
 use App\Models\Song_genre;
 use App\Models\Playlist;
 use App\Models\Follow;
+use App\Models\Receipt;
 
 class AdmincrudController extends Controller
 {
@@ -105,5 +106,13 @@ class AdmincrudController extends Controller
         $follows = $follows->sortBy('id');
         $follows->values()->all();
         return view('/crud/follow_crud/follow_index', ['follows'=>$follows]);
+    }
+
+    public function receipt_index()
+    {
+        $receipts = Receipt::where('delete',false)->get();
+        $receipts = $receipts->sortBy('id');
+        $receipts->values()->all();
+        return view('/crud/receipt_crud/receipt_index', ['receipts'=>$receipts]);
     }
 }
