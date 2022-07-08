@@ -45,15 +45,15 @@ class LocationController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'location_name' => 'required|min:1|max:15',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean', */
             ],
             [
                 'location_name.required' => 'Debes ingresar el nombre de la ubicacion',
                 'location_name.min' => 'El nombre de la ubicacion debe tener un largo minimo de 1 caracter',
                 'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 15 caracteres',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -62,12 +62,10 @@ class LocationController extends Controller
 
         $newLocation= new Location();
         $newLocation->location_name = $request->location_name;
-        $newLocation->delete        = $request->delete;
+        $newLocation->delete        = 0;
         $newLocation->save();
-        return response()->json([
-            'respuesta' => 'se ha creado una nueva ubicacion',
-            'id'=> $newLocation->id,
-        ],201);
+        return redirect('/crud/location_crud/location_index');
+
     }
 
     /**
@@ -89,7 +87,7 @@ class LocationController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($location,200);
+        return view('crud/location_crud/location_show', compact('location'));
     }
 
     /**
@@ -100,7 +98,9 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $location = Location::find($id);
+        return view('crud/location_crud/location_update', compact('location'));  
+
     }
 
     /**
@@ -115,15 +115,15 @@ class LocationController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'location_name' => 'required|min:1|max:15',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean',*/ 
             ],
             [
                 'location_name.required' => 'Debes ingresar el nombre de la ubicacion',
                 'location_name.min' => 'El nombre de la ubicacion debe tener un largo minimo de 1 caracter',
                 'location_name.max' => 'El nombre de la ubicacion debe tener un largo maximo de 15 caracteres',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -142,13 +142,11 @@ class LocationController extends Controller
             ]);
         }
         $location->location_name = $request->location_name;
-        $location->delete        = $request->delete;
+        $location->delete        = 0;
         $location->save();   
         
-        return response()->json([
-            'respuesta' => 'se ha modificado una ubicacion',
-            'id'=> $location->id,
-        ],200);
+        return redirect('/crud/location_crud/location_index');
+
     }
 
     /**
@@ -173,9 +171,7 @@ class LocationController extends Controller
         
         $location->delete = true;
         $location->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado una ubicacion',
-            'id' => $location->id,
-        ],200);
+        return redirect('/crud/location_crud/location_index');
+
     }
 }

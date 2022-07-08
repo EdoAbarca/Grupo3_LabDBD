@@ -88,6 +88,33 @@ Route::get('/crud/role_crud/role_create', function () {
 Route::get('/crud/role_crud/role_update', function () {
     return view('/crud/role_crud/role_update');
 });
+Route::get('/crud/role_crud/role_show', function () {
+    return view('/crud/role_crud/role_show');
+});
+
+// LOCATION
+Route::get('/crud/location_crud/location_index', 'App\Http\Controllers\AdmincrudController@location_index');
+Route::get('/crud/location_crud/location_create', function () {
+    return view('/crud/location_crud/location_create');
+});
+Route::get('/crud/location_crud/location_update', function () {
+    return view('/crud/location_crud/location_update');
+});
+Route::get('/crud/location_crud/location_show', function () {
+    return view('/crud/location_crud/location_show');
+});
+
+// GENRE
+Route::get('/crud/genre_crud/genre_index', 'App\Http\Controllers\AdmincrudController@genre_index');
+Route::get('/crud/genre_crud/genre_create', function () {
+    return view('/crud/genre_crud/genre_create');
+});
+Route::get('/crud/genre_crud/genre_update', function () {
+    return view('/crud/genre_crud/genre_update');
+});
+Route::get('/crud/genre_crud/genre_show', function () {
+    return view('/crud/genre_crud/genre_show');
+});
 
  // ALBUM
 
@@ -124,7 +151,7 @@ Route::put('/follows/delete/{id}','App\Http\Controllers\FollowController@delete'
 Route::get('/genres','App\Http\Controllers\GenreController@index');
 Route::get('/genres/{id}','App\Http\Controllers\GenreController@show');
 Route::post('/genres/create','App\Http\Controllers\GenreController@store');
-//Route::get('/genres/edit/{id}','App\Http\Controllers\GenreController@edit');
+Route::get('/genres/edit/{id}','App\Http\Controllers\GenreController@edit');
 Route::put('/genres/update/{id}','App\Http\Controllers\GenreController@update');
 Route::put('/genres/delete/{id}','App\Http\Controllers\GenreController@delete');
 
@@ -138,7 +165,7 @@ Route::put('/likes/delete/{id}','App\Http\Controllers\LikeController@delete');
 Route::get('/locations','App\Http\Controllers\LocationController@index');
 Route::get('/locations/{id}','App\Http\Controllers\LocationController@show');
 Route::post('/locations/create','App\Http\Controllers\LocationController@store');
-//Route::get('/locations/edit/{id}','App\Http\Controllers\LocationController@edit');
+Route::get('/locations/edit/{id}','App\Http\Controllers\LocationController@edit');
 Route::put('/locations/update/{id}','App\Http\Controllers\LocationController@update');
 Route::put('/locations/delete/{id}','App\Http\Controllers\LocationController@delete');
 

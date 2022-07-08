@@ -7,6 +7,7 @@ use App\Models\Like;
 use App\Models\Song;
 use App\Models\Album;
 use App\Models\Role;
+use App\Models\Location;
 
 class AdmincrudController extends Controller
 {
@@ -43,5 +44,13 @@ class AdmincrudController extends Controller
         $albums = $albums->sortBy('id');
         $albums->values()->all();
         return view('/crud/album_crud/album_index', ['albums'=>$albums]);
+    }
+
+    public function location_index()
+    {
+        $locations = Location::where('delete',false)->get();
+        $locations = $locations->sortBy('id');
+        $locations->values()->all();
+        return view('/crud/location_crud/location_index', ['locations'=>$locations]);
     }
 }
