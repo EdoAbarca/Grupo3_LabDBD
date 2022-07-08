@@ -46,7 +46,7 @@ class Song_genreController extends Controller
             $request->all(),[
                'genre_id' => 'required|integer',
                'song_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean', */
             ],
             [
                 'genre_id.required' => 'Debes ingresar el id del genero al que pertenece el genero cancion',
@@ -55,8 +55,8 @@ class Song_genreController extends Controller
                 'song_id.required' => 'Debes ingresar el id de la cancion al que le pertenece el genero cancion',
                 'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -66,12 +66,10 @@ class Song_genreController extends Controller
         $newSong_genre= new Song_genre();
         $newSong_genre->genre_id        = $request->genre_id;
         $newSong_genre->song_id        = $request->song_id;
-        $newSong_genre->delete         = $request->delete;
+        $newSong_genre->delete         = 0;
         $newSong_genre->save();
-        return response()->json([
-            'respuesta' => 'se ha creado una nueva lista de reproduccion cancion',
-            'id'=> $newSong_genre->id,
-        ],201);
+        return redirect('/crud/song_genre_crud/song_genre_index');
+
     }
 
     /**
@@ -93,7 +91,8 @@ class Song_genreController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($song_genre,200);
+        return view('crud/song_genre_crud/song_genre_show', compact('song_genre'));
+
     }
 
     /**
@@ -104,7 +103,8 @@ class Song_genreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $song_genre = Song_genre::find($id);
+        return view('crud/song_genre_crud/song_genre_update', compact('song_genre'));  
     }
 
     /**
@@ -120,7 +120,7 @@ class Song_genreController extends Controller
             $request->all(),[
                'genre_id' => 'required|integer',
                'song_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean', */
             ],
             [
                 'genre_id.required' => 'Debes ingresar el id del genero al que pertenece el genero cancion',
@@ -129,8 +129,8 @@ class Song_genreController extends Controller
                 'song_id.required' => 'Debes ingresar el id de la cancion al que le pertenece el genero cancion',
                 'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -152,11 +152,10 @@ class Song_genreController extends Controller
         
         $song_genre->genre_id        = $request->genre_id;
         $song_genre->song_id        = $request->song_id;
-        $song_genre->delete         = $request->delete;
+        $song_genre->delete         = 0;
         $song_genre->save();
-        return response()->json([
-            'respuesta' => 'se ha actualizado el genero cancion',
-        ],201);
+        return redirect('/crud/song_genre_crud/song_genre_index');
+
     }
 
     /**
@@ -181,9 +180,7 @@ class Song_genreController extends Controller
         
         $song_genre->delete = true;
         $song_genre->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un genero cancion',
-            'id' => $song_genre->id,
-        ],200);
+        return redirect('/crud/song_genre_crud/song_genre_index');
+
     }
 }

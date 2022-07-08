@@ -140,6 +140,18 @@ Route::get('/crud/rate_crud/rate_show', function () {
     return view('/crud/rate_crud/rate_show');
 });
 
+// SONG_GENRE
+Route::get('/crud/song_genre_crud/song_genre_index', 'App\Http\Controllers\AdmincrudController@song_genre_index');
+Route::get('/crud/song_genre_crud/song_genre_create', function () {
+    return view('/crud/song_genre_crud/song_genre_create');
+});
+Route::get('/crud/song_genre_crud/song_genre_update', function () {
+    return view('/crud/song_genre_crud/song_genre_update');
+});
+Route::get('/crud/song_genre_crud/song_genre_show', function () {
+    return view('/crud/song_genre_crud/song_genre_show');
+});
+
  // ALBUM
 Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
 Route::get('/crud/album_crud/album_create', function () {
@@ -237,7 +249,7 @@ Route::put('/roles/delete/{id}','App\Http\Controllers\RoleController@delete');
 Route::get('/song_genres','App\Http\Controllers\Song_genreController@index');
 Route::get('/song_genres/{id}','App\Http\Controllers\Song_genreController@show');
 Route::post('/song_genres/create','App\Http\Controllers\Song_genreController@store');
-//Route::get('/song_genres/edit/{id}','App\Http\Controllers\Song_genreController@edit');
+Route::get('/song_genres/edit/{id}','App\Http\Controllers\Song_genreController@edit');
 Route::put('/song_genres/update/{id}','App\Http\Controllers\Song_genreController@update');
 Route::put('/song_genres/delete/{id}','App\Http\Controllers\Song_genreController@delete');
 

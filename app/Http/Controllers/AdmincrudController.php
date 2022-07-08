@@ -11,6 +11,7 @@ use App\Models\Location;
 use App\Models\Genre;
 use App\Models\Payment_method;
 use App\Models\Rate;
+use App\Models\Song_genre;
 
 class AdmincrudController extends Controller
 {
@@ -79,5 +80,13 @@ class AdmincrudController extends Controller
         $rates = $rates->sortBy('id');
         $rates->values()->all();
         return view('/crud/rate_crud/rate_index', ['rates'=>$rates]);
+    }
+
+    public function song_genre_index()
+    {
+        $song_genres = Song_genre::where('delete',false)->get();
+        $song_genres = $song_genres->sortBy('id');
+        $song_genres->values()->all();
+        return view('/crud/song_genre_crud/song_genre_index', ['song_genres'=>$song_genres]);
     }
 }
