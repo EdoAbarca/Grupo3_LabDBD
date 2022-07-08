@@ -265,7 +265,7 @@ class UserController extends Controller
         $user->role_id          = $request->role_id;
         $user->save();
 
-      return redirect('/crud/user_crud/user_index');
+        return redirect('/crud/user_crud/user_index');
 
     }
 

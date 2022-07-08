@@ -81,10 +81,8 @@ class Payment_methodController extends Controller
         $newPayment_method->user_id             = $request->user_id;
         $newPayment_method->delete              = 0;
         $newPayment_method->save();
-        return response()->json([
-            'respuesta' => 'se ha creado un nuevo metodo de pago',
-            'id'=> $newPayment_method->id,
-        ],201);
+        return redirect('/crud/payment_method_crud/payment_method_index');
+
     }
 
     /**
@@ -106,7 +104,7 @@ class Payment_methodController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($payment_method,200);
+        return view('crud/payment_method_crud/payment_method_show', compact('payment_method'));
     }
 
     /**
@@ -117,7 +115,8 @@ class Payment_methodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $payment_method = Payment_method::find($id);
+        return view('crud/payment_method_crud/payment_method_update', compact('payment_method'));  
     }
 
     /**
@@ -135,7 +134,7 @@ class Payment_methodController extends Controller
                'available_budget' => 'required|integer|min:0',
                'pmp' => 'required|min:8|max:300',
                'user_id' => 'required|integer',
-               'delete' => 'required|boolean', 
+               /*'delete' => 'required|boolean', */
             ],
             [
                 'method_name.required' => 'Debes ingresar el nombre del metodo de pago',
@@ -153,8 +152,8 @@ class Payment_methodController extends Controller
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el metodo de pago',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -176,12 +175,10 @@ class Payment_methodController extends Controller
         $payment_method->pmp                 = $request->pmp;
         $payment_method->available_budget    = $request->available_budget;
         $payment_method->user_id             = $request->user_id;
-        $payment_method->delete              = $request->delete;
+        $payment_method->delete              = 0;
         $payment_method->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado un metodo de pago',
-            'id'=> $payment_method->id,
-        ],201);
+        return redirect('/crud/payment_method_crud/payment_method_index');
+
     }
 
     /**
@@ -206,9 +203,7 @@ class Payment_methodController extends Controller
         
         $payment_method->delete = true;
         $payment_method->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un metodo de pago',
-            'id' => $payment_method->id,
-        ],200);
+        return redirect('/crud/payment_method_crud/payment_method_index');
+
     }
 }

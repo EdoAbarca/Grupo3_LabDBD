@@ -9,6 +9,7 @@ use App\Models\Album;
 use App\Models\Role;
 use App\Models\Location;
 use App\Models\Genre;
+use App\Models\Payment_method;
 
 class AdmincrudController extends Controller
 {
@@ -61,5 +62,13 @@ class AdmincrudController extends Controller
         $genres = $genres->sortBy('id');
         $genres->values()->all();
         return view('/crud/genre_crud/genre_index', ['genres'=>$genres]);
+    }
+
+    public function payment_method_index()
+    {
+        $payment_methods = Payment_method::where('delete',false)->get();
+        $payment_methods = $payment_methods->sortBy('id');
+        $payment_methods->values()->all();
+        return view('/crud/payment_method_crud/payment_method_index', ['payment_methods'=>$payment_methods]);
     }
 }

@@ -116,8 +116,19 @@ Route::get('/crud/genre_crud/genre_show', function () {
     return view('/crud/genre_crud/genre_show');
 });
 
- // ALBUM
+// PAYMENT_METHOD
+Route::get('/crud/payment_method_crud/payment_method_index', 'App\Http\Controllers\AdmincrudController@payment_method_index');
+Route::get('/crud/payment_method_crud/payment_method_create', function () {
+    return view('/crud/payment_method_crud/payment_method_create');
+});
+Route::get('/crud/payment_method_crud/payment_method_update', function () {
+    return view('/crud/payment_method_crud/payment_method_update');
+});
+Route::get('/crud/payment_method_crud/payment_method_show', function () {
+    return view('/crud/payment_method_crud/payment_method_show');
+});
 
+ // ALBUM
 Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
 Route::get('/crud/album_crud/album_create', function () {
     return view('/crud/album_crud/album_create');
@@ -172,7 +183,7 @@ Route::put('/locations/delete/{id}','App\Http\Controllers\LocationController@del
 Route::get('/payment_methods','App\Http\Controllers\Payment_methodController@index');
 Route::get('/payment_methods/{id}','App\Http\Controllers\Payment_methodController@show');
 Route::post('/payment_methods/create','App\Http\Controllers\Payment_methodController@store');
-//Route::get('/payment_methods/edit/{id}','App\Http\Controllers\Payment_methodsController@edit');
+Route::get('/payment_methods/edit/{id}','App\Http\Controllers\Payment_methodController@edit');
 Route::put('/payment_methods/update/{id}','App\Http\Controllers\Payment_methodController@update');
 Route::put('/payment_methods/delete/{id}','App\Http\Controllers\Payment_methodController@delete');
 
