@@ -103,6 +103,11 @@
 
 
 <body>
+  <script>
+    function muestraMensaje() {
+      console.log('Gracias por pinchar');
+    }
+  </script>
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.navbar')
   <!-- Mientras tanto -->
@@ -139,9 +144,10 @@
             <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
             <div class="card-body">
               <h5 class="card-title">{{$song->song_name}}</h5>
-              <a href="#" class="btn btn-primary">Ir a la canción</a>
+              <form method="GET" action="/playing_song/{{$song->id}}">
+                <button type="submit" class="btn btn-primary">Reproducir Cancion</button>
+              </form>
               <form class="like" method="POST" action="/likes/create">
-
                 <div>
                   <input class="invisible" id="song_id" name="song_id" value="{{$song->id}}">
                 </div>
@@ -149,12 +155,10 @@
                 <div>
                   <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
                 </div>
-
                 <div>
-                  <button type="submit"  id="boton-like" class="btn ">Like</button>
                 </div>
-
               </form>
+
             </div>
           </div>
         </div>

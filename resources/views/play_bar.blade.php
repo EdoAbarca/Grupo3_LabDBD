@@ -13,21 +13,12 @@
 </head>
 
 <body style="margin-bottom:22px">
-
-<script src="/audiojs/audio.min.js"></script>
-<script>
-  audiojs.events.ready(function() {
-    var as = audiojs.createAll();
-  });
-</script>
-
-<audio src="/mp3/juicy.mp3" preload="auto" ></audio>
-    @include('includes.navbar')
-    <!-- Aquí irá la vista que mostrará los resultados de la busqueda realizada -->
-    @include('includes.footer')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+@include('includes.navbar')
+<audio controls="" >
+  <source src="{{$song->URL}}" type="audio/mp3">
+</audio> 
+<!-- /audios/TR.mp3 -->
+@include('includes.footer')
 </body>
 
 </html>

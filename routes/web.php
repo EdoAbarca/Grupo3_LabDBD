@@ -56,6 +56,7 @@ Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album');
 
+// PLAY SONG
 Route::get('/play_bar', function () {
     return view('play_bar');
 });
@@ -64,7 +65,14 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
+// PLAY SONG
+Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@show');
+
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
+
+
+
+
 
 
 // USER
