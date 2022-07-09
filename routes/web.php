@@ -35,8 +35,9 @@ Route::post('/logout', function(){
     return redirect('/home');
 });
 
-//Mientras tanto
+
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
+Route::post('/checkout/{id}', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
@@ -69,10 +70,6 @@ Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->
 Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@show');
 
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
-
-
-
-
 
 
 // USER

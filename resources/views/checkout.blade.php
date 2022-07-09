@@ -26,7 +26,7 @@
         <div class="row">
         <div class="col-3"></div>
         <div id="columnaCentral" class="col-6">
-            <form class="row g-4" action="/receipts/create" method="POST"> <!-- Crear controlador para esto -->
+            <form class="row g-4" action="/checkout/{{$pm->id}}" method="POST"> 
                 <div class="col-md-4">
                     <label for="validationDefault01" class="form-label">Fecha</label>
                     <input id="date" name="date" type="string" class="form-control" value="{{  date('Y-m-d') }}" required style="text-align: center;" readonly="readonly">
@@ -39,12 +39,17 @@
                     <label for="validationDefaultUsername" class="form-label">Método de pago</label>
                     <div class="input-group">
                         <select id="payment_method_id" name="payment_method_id" class="form-select" required>
+                            @foreach($payment_method as $pm)
+                            @if($pm->user_id == auth()->user()->id)
                             <option value="Seleccione un método" disabled>Método de pago</option>
-                            <option value="1">Débito</option>
-                            <option value="2">Crédito</option>
-                            <option value="3">Paypal</option> <!--Aquí hay que proporcionar los métodos de pago del usuario, entregarlos por controlador-->
+                            <option value="{{$pm->id}">{{$pm->method_name}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </div>
+                </div>
+                <div>
+                  <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
                 </div>
                     
                 <br>
