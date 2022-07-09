@@ -161,25 +161,16 @@
       </div>
     </div>
     <div class="element3">
+      <form action="/my_songs/{{auth()->user()->id}}" method="GET">
+        <button class="btn btn-outline-success" type="submit">Mis canciones</button>
+      </form>
       <a class="btn btn-outline-success" href="/profile">Perfil</a>
       <a class="btn btn-outline-success" href="/create_album">Subir cancion</a>
       <a class="btn btn-outline-success" href="/crud">Administración de plataforma</a>
     </div>
 
   </div>
-
-
-  <!--<ul class="menu">
-      <li><a href="#">Nombre plataforma</a></li>
-      <p>Descubre Música</p>
-      <li><a href="#">Canciones más escuchadas</a></li>
-      <li><a href="#">Buscador</a></li>
-      <p>Tu Biblioteca de música</p>
-      <li><a href="#">Canciones que te gustan</a></li>
-      <li><a href="#">Lista de reproducción 1</a></li>
-      <li><a href="#">Lista de reproducción 2</a></li>
-      <li><a href="#">Lista de reproducción 3</a></li>
-    </ul>-->
+  </ul>-->
   @endauth
   @include('includes.footer')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

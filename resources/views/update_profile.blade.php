@@ -28,17 +28,17 @@
           </ul>
         </div><br />
         @endif
-        <form method="POST" action="/profile/update_profile/{{$u->id}}">
+        <form method="POST" action="/users/update2/{{$user->id}}">
           @csrf
           @method('PUT')
           <div class="form-group">
             <label for="nickname">Nombre de usuario:</label>
-            <input type="text" class="form-control" name="nickname" value="" placeholder="123" />
+            <input type="text" class="form-control" name="nickname" value="{{$user->nickname}}" placeholder="" />
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" class="form-control" name="email" value="" />
+            <input type="text" class="form-control" name="email" value="{{$user->email}}" />
           </div>
 
           <div class="form-group">

@@ -96,7 +96,7 @@
       <input id="botonLog" class="btn btn-outline-success" type="submit" value="Seguir">
     </div>
 
-    <form action="/profile/edit/{{$u->id}}" method="GET">
+    <form action="users/edit2/{{$u->id}}" method="GET">
       <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
     </form>
 

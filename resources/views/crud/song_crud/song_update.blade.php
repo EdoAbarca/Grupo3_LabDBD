@@ -34,7 +34,7 @@
        @method('PUT')
         
           <div class="form-group">    
-              <label for="song_name">Nombre de lista de reproduccion:</label>
+              <label for="song_name">Nombre canción:</label>
               <input type="text" class="form-control" name="song_name" value=""/>
           </div>
  

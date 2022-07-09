@@ -73,10 +73,25 @@ Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
 
 
 
-// UPDATE PROFILE
-Route::get('profile/update_profile', function () {
-    return view('profile/update_profile');
+
+// MY SONGS
+Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2');
+Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2');
+Route::put('/songs/update2/{id}','App\Http\Controllers\SongController@update2');
+
+Route::get('update_song', function () {
+    return view('update_song');
 });
+
+
+
+// UPDATE PROFILE
+Route::get('update_profile', function () {
+    return view('update_profile');
+});
+Route::get('/users/edit2/{id}','App\Http\Controllers\UserController@edit2');
+Route::put('/users/update2/{id}','App\Http\Controllers\UserController@update2');
+
 
 
 // USER
@@ -348,7 +363,6 @@ Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');
 Route::post('/users/create2','App\Http\Controllers\UserController@create');
 Route::get('/users/edit/{id}','App\Http\Controllers\UserController@edit');
-Route::get('/profile/edit/{id}','App\Http\Controllers\UpdateProfileController@edit');
 Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');
 Route::put('/users/delete/{id}','App\Http\Controllers\UserController@delete');
 
