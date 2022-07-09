@@ -72,6 +72,13 @@ Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@sh
 Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
 
 
+
+// UPDATE PROFILE
+Route::get('profile/update_profile', function () {
+    return view('profile/update_profile');
+});
+
+
 // USER
 Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index');
 Route::get('/crud/user_crud/user_create', function () {
@@ -341,6 +348,7 @@ Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');
 Route::post('/users/create2','App\Http\Controllers\UserController@create');
 Route::get('/users/edit/{id}','App\Http\Controllers\UserController@edit');
+Route::get('/profile/edit/{id}','App\Http\Controllers\UpdateProfileController@edit');
 Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');
 Route::put('/users/delete/{id}','App\Http\Controllers\UserController@delete');
 
