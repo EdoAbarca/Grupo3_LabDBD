@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Profile</title>
 
   <!-- <link href="{{ asset('css/profile.css') }}" rel="stylesheet"> -->
@@ -27,7 +26,12 @@
   }
 
   .user-name {
-    font-size: 18px;
+    font-size: 25px;
+    margin-top: 14px;
+  }
+
+  .user-biography {
+    font-size: 15px;
     margin-top: 14px;
   }
 </style>
@@ -62,12 +66,18 @@
   @endforeach
 
   @include('includes.navbar')
+  <a class="btn btn-outline-success" href="/home">Volver</a>
   <div class="head">
-    <img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />
+    <!--<img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />-->
+
+    <!-- Rol Usuario -->
+    <p class="role-user">Rol: {{$r->role_name}}</p>
     <!-- Nombre Usuario -->
     <h1 class="user-name">{{$u->nickname}}</h1>
-    <!-- Rol Usuario -->
-    <h1 class="role-user">{{$r->role_name}}</h1>
+
+    <!-- Biografía -->
+    <h1 class="user-biography">Biografía: {{$u->biography}}</h1>
+
     <!-- Ubicacion Usuario -->
     <small class="text-muted">
       <i class="fa fa-map-marker"></i>{{$l->name}}
@@ -86,28 +96,24 @@
       <input id="botonLog" class="btn btn-outline-success" type="submit" value="Seguir">
     </div>
 
+    <form action="/profile/edit/{{$u->id}}" method="GET">
+      <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+    </form>
+
   </div>
   <div>
-    <!-- Biografia -->
+    <!-- Biografia 
     <h3>Biografia</h3>
-    <p>{{$u->biography}}</p>
+    <p>{{$u->biography}}</p>-->
   </div>
   @endif
-	@endforeach
-	@endif
-	@endforeach
+  @endforeach
   @endif
-	@endforeach
-
-  <a class="btn btn-outline-success" href="/home">Volver</a>
-
-
-
-
+  @endforeach
+  @endif
+  @endforeach
   @include('includes.footer')
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
