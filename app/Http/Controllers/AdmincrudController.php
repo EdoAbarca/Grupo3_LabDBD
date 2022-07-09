@@ -122,4 +122,11 @@ class AdmincrudController extends Controller
         $songs->values()->all();
         return view('/crud/song_crud/song_index', ['songs'=>$songs]);
     }
+    public function like_index()
+    {
+        $likes = Like::where('delete',false)->get();
+        $likes = $likes->sortBy('id');
+        $likes->values()->all();
+        return view('/crud/like_crud/like_index', ['likes'=>$likes]);
+    }
 }

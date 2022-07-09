@@ -213,6 +213,18 @@ Route::get('/crud/song_crud/song_show', function () {
     return view('/crud/song_crud/song_show');
 });
 
+// LIKE 
+Route::get('/crud/like_crud/like_index', 'App\Http\Controllers\AdmincrudController@like_index');
+
+Route::get('/crud/like_crud/like_create', function () {
+    return view('/crud/like_crud/like_create');
+});
+Route::get('/crud/like_crud/like_update', function () {
+    return view('/crud/like_crud/like_update');
+});
+Route::get('/crud/like_crud/like_show', function () {
+    return view('/crud/like_crud/like_show');
+});
 
 Route::get('/home','App\Http\Controllers\SongController@index');
 
@@ -241,7 +253,8 @@ Route::put('/genres/delete/{id}','App\Http\Controllers\GenreController@delete');
 Route::get('/likes','App\Http\Controllers\LikeController@index');
 Route::get('/likes/{id}','App\Http\Controllers\LikeController@show');
 Route::post('/likes/create','App\Http\Controllers\LikeController@store');
-//Route::get('/likes/edit/{id}','App\Http\Controllers\LikeController@edit');
+Route::post('/likes/create2','App\Http\Controllers\LikeController@create');
+Route::get('/likes/edit/{id}','App\Http\Controllers\LikeController@edit');
 Route::put('/likes/update/{id}','App\Http\Controllers\LikeController@update');
 Route::put('/likes/delete/{id}','App\Http\Controllers\LikeController@delete');
 

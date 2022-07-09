@@ -30,9 +30,35 @@ class LikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator=Validator::make(
+            $request->all(),[
+                'user_id' => 'required|integer',
+                'song_id' => 'required|integer',
+                //'delete' => 'required|boolean', 
+            ],
+            [
+                'user_id.required' => 'Debes ingresar el id del usuario que dio like a una cancion',
+                'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
+
+                'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
+                'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
+
+                //'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                //'delete.boolean' => '"delete" debe ser un booleano',
+            ]
+            );
+        if($validator->fails()){
+            return response($validator->errors());
+        }
+
+        $newLike= new Like();
+        $newLike->user_id        = $request->user_id;
+        $newLike->song_id        = $request->song_id;
+        $newLike->delete         = 0;
+        $newLike->save();
+        return redirect('/crud/like_crud/like_index');
     }
 
     /**
@@ -96,7 +122,7 @@ class LikeController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return response($like,200);
+        return view('crud/like_crud/like_show', compact('like'));
     }
 
     /**
@@ -107,7 +133,8 @@ class LikeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $like = Like::find($id);
+        return view('crud/like_crud/like_update', compact('like'));
     }
 
     /**
@@ -123,7 +150,7 @@ class LikeController extends Controller
             $request->all(),[
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
-                'delete' => 'required|boolean', 
+                //'delete' => 'required|boolean', 
             ],
             [
                 'user_id.required' => 'Debes ingresar el id del usuario que dio like',
@@ -132,8 +159,8 @@ class LikeController extends Controller
                 'song_id.required' => 'Debes ingresar el id de la cancion a la que se le dio like',
                 'song_id.integer' => 'El id de la cancion debe ser de un tipo de dato integer',
 
-                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
-                'delete.boolean' => '"delete" debe ser un booleano',
+                /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"delete" debe ser un booleano',*/
             ]
             );
         if($validator->fails()){
@@ -153,12 +180,9 @@ class LikeController extends Controller
         }
         $like->user_id        = $request->user_id;
         $like->song_id        = $request->song_id;
-        $like->delete         = $request->delete;
+        $like->delete         = 0;
         $like->save();
-        return response()->json([
-            'respuesta' => 'se ha modificado un like',
-            'id'=> $like->id,
-        ],200);
+        return redirect('/crud/like_crud/like_index');
     }
 
     /**
@@ -183,9 +207,6 @@ class LikeController extends Controller
         
         $like->delete = true;
         $like->save();
-        return response()->json([
-            'respuesta' => 'Se ha eliminado un like',
-            'id' => $like->id,
-        ],200);
+        return redirect('/crud/like_crud/like_index');
     }
 }
