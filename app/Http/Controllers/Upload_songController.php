@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Album;
+use App\Models\Location;
 
 class Upload_songController extends Controller
 {
@@ -17,7 +18,8 @@ class Upload_songController extends Controller
     {
         $users = User::where('delete',false)->get();
         $albums = Album::get();
-        return view('upload_song', ['users'=>$users, 'albums'=>$albums]);
+        $locations = Location::where('delete',false)->get();
+        return view('upload_song', ['users'=>$users, 'albums'=>$albums,'locations'=>$locations]);
     }
 
     

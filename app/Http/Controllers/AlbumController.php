@@ -92,9 +92,9 @@ class AlbumController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'album_name' => 'required|min:1|max:50',
-               'release_date' => 'required|date',
+               //'release_date' => 'required|date',
                'songs_quantity' => 'required|integer|min:1',
-               'duration'=> 'required|date_format:H:i:s',
+               //'duration'=> 'required|date_format:H:i:s',
                'user_id' => 'required|integer',
                //'delete' => 'required|boolean',
             ],
@@ -103,15 +103,15 @@ class AlbumController extends Controller
                 'album_name.min' => 'El nombre del album debe tener un largo minimo de 1 caracter',
                 'album_name.max' => 'El nombre del album debe tener un largo maximo de 50 caracteres',
 
-                'release_date.required' => 'Debes ingresar la fecha de lanzamiento del album',
-                'release_date.date' => 'La fecha de lanzamiento debe ser una fecha valida con el formato: "YYYY:MM:DD',
+                /*'release_date.required' => 'Debes ingresar la fecha de lanzamiento del album',
+                'release_date.date' => 'La fecha de lanzamiento debe ser una fecha valida con el formato: "YYYY:MM:DD',*/
                 
                 'songs_quantity.required' => 'Debes ingresar el numero de canciones del album',
                 'songs_quantity.integer' => 'El numero de canciones debe ser de un tipo de dato integer',
                 'songs_quantity.min' => 'El numero de canciones debe tener como minimo valor 1',
 
-                'duration.required' => 'Debes ingresar la duracion total del album',
-                'duration.date_format:H:i:s' => 'La duracion total del album debe seguir el formato: H:i:s',
+               // 'duration.required' => 'Debes ingresar la duracion total del album',
+               // 'duration.date_format:H:i:s' => 'La duracion total del album debe seguir el formato: H:i:s',
 
                 'user_id.required' => 'Debes ingresar el id del usuario al que le pertenece el album',
                 'user_id.integer' => 'El id del usuario debe ser de un tipo de dato integer',
@@ -126,9 +126,9 @@ class AlbumController extends Controller
 
         $newAlbum= new Album();
         $newAlbum->album_name     = $request->album_name;
-        $newAlbum->release_date   = $request->release_date;
+        $newAlbum->release_date   = date('y-m-d');
         $newAlbum->songs_quantity = $request->songs_quantity;
-        $newAlbum->duration       = $request->duration;
+        $newAlbum->duration       = "00:00:00";
         $newAlbum->user_id        = $request->user_id;
         $newAlbum->delete         = 0;
         $newAlbum->save();
@@ -158,7 +158,7 @@ class AlbumController extends Controller
                 'respuesta' => 'No se encuentra el id ingresado',
             ]);
         }
-        return redirect('/crud/album_crud/album_show',compact('album')); 
+        return view('/crud/album_crud/album_show',compact('album')); 
     }
 
     /**

@@ -20,9 +20,6 @@
   $id_album=$id_album + 1;
   @endphp
   @endforeach
-  @php
-  $id_album=$id_album + 1;
-  @endphp
   @foreach($albums as $a)
   @if($a->id==$id_album)
   @endif
@@ -46,7 +43,7 @@
             </div>
           </div>
 
-          
+
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
               <select class="form-select" name="parental_advisory" aria-label="Default select example">
@@ -69,9 +66,13 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group row">
-                <label for="location_id" class="col-form-label col-sm-4">Ubicación:</label> <!-- (a hacer selección parecida a usada en register) -->
                 <div class="col-sm-8">
-                  <input type="number" name="location_id" id="location_id" value="" class="form-control" placeholder="Ubicacion">
+                  <select class="form-select" name=location_id id="location_id" aria-label="Default select example">
+                    <option selected>Selecciona una ubicación</option>
+                    @foreach($locations as $l)
+                    <option value="{{$l->id}}">{{$l->location_name}}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
             </div>
@@ -79,34 +80,24 @@
 
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
-              <label for="duration" class="col-form-label col-sm-4">Duración:</label> <!-- (a hacer selección parecida a usada en register) -->
+              <label for="URL" class="col-form-label col-sm-4">Link Cancion:</label> <!-- (a hacer selección parecida a usada en register) -->
               <div class="col-sm-8">
-                <input type="text" name="duration" id="duration" value="" class="form-control" placeholder="Duracion">
+                <input type="text" name="URL" id="URL" class="form-control" value="" placeholder="URL de cancion">
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group row">
-            <label for="URL" class="col-form-label col-sm-4">Link Cancion:</label> <!-- (a hacer selección parecida a usada en register) -->
-            <div class="col-sm-8">
-              <input type="text" name="URL" id="URL" class="form-control" value="" placeholder="URL de cancion">
-            </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-6">
+            <input id="boton-subir" class="btn btn-outline-success" type="submit" name="" value="Subir canción">
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <a class="btn btn-outline-success" href="/home">Cancelar</a>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-6 col-md-6">
-          <input id="boton-subir" class="btn btn-outline-success" type="submit" name="" value="Subir canción">
-        </div>
-        <div class="col-xs-6 col-md-6">
-          <a class="btn btn-outline-success" href="/home">Cancelar</a>
-        </div>
-      </div>
     </form>
-    
+
     <div class="row">
       <div class="col-xs-6 col-md-6">
         <a class="btn btn-outline-success" href="/home">Volver al Menu</a>

@@ -34,19 +34,8 @@
 
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
-              <label for="user_id" class="col-form-label col-sm-4">ID:</label> <!-- Este después debe desaparecer -->
               <div class="col-sm-8">
-                <input type="number" name="user_id" id="user_id" class="form-control" value = "{{auth()->user()->id}}" readonly="readonly">
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group row">
-              <label for="duration" class="col-form-label col-sm-4">Duracion:</label> <!-- Este después debe desaparecer -->
-              <div class="col-sm-8">
-                <input type="text" name="duration" id="duration" class="form-control" value = "">
+                <input type="number" name="user_id" id="user_id" class="invisible" value = "{{auth()->user()->id}}" readonly="readonly">
               </div>
             </div>
           </div>
@@ -57,16 +46,6 @@
               <label for="songs_quantity" class="col-form-label col-sm-4">Numero de canciones:</label> <!-- Este después debe desaparecer -->
               <div class="col-sm-8">
                 <input type="number" name="songs_quantity" id="songs_quantity" class="form-control" value = "">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group row">
-              <label for="release_date" class="col-form-label col-sm-4">Fecha de publicacion:</label> <!-- Este después debe desaparecer -->
-              <div class="col-sm-8">
-                <input type="text" name="release_date" id="release_date" class="form-control" value = "">
               </div>
             </div>
           </div>

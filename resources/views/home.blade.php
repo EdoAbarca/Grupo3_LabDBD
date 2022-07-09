@@ -103,11 +103,6 @@
 
 
 <body>
-  <script>
-    function muestraMensaje() {
-      console.log('Gracias por pinchar');
-    }
-  </script>
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.navbar')
   <!-- Mientras tanto -->
