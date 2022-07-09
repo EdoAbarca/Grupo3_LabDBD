@@ -29,9 +29,31 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        /*$validator = Validator::make(
+            $request->all(),[
+                'role_name' => 'required|min:3|max:15',
+                'delete' => 'required|boolean',
+            ],
+            [
+                'role_name.required' => 'Debes ingresar un nombre de rol',
+                'role_name.min' => 'El role_name debe tener un largo minimo de 3',
+                'role_name.max' => 'El role_name debe tener un largo maximo de 15',
+
+                'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
+                'delete.boolean' => '"celete" debe ser un booleano',
+            ]
+        ); 
+        if($validator->fails()){
+            return response($validator->errors());
+        }*/
+        $newRole = new Role();
+        $request->id        = $request->id;
+        $newRole->role_name = $request->role_name;
+        $newRole->delete    = 0;
+        $newRole->save();
+        return;
     }
 
     /**

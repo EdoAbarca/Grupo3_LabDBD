@@ -5,24 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Album;
-use App\Models\Follow;
-use App\Models\Genre;
-use App\Models\Like;
-use App\Models\Location;
-use App\Models\Payment_method;
-use App\Models\Permission;
-use App\Models\Playlist;
-use App\Models\Rate;
-use App\Models\Receipt;
-use App\Models\Role_permission;
-use App\Models\Role;
-use App\Models\Song_genre;
-use App\Models\Song_playlist;
-use App\Models\Song;
-use App\Models\User;
-
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -31,8 +13,9 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        \App\Models\Role::factory(10)->create();
+    {   
+        $this->call(RoleSeeder::class);
+        //\App\Models\Role::factory(10)->create();
         \App\Models\Location::factory(10)->create();
         \App\Models\User::factory(10)->create();
         \App\Models\Permission::factory(10)->create();
