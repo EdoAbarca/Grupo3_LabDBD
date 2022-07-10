@@ -101,7 +101,7 @@
       <div class="col-sm-12">
         <h1 class="display-3">Listas de reproducción creadas</h1>
         <div>
-          <a href="/create_playlist" class="btn btn-primary mb-3">Crear lista de reproducción</a>
+          <a href="/create_playlist" class="btn mb-3">Crear lista de reproducción</a>
         </div>
 
         <div class="alert alert-success">
@@ -114,7 +114,7 @@
               <td>ID</td>
               <td>Nombre playlist</td>
               <td>Fecha de creación</td>
-              <td colspan=2>Acciones</td>
+              <td colspan=3>Acciones</td>
             </tr>
           </thead>
           <tbody>
@@ -133,9 +133,10 @@
                 <form action="user_playlists/{{$p->id}}" method="POST">
                   @csrf
                   @method('PUT')
-                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                  <button class="btn btn-danger" type="submit">Eliminar de la playlist</button>
                 </form>
               </td>
+              
             </tr>
             @endif
             @endforeach

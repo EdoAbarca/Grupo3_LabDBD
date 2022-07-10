@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Location;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -195,7 +196,8 @@ class UserController extends Controller
     public function edit2($id)
     {
         $user = User::find($id);
-        return view('update_profile', compact('user'));  
+        $locations = Location::where('delete',false)->get();
+        return view('update_profile', ['user'=>$user,'locations'=>$locations]);  
     }
 
     /**

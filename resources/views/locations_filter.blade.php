@@ -114,7 +114,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$l->location_name}}</h5>
               <form method="GET" action="/songs_bylocation/{{$l->id}}">
-                <button type="submit" class="btn btn-primary">Filtrar Cancion</button>
+                <button type="submit" class="btn">Filtrar Cancion</button>
                 </form>
             </div>
           </div>

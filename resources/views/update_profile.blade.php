@@ -56,9 +56,13 @@
             <input type="text" class="form-control" name="biography" value="" />
           </div>
 
-          <div class="form-group">
-            <label for="location">Ubicacion:</label>
-            <input type="number" class="form-control" name="location_id" value="" />
+          <div class="form-group">Ubicación
+            <select class="form-select" name=location_id id="location_id" aria-label="Default select example" required>
+              <option selected disabled value="">Selecciona una ubicación</option>
+              @foreach($locations as $l)
+              <option value="{{$l->id}}">{{$l->location_name}}</option>
+              @endforeach
+            </select>
           </div>
 
           <button type="submit" class="btn btn-primary">Actualizar Perfil</button>

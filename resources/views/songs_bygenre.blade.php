@@ -114,7 +114,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$s->song_name}}</h5>
                         <form method="GET" action="/playing_song/{{$s->id}}">
-                            <button type="submit" class="btn btn-primary">Reproducir Cancion</button>
+                            <button type="submit" class="btn">Reproducir Canción</button>
                         </form>
                     </div>
                 </div>

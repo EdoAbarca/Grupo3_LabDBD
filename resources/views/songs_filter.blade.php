@@ -114,7 +114,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$g->genre_name}}</h5>
               <form method="GET" action="/songs_bygenre/{{$g->id}}">
-                <button type="submit" class="btn btn-primary">Filtrar Cancion</button>
+                <button type="submit" class="btn">Filtrar Canción</button>
                 </form>
             </div>
           </div>

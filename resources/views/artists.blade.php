@@ -31,7 +31,7 @@
                         <thead>
                             <tr>
                                 <td>Nombre</td>
-                                <td colspan=2>Acciones</td>
+                                <td colspan=2>Perfil</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,7 @@
 
                                 <td>
                                     <form action="/songsArtists/{{$user->id}}" method="GET">
-                                        <button type="submit" class="btn btn-primary">Visitar Perfil</button>
+                                        <button type="submit" class="btn">Visitar Perfil</button>
                                     </form>
                                 </td>
 

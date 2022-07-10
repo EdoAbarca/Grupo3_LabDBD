@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Favorite logged user songs</title>
 
   <!-- <link href="{{ asset('css/favsongs.css') }}" rel="stylesheet"> -->
@@ -22,33 +23,6 @@
     padding-left: 2em;
     padding-right: 2em;
 
-  }
-
-  /*.grid > div{
-  background: #6148cf;
-  padding: 1em;
-}*/
-
-  /*.grid > div:hover{
-  border: 1px solid #f1c40f;
-}*/
-
-  .element1 {
-    grid-column: 1/3;
-  }
-
-  .element2 {
-    grid-row: 2/3;
-    grid-column: 1/2;
-  }
-
-  .element3 {
-    grid-column: 2/3;
-    grid-row: 2/3;
-  }
-
-  .element4 {
-    grid-column: 1/3;
   }
 
 
@@ -85,11 +59,6 @@
   tr:nth-child(even) {
     background-color: #ddd;
   }
-
-  tr:hover td {
-    background-color: #313060;
-    color: white;
-  }
 </style>
 
 <!-- Aquí irá la muestra de las canciones favoritas del usuario logueado -->
@@ -115,7 +84,7 @@
               <td>ID</td>
               <td>Canción</td>
               <td>Duración</td>
-              <td colspan=1>Acciones</td>
+              <td colspan=2>Acciones</td>
             </tr>
           </thead>
           <tbody>
@@ -134,6 +103,11 @@
                   <button class="btn btn-danger" type="submit">Eliminar</button>
                 </form>
               </td>
+                            <td>
+                  <form method="GET" action="/playing_song/{{$s->id}}">
+                    <button type="submit" class="btn">Reproducir Cancion</button>
+                  </form>
+                </td>
             </tr>
             @endif
             @endforeach

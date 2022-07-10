@@ -99,6 +99,11 @@
     /*|grid-column: 2/3;
   grid-column: 2/3;*/
   }
+
+
+  .button:hover {
+    color: #f1f1f1;
+  }
 </style>
 
 
@@ -114,18 +119,18 @@
       <ul class="menu">
         <h1>JELfy Music</h1>
         <p>Descubre Música</p>
-        <li><a class="btn btnsuccess" href="/songranking">Canciones más escuchadas</a></li>
-        <li><a class="btn btnsuccess" href="#">Buscador</a></li>
-        <li><a class="btn btnsuccess" href="/songs_filter">Filtrar canciones por genero</a></li>
-        <li><a class="btn btnsuccess" href="/locations_filter">Filtrar canciones por ubicación</a></li>
-        <li><a class="btn btnsuccess" href="/artists">Explorar artistas</a></li>
+        <li><a class="button" href="/songranking">Canciones más escuchadas</a></li>
+        <li><a class="button" href="#">Buscador</a></li>
+        <li><a class="button" href="/songs_filter">Filtrar canciones por genero</a></li>
+        <li><a class="button" href="/locations_filter">Filtrar canciones por ubicación</a></li>
+        <li><a class="button" href="/artists">Explorar artistas</a></li>
         <p>Tu Biblioteca de música</p>
-        <li><a class="btn btnsuccess" href="/favsongs">Canciones que te gustan</a></li>
-        <li><a class="btn btnsuccess" href="/user_playlists">Listas de reproducción</a></li>
-        <li><a class="btn btnsuccess" href="/user_rates">Ver valoraciones</a></li>
+        <li><a class="button" href="/favsongs">Canciones que te gustan</a></li>
+        <li><a class="button" href="/user_playlists">Listas de reproducción</a></li>
+        <li><a class="button" href="/user_rates">Ver valoraciones</a></li>
         <li>
           <form action="/my_songs/{{auth()->user()->id}}" method="GET">
-            <button class="btn btnsuccess" type="submit">Mis canciones</button>
+            <button class="button" style="color:#313060" type="submit">Mis canciones</button>
           </form>
         </li>
       </ul>
@@ -137,24 +142,28 @@
         <div class="col-2 d-flex justify-content-center">
           <div class="card" style="width: 10rem;">
             <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
+            
             <div class="card-body">
               <h5 class="card-title">{{$song->song_name}}</h5>
-              <form method="GET" action="/playing_song/{{$song->id}}">
-                <button type="submit" class="btn btn-primary">Reproducir Cancion</button>
-              </form>
-              <form class="like" method="POST" action="/likes/create">
-                <div>
-                  <input class="invisible" id="song_id" name="song_id" value="{{$song->id}}">
-                </div>
+              <div>
 
-                <div>
-                  <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
-                </div>
-                <button type="submit" class="btn btn-primary">Like</button>
-                <div>
-                </div>
-              </form>
+                <form method="GET" action="/playing_song/{{$song->id}}">
+                  <button type="submit" class="btn">Reproducir</button>
+                </form>
 
+                <form class="like" method="POST" action="/likes/create">
+                  <div>
+                    <input class="invisible" id="song_id" name="song_id" value="{{$song->id}}">
+                  </div>
+                  <div>
+                    <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+                  </div>
+                  <button type="submit" class="btn">Like</button>
+                  <div>
+                  </div>
+                </form>
+
+              </div>
             </div>
           </div>
         </div>

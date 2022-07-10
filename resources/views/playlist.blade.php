@@ -62,7 +62,7 @@
               <td>{{$s->id}}</td>
               <td>{{$s->song_name}}</td>
               <td>
-                <a href="" class="btn btn-primary">Reproducir</a>
+                <a href="" class="btn">Reproducir</a>
               </td>
               <td>
                 <form action="song_playlists/{{$sp->id}}" method="POST">
@@ -73,6 +73,7 @@
                   </div>
                   <button class="btn btn-danger" type="submit">Eliminar</button>
                 </form>
+                <a href="" class="btn">Like</a>
               </td>
             </tr>
             @endif

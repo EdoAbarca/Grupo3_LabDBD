@@ -37,10 +37,10 @@
                     </thead>
                     <tbody>
                         @foreach($albums as $album)
-                            @if($album->user_id == auth()->user()->id)
-                                @foreach($songs as $song)
-                                    @if($album->id == $song->album_id)
-                                    <tr>
+                        @if($album->user_id == auth()->user()->id)
+                        @foreach($songs as $song)
+                        @if($album->id == $song->album_id)
+                        <tr>
                             <td>{{$song->id}}</td>
                             <td>{{$song->song_name}}</td>
                             <td>{{$song->album_id}}</td>
@@ -51,11 +51,16 @@
                                 </form>
                             </td>
                             <td>
+                                <form method="GET" action="/playing_song/{{$song->id}}">
+                                    <button type="submit" class="btn">Reproducir Cancion</button>
+                                </form>
+                            </td>
+                            <td>
                             </td>
                         </tr>
-                                    @endif
-                                @endforeach
-                            @endif
+                        @endif
+                        @endforeach
+                        @endif
 
                         @endforeach
                     </tbody>
