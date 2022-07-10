@@ -32,7 +32,7 @@ class CheckoutController extends Controller
         $newReceipt= new Receipt();
         $newReceipt->name               = "Pago de suscripción de ".$user->nickname;
         $newReceipt->sum                = $request->amount;
-        $newReceipt->payment_time       = time('H:i:s');
+        $newReceipt->payment_time       = date('H:i:s');
         $newReceipt->payment_date       = date('y-m-d');
         $newReceipt->user_id            = $request->user_id;
         $newReceipt->payment_method_id  = $request->payment_method_id;
