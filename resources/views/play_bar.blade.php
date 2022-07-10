@@ -12,6 +12,25 @@
 </head>
 
 <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .letras{
+    font-family: "Century Gothic";
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+  }
+  section{
+    width: 100%;
+    height: 100vh;
+    background-color: #fff; 
+    background: linear-gradient(45deg, #2874A6,#313060,black);
+    background-size:120% 120%;
+    position: relative;
+  }
   .container {
     height: 100hv;
     width: 100%;
@@ -56,19 +75,18 @@
     width: 80px;
     cursor: pointer;
   }
-
 </style>
 
 <body style="margin-bottom:22px">
-
+<section>
   @include('includes.navbar')
   <div class="container">
     <div class="content">
       <div class="left-col">
-        <h1>Canción<br>en curso</h1>
+        <h1 style="color:antiquewhite" class=letras>Canción<br>en curso</h1>
       </div>
       <div class="right-col">
-        <p>Reproduciendo canción</p>
+        <p style="color:antiquewhite" >Reproducir Cancion</p>
         <img src="{{URL('media/play.png')}}" id="icon">
       </div>
       <!--<audio controls="">
@@ -95,7 +113,7 @@
       }
 
     </script>
-
+</section>
     @include('includes.footer')
 </body>
 

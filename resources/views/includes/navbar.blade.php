@@ -1,4 +1,8 @@
 <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
   .btn-outline-success {
     color: #f1f1f1;
     border-color: #f1f1f1;
