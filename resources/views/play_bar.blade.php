@@ -75,7 +75,7 @@
       <source src="{{$song->URL}}" type="audio/mp3">
     </audio>-->
     </div>
-    <audio id="song">
+    <audio preload="auto" id="song">
       <source src="{{$song->URL}}" type="audio/mp3">
     </audio>
 
