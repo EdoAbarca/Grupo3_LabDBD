@@ -113,7 +113,6 @@
   <a class="btn btn-outline-success" href="/upload_payment_method">Agregar método de pago</a>
   <a class="btn btn-outline-success" href="/create_playlist">Crear playlist</a>
   <a class="btn btn-outline-success" href="/create_role">Crear rol</a>
-  <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
   @endguest
   @auth
   <div class="grid">
@@ -164,6 +163,7 @@
       <form action="/my_songs/{{auth()->user()->id}}" method="GET">
         <button class="btn btn-outline-success" type="submit">Mis canciones</button>
       </form>
+      <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
       <a class="btn btn-outline-success" href="/songs_filter">Filtrar canciones por genero</a>
       <a class="btn btn-outline-success" href="/artists">Explorar artistas</a>
       <a class="btn btn-outline-success" href="/profile">Perfil</a>

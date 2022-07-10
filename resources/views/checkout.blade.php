@@ -29,29 +29,29 @@
         <form class="row g-4" action="/checkout" method="POST">
           <div class="col-md-4">
             <label for="validationDefault01" class="form-label">Fecha</label>
-            <input id="date" name="date" type="string" class="form-control" value="{{  date('Y-m-d') }}" required
+            <input id="date" name=date type="string" class="form-control" value="{{  date('Y-m-d') }}" required
               style="text-align: center;" readonly="readonly">
           </div>
           <div class="col-md-4">
             <label for="validationDefault02" class="form-label">Monto</label>
-            <input id="amount" name="amount" type="number" class="form-control" value="2990" required
+            <input id="amount" name=amount type="number" class="form-control" value="2990" required
               style="text-align: center;" readonly="readonly">
           </div>
           <div class="col-md-4">
             <label for="validationDefaultUsername" class="form-label">Método de pago</label>
             <div class="input-group">
-              <select id="payment_method_id" name="payment_method_id" class="form-select" required>
-                @foreach($payment_method as $pm)
+              <select id="payment_method_id" name=payment_method_id class="form-select" required>
+                @foreach($payment_methods as $pm)
                 @if($pm->user_id == auth()->user()->id)
                 <option value="Seleccione un método" disabled>Método de pago</option>
-                <option value="{{$pm->id}">{{$pm->method_name}} ({{$pm->avaliable_budget}})</option>
+                <option value="{{$pm->id}}">{{$pm->method_name}} : {{$pm->avaliable_budget}}</option>
                 @endif
                 @endforeach
               </select>
             </div>
           </div>
           <div>
-            <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+            <input class="invisible" id="user_id" name=user_id value="{{auth()->user()->id}}">
           </div>
 
           <br>
