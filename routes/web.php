@@ -37,7 +37,7 @@ Route::post('/logout', function(){
 
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
-Route::post('/checkout/{id}', 'App\Http\Controllers\CheckoutController@pay');
+Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
@@ -85,6 +85,11 @@ Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
 Route::get('profile/update_profile', function () {
     return view('profile/update_profile');
 });
+
+// ARTISTS
+Route::get('/artists', 'App\Http\Controllers\ArtistController@index');
+Route::get('/songsArtists/{id}', 'App\Http\Controllers\SongController@index3');
+
 
 
 // USER

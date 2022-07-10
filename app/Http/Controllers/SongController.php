@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Song;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Location;
+use App\Models\Album;
+use App\Models\User;
+
 
 class SongController extends Controller
 {
@@ -22,6 +26,37 @@ class SongController extends Controller
             ]);
         }
         return view('home',['songs' => $songs]); 
+    }
+
+    public function index2($id)
+    {
+        $songs = Song::where('delete',false)->get();
+        $albums = Album::where('delete',false)->get();
+
+        if($songs->isEmpty()){
+            return response()->json([
+                'respuesta' => 'No se encuentran canciones',
+            ]);
+        }
+
+        return view('my_songs',['songs' => $songs, 'albums' => $albums]); 
+    }
+
+    public function index3($id)
+    {
+        $songs = Song::where('delete',false)->get();
+        $songs = $songs->sortByDesc('stream');
+        $songs->values()->all();
+        $albums = Album::where('delete',false)->get();
+        $users = User::where('delete',false)->get();
+
+        if($songs->isEmpty()){
+            return response()->json([
+                'respuesta' => 'No se encuentran canciones',
+            ]);
+        }
+
+        return view('songsArtists',['songs' => $songs, 'users' => $users ,'albums' => $albums, 'id'=> $id]); 
     }
 
     /**
