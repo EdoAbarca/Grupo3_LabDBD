@@ -44,7 +44,7 @@
                 @foreach($payment_methods as $pm)
                 @if($pm->user_id == auth()->user()->id)
                 <option value="Seleccione un método" disabled>Método de pago</option>
-                <option value="{{$pm->id}}">{{$pm->method_name}} : {{$pm->avaliable_budget}}</option>
+                <option value="{{$pm->id}}">{{$pm->method_name}} : {{$pm->available_budget}}</option>
                 @endif
                 @endforeach
               </select>

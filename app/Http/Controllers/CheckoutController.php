@@ -19,12 +19,12 @@ class CheckoutController extends Controller
     public function pay(Request $request)
     {
         $payment_method = Payment_method::find($request->payment_method_id);
-        if($payment_method->avaliable_budget < $request->amount)
+        if($payment_method->available_budget < $request->amount)
         {
             //Error, no se debe procesar la solicitud
             return redirect('checkout')->withErrors('El método de pago no posee el saldo suficiente para realizar la transacción');
         }
-        $payment_method->avaliable_budget = $payment_method->avaliable_budget - $request->amount;
+        $payment_method->available_budget = $payment_method->available_budget - $request->amount;
         $payment_method->save();
 
         $user = User::find($request->user_id);
