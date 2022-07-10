@@ -57,6 +57,14 @@ Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album');
 
+// FILTERS SONGS
+Route::get('/songs_bygenre', function () {
+    return view('/songs_bygenre');
+});
+
+Route::get('/songs_filter', 'App\Http\Controllers\Filter_genreController@songs_filter');
+Route::get('/songs_bygenre/{id}', 'App\Http\Controllers\Filter_genreController@songs_bygenre');
+
 // PLAY SONG
 Route::get('/play_bar', function () {
     return view('play_bar');
@@ -73,25 +81,10 @@ Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
 
 
 
-
-// MY SONGS
-Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2');
-Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2');
-Route::put('/songs/update2/{id}','App\Http\Controllers\SongController@update2');
-
-Route::get('update_song', function () {
-    return view('update_song');
-});
-
-
-
 // UPDATE PROFILE
-Route::get('update_profile', function () {
-    return view('update_profile');
+Route::get('profile/update_profile', function () {
+    return view('profile/update_profile');
 });
-Route::get('/users/edit2/{id}','App\Http\Controllers\UserController@edit2');
-Route::put('/users/update2/{id}','App\Http\Controllers\UserController@update2');
-
 
 
 // USER
@@ -272,6 +265,7 @@ Route::put('/follows/delete/{id}','App\Http\Controllers\FollowController@delete'
 
 Route::get('/genres','App\Http\Controllers\GenreController@index');
 Route::get('/genres/{id}','App\Http\Controllers\GenreController@show');
+Route::get('/genres2/{id}','App\Http\Controllers\GenreController@show2');
 Route::post('/genres/create','App\Http\Controllers\GenreController@store');
 Route::get('/genres/edit/{id}','App\Http\Controllers\GenreController@edit');
 Route::put('/genres/update/{id}','App\Http\Controllers\GenreController@update');
@@ -363,6 +357,7 @@ Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');
 Route::post('/users/create2','App\Http\Controllers\UserController@create');
 Route::get('/users/edit/{id}','App\Http\Controllers\UserController@edit');
+Route::get('/profile/edit/{id}','App\Http\Controllers\UpdateProfileController@edit');
 Route::put('/users/update/{id}','App\Http\Controllers\UserController@update');
 Route::put('/users/delete/{id}','App\Http\Controllers\UserController@delete');
 

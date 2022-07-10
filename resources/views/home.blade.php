@@ -164,6 +164,7 @@
       <form action="/my_songs/{{auth()->user()->id}}" method="GET">
         <button class="btn btn-outline-success" type="submit">Mis canciones</button>
       </form>
+      <a class="btn btn-outline-success" href="/songs_filter">Filtrar canciones por genero</a>
       <a class="btn btn-outline-success" href="/profile">Perfil</a>
       <a class="btn btn-outline-success" href="/create_album">Subir cancion</a>
       <a class="btn btn-outline-success" href="/crud">Administración de plataforma</a>

@@ -14,6 +14,7 @@
 <body style="margin-bottom:22px">
   @php
   $id_album=0;
+  $canciones=0;
   @endphp
   @foreach($albums as $a)
   @php
@@ -22,6 +23,9 @@
   @endforeach
   @foreach($albums as $a)
   @if($a->id==$id_album)
+    @php
+    $canciones=$a->songs_quantity
+    @endphp
   @endif
   @endforeach
 
@@ -31,6 +35,9 @@
   <div class="container">
     <h1>Subir nueva canción</h1>
     <hr>
+    
+
+
     <form role="form" class="upload_song" method="POST" action="/songs/create">
       <div class="well">
         <div class="row">
@@ -53,6 +60,17 @@
               </select>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group row">
+                <label for="" class="col-form-label col-sm-4">CANCIONES RESTANTES:</label> <!-- (a hacer selección parecida a usada en register) -->
+                <div class="col-sm-8">
+                  <input type="number" name="" id="" value="{{$canciones}}" class="form-control" readonly="readonly">
+                </div>
+              </div>
+            </div>
+
 
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -87,6 +105,12 @@
             </div>
           </div>
         </div>
+
+        
+    @php
+    $canciones=$canciones-1;
+    @endphp
+  
 
         <div class="row">
           <div class="col-xs-6 col-md-6">
