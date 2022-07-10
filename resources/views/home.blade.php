@@ -130,7 +130,7 @@
       </ul>
     </div>
     <div class="element2">
-      <h4 class="mb-3">Descrubre nueva música</h4>
+      <h4 class="mb-3">Descubre nueva música</h4>
       <div class="row text-center mb-2" method="GET" action="/home">
         @foreach($songs as $song)
         <div class="col-2 d-flex justify-content-center">
@@ -164,6 +164,7 @@
         <button class="btn btn-outline-success" type="submit">Mis canciones</button>
       </form>
       <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
+      <a class="btn btn-outline-success" href="/location_filter">Filtrar canciones por ubicación</a>
       <a class="btn btn-outline-success" href="/songs_filter">Filtrar canciones por genero</a>
       <a class="btn btn-outline-success" href="/artists">Explorar artistas</a>
       <a class="btn btn-outline-success" href="/profile">Perfil</a>

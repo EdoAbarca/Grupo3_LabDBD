@@ -82,16 +82,16 @@
     <small class="text-muted">
       <i class="fa fa-map-marker"></i>{{$l->name}}
     </small>
-    <!-- Numero de personas siguiendo -->
+    <!-- Numero de personas siguiendo 
     <div class="col-xs-6">
       <span class="m-b-xs h4 block">{{$follows_count}}</span>
       <small class="text-muted">Siguiendo</small>
-    </div>
-    <!-- Numero de seguidores -->
+    </div>-->
+    <!-- Numero de seguidores 
     <div class="col-xs-6">
       <span class="m-b-xs h4 block">{{$followers_count}}</span>
       <small class="text-muted">Seguidores</small>
-    </div>
+    </div>-->
     <div class="text-center">
       <input id="botonLog" class="btn btn-outline-success" type="submit" value="Seguir">
     </div>
