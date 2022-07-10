@@ -28,7 +28,8 @@ class SongFactory extends Factory
             'rate' => $this->faker->numberBetween($min=0,$max=100),
             'album_id' =>Album::all()->random()->id,
             'location_id' =>Location::all()->random()->id,
-            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)
+            'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0),
+            'URL'=>$this->faker->randomElement(["https://www.mboxdrive.com/GTA%20San%20Andreas%20Theme%20Song%20Full%20!%20!.mp3","https://www.mboxdrive.com/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up.mp3","https://www.mboxdrive.com/Teriyaki_Boyz_-_Tokyo_Drift_Fast_Furious_48364314.mp3"])
         ];
     }
 }

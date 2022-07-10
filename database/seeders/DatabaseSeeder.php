@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
+        $this->call(GenreSeeder::class);
         $this->call(RoleSeeder::class);
         \App\Models\Location::factory(10)->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Genre::factory(10)->create();
+        //\App\Models\Genre::factory(10)->create();
         \App\Models\Payment_method::factory(10)->create();
         \App\Models\Receipt::factory(10)->create();
         \App\Models\Album::factory(10)->create(); 
