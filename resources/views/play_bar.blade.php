@@ -87,13 +87,13 @@
       </div>
       <div class="right-col">
         <p style="color:antiquewhite" >Reproducir Cancion</p>
-        <img src="{{URL('media/play.png')}}" id="icon">
+        <img src="{{URL('media/pause.png')}}" id="icon">
       </div>
       <!--<audio controls="">
       <source src="{{$song->URL}}" type="audio/mp3">
     </audio>-->
     </div>
-    <audio preload="auto" id="song">
+    <audio preload="auto" id="song" autoplay>
       <source src="{{$song->URL}}" type="audio/mp3">
     </audio>
 

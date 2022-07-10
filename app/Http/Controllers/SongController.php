@@ -20,6 +20,7 @@ class SongController extends Controller
     public function index()
     {
         $songs = Song::where('delete',false)->get();
+        $songs = Song::all()->random(12);
         if($songs->isEmpty()){
             return response()->json([
                 'respuesta' => 'No se encuentran canciones',

@@ -40,16 +40,6 @@
             </div>
           </div>
         </div>
-        
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group row">
-              <label for="songs_quantity" class="col-form-label col-sm-4">Numero de canciones:</label> <!-- Este después debe desaparecer -->
-              <div class="col-sm-8">
-                <input type="number" name="songs_quantity" id="songs_quantity" class="form-control" value = "">
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-xs-6 col-md-6">

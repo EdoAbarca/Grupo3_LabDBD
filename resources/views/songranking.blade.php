@@ -122,13 +122,19 @@
             </tr>
           </thead>
           <tbody>
-            @php $i=0 @endphp @foreach($ordenados as $ordenado) <tr>
-              @if($i <= 100) <tr>
+            @php $i=0 @endphp 
+            @foreach($ordenados as $ordenado) <tr>
+              @if($i <= 10) <tr>
                 <td>{{$ordenado->song_name}}</td>
                 @foreach($albums as $album)
                 @if($album->id == $ordenado->album_id)
                 <td>{{$album->album_name}}</td>
                 <td>{{$ordenado->stream}}</td>
+                <td>
+                  <form method="GET" action="/playing_song/{{$ordenado->id}}">
+                    <button type="submit" class="btn">Reproducir Cancion</button>
+                  </form>
+                </td>
                 @php
                 $i=$i+1
                 @endphp
@@ -136,11 +142,7 @@
                 @endforeach
                 @endif
 
-                <td>
-                  <form method="GET" action="/playing_song/{{$ordenado->id}}">
-                    <button type="submit" class="btn">Reproducir Cancion</button>
-                  </form>
-                </td>
+
             </tr>
             @endforeach
           </tbody>

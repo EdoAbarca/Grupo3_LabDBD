@@ -104,6 +104,10 @@
   .button:hover {
     color: #f1f1f1;
   }
+
+  .button.button{
+    border: 0px;
+  }
 </style>
 
 
@@ -120,7 +124,7 @@
         <h1>JELfy Music</h1>
         <p>Descubre Música</p>
         <li><a class="button" href="/songranking">Canciones más escuchadas</a></li>
-        <li><a class="button" href="#">Buscador</a></li>
+        <!--<li><a class="button" href="#">Buscador</a></li>-->
         <li><a class="button" href="/songs_filter">Filtrar canciones por genero</a></li>
         <li><a class="button" href="/locations_filter">Filtrar canciones por ubicación</a></li>
         <li><a class="button" href="/artists">Explorar artistas</a></li>
@@ -130,7 +134,7 @@
         <li><a class="button" href="/user_rates">Ver valoraciones</a></li>
         <li>
           <form action="/my_songs/{{auth()->user()->id}}" method="GET">
-            <button class="button" style="color:#313060" type="submit">Mis canciones</button>
+            <button class="button" type="submit">Mis canciones</button>
           </form>
         </li>
       </ul>
@@ -138,7 +142,10 @@
     <div class="element2">
       <h4 class="mb-3">Descrubre nueva música</h4>
       <div class="row text-center mb-2" method="GET" action="/home">
-        @foreach($songs as $song)
+      @php $i=0 @endphp  
+      
+      @foreach($songs as $song)
+      @if($i <= 11)
         <div class="col-2 d-flex justify-content-center">
           <div class="card" style="width: 10rem;">
             <img src="https://cdn.pixabay.com/photo/2022/06/21/21/15/audio-7276511_960_720.jpg">
@@ -146,22 +153,26 @@
             <div class="card-body">
               <h5 class="card-title">{{$song->song_name}}</h5>
               <div>
-
                 <form method="GET" action="/playing_song/{{$song->id}}">
                   <button type="submit" class="btn">Reproducir</button>
                 </form>
-
+                
                 <form class="like" method="POST" action="/likes/create">
                   <div>
-                    <input class="invisible" id="song_id" name="song_id" value="{{$song->id}}">
+                    <input class="invisible d-none"  id="song_id" name="song_id" value="{{$song->id}}">
                   </div>
                   <div>
-                    <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+                    <input class="invisible d-none" id="user_id" name="user_id" value="{{auth()->user()->id}}">
                   </div>
                   <button type="submit" class="btn">Like</button>
                   <div>
                   </div>
                 </form>
+
+                @php
+                $i=$i+1
+                @endphp
+                @endif
 
               </div>
             </div>
