@@ -105,32 +105,33 @@
 <body>
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.navbar')
-  <!-- Mientras tanto -->
   @guest
-  <a class="btn btn-outline-success" href="/profile">Perfil</a>
   <a class="btn btn-outline-success" href="/playlist">Lista reproducción</a>
-  <!--Forms-->
-  <a class="btn btn-outline-success" href="/upload_payment_method">Agregar método de pago</a>
-  <a class="btn btn-outline-success" href="/create_playlist">Crear playlist</a>
-  <a class="btn btn-outline-success" href="/create_role">Crear rol</a>
   @endguest
   @auth
   <div class="grid">
     <div class="element1">
       <ul class="menu">
-        <p>Nombre plataforma</p>
+        <h1>Joakin Toro Records</h1>
         <p>Descubre Música</p>
         <li><a class="btn btnsuccess" href="/songranking">Canciones más escuchadas</a></li>
-        <li><a href="#">Buscador</a></li>
+        <li><a class="btn btnsuccess" href="#">Buscador</a></li>
+        <li><a class="btn btnsuccess" href="/songs_filter">Filtrar canciones por genero</a></li>
+        <li><a class="btn btnsuccess" href="#">Filtrar canciones por categoría</a></li>
+        <li><a class="btn btnsuccess" href="/artists">Explorar artistas</a></li>
         <p>Tu Biblioteca de música</p>
         <li><a class="btn btnsuccess" href="/favsongs">Canciones que te gustan</a></li>
-        <li><a href="#">Lista de reproducción 1</a></li>
-        <li><a href="#">Lista de reproducción 2</a></li>
-        <li><a href="#">Lista de reproducción 3</a></li>
+        <li><a class="btn btnsuccess" href="/user_playlists">Listas de reproducción</a></li>
+        <li><a class="btn btnsuccess" href="/user_rates">Ver valoraciones</a></li>
+        <li>
+          <form action="/my_songs/{{auth()->user()->id}}" method="GET">
+            <button class="btn btnsuccess" type="submit">Mis canciones</button>
+          </form>
+        </li>
       </ul>
     </div>
     <div class="element2">
-      <h4 class="mb-3">Descubre nueva música</h4>
+      <h4 class="mb-3">Descrubre nueva música</h4>
       <div class="row text-center mb-2" method="GET" action="/home">
         @foreach($songs as $song)
         <div class="col-2 d-flex justify-content-center">
@@ -158,19 +159,6 @@
         </div>
         @endforeach
       </div>
-    </div>
-    <div class="element3">
-      <form action="/my_songs/{{auth()->user()->id}}" method="GET">
-        <button class="btn btn-outline-success" type="submit">Mis canciones</button>
-      </form>
-      <a class="btn btn-outline-success" href="/checkout">Pagar suscripción</a>
-      <a class="btn btn-outline-success" href="/location_filter">Filtrar canciones por ubicación</a>
-      <a class="btn btn-outline-success" href="/songs_filter">Filtrar canciones por genero</a>
-      <a class="btn btn-outline-success" href="/artists">Explorar artistas</a>
-      <a class="btn btn-outline-success" href="/profile">Perfil</a>
-      <a class="btn btn-outline-success" href="/create_album">Subir cancion</a>
-      <a class="btn btn-outline-success" href="/crud">Administración de plataforma</a>
-      
     </div>
   </div>
   </ul>

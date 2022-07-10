@@ -6,5 +6,4 @@
     © 2022 Copyright: Diseño de Base de Datos
   </div>
   <!-- Copyright -->
-  <hr>
 </footer>

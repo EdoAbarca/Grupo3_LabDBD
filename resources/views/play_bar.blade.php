@@ -65,7 +65,7 @@
   <div class="container">
     <div class="content">
       <div class="left-col">
-        <h1>EDUARDO<br>ABARCA</h1>
+        <h1>Canción<br>en curso</h1>
       </div>
       <div class="right-col">
         <p>Reproduciendo canción</p>

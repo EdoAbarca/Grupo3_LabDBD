@@ -69,42 +69,32 @@
   <a class="btn btn-outline-success" href="/home">Volver</a>
   <div class="head">
     <!--<img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />-->
-
-    <!-- Rol Usuario -->
-    <p class="role-user">Rol: {{$r->role_name}}</p>
     <!-- Nombre Usuario -->
     <h1 class="user-name">{{$u->nickname}}</h1>
-
-    <!-- Biografía -->
-    <h1 class="user-biography">Biografía: {{$u->biography}}</h1>
-
+    <!-- Rol Usuario -->
+    <p class="role-user">Rol: {{$r->role_name}}</p>
     <!-- Ubicacion Usuario -->
-    <small class="text-muted">
-      <i class="fa fa-map-marker"></i>{{$l->name}}
+    <small class="text">
+      <i class="fa fa-map-marker"></i>{{$l->location_name}}
     </small>
-    <!-- Numero de personas siguiendo 
+    <!-- Biografía -->
+    <h1 class="user-biography">Biografía:<br> {{$u->biography}}</h1>
+    <!-- Numero de personas siguiendo -->
     <div class="col-xs-6">
       <span class="m-b-xs h4 block">{{$follows_count}}</span>
       <small class="text-muted">Siguiendo</small>
-    </div>-->
-    <!-- Numero de seguidores 
+    </div>
+    <!-- Numero de seguidores -->
     <div class="col-xs-6">
       <span class="m-b-xs h4 block">{{$followers_count}}</span>
       <small class="text-muted">Seguidores</small>
-    </div>-->
-    <div class="text-center">
-      <input id="botonLog" class="btn btn-outline-success" type="submit" value="Seguir">
     </div>
-
+    <br>
     <form action="users/edit2/{{$u->id}}" method="GET">
       <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
     </form>
+    <br>
 
-  </div>
-  <div>
-    <!-- Biografia 
-    <h3>Biografia</h3>
-    <p>{{$u->biography}}</p>-->
   </div>
   @endif
   @endforeach

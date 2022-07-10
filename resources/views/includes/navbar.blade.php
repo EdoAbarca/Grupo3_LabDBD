@@ -5,37 +5,27 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      @guest
+        <a href="/login" class="btn btn-outline-success" role="button" >Iniciar Sesión</a>
+        <a href="/register" class="btn btn-outline-success" role="button">Registrarse</a>
+      @endguest
       @auth
+      <a href="/profile" class="btn btn-outline-success" role="button">Perfil</a>
       <ul class="navbar-nav me-auto mb-3 mb-lg-0">
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link dropdown-toggle" href="/suscription" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ¿Suscripcion? </a>-->
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Opciones
+          </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <!-- <form action="favsongs" method="GET"></form>-->
-              
-                <a class="dropdown-item" href="/favsongs">Canciones favoritas</a>
-              
-            </li>
-            <li>
-              
-                <a class="dropdown-item" href="/user_playlists">Listas de reproducción</a>
-              
-            </li>
-            <li>
-              
-                <a class="dropdown-item" href="/user_rates">Ver valoraciones</a>
-                
-            </li>
+            <li><a class="dropdown-item" href="/upload_song">Subir canción</a></li>
+            <li><a class="dropdown-item" href="/create_album">Crear álbum</a></li>
+            <li><a class="dropdown-item" href="/crud">Administración de plataforma</a></li>
+            <li><a class="dropdown-item" href="/checkout">Pagar suscripción</a></li>
           </ul>
         </li>
       </ul>
-      @endauth
-      @guest
-      <a href="/login" class="btn btn-outline-success" role="button" >Iniciar Sesión</a>
-      <a href="/register" class="btn btn-outline-success" role="button">Registrarse</a>
-      @endguest
-      @auth
-      <label for="validationDefault02" class="form-label">{{auth()->user()->username}} </label>
+      <label for="validationDefault02" class="form-label">{{auth()->user()->nickname}} </label>
       <!-- <a href="/profile" class="btn btn-outline-success" role="button">Perfil</a>-->
       <form style="display: inline" action="/logout" method="POST">
         <a href="#" class="btn btn-outline-success" onclick="this.closest('form').submit()">Cerrar Sesión</a>

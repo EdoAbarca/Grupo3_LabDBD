@@ -84,6 +84,8 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 Route::get('/user_rates', 'App\Http\Controllers\User_ratesController@index')->middleware('auth');
 Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete')->middleware('auth');
 
+Route::get('/user_playlists','App\Http\Controllers\User_playlistsController@index');
+
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
 // PLAY SONG
