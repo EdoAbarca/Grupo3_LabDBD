@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\CrudController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,6 @@ use App\Http\Controllers\CrudController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/','App\Http\Controllers\SongController@index');
 
 Route::get('/', function () {
     return redirect('/home');
@@ -47,43 +45,44 @@ Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middlewa
 Route::get('/playlist/{id}', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
 Route::post('/playlist/{id}', 'App\Http\Controllers\Song_playlistController@deletePlaylistSong');
 
-Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index')->middleware('artista');
+Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index')->middleware('artista'); //Esto sigue?
 
 Route::get('/create_album', function () {
     return view('create_album');
-})->name('create_album');
+})->name('create_album')->middleware('artista'); //Esto sigue?
 
 //Iperaciones CRUD: ->middleware('admin');
 //Operaciones artista: ->middleware('artista');
+
 // MY SONGS
-Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2');
-Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2');
+Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2')->middleware('artista');
+Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2')->middleware('artista');
 Route::put('/songs/update2/{id}','App\Http\Controllers\SongController@update2');
 
 Route::get('update_song', function () {
     return view('update_song');
-});
+})->middleware('artista');
 
 // FILTERS SONGS GENRE
 Route::get('/songs_bygenre', function () {
-    return view('/songs_bygenre');
+    return view('/songs_bygenre')->middleware('auth');
 });
 
-Route::get('/songs_filter', 'App\Http\Controllers\Filter_genreController@songs_filter');
-Route::get('/songs_bygenre/{id}', 'App\Http\Controllers\Filter_genreController@songs_bygenre');
+Route::get('/songs_filter', 'App\Http\Controllers\Filter_genreController@songs_filter')->middleware('auth');
+Route::get('/songs_bygenre/{id}', 'App\Http\Controllers\Filter_genreController@songs_bygenre')->middleware('auth');
 
 // FILTERS SONGS LOCATION
 Route::get('/songs_bylocation', function () {
     return view('/songs_bylocation');
-});
+})->middleware('auth');
 
-Route::get('/locations_filter', 'App\Http\Controllers\Filter_locationController@locations_filter');
-Route::get('/songs_bylocation/{id}', 'App\Http\Controllers\Filter_locationController@songs_bylocation');
+Route::get('/locations_filter', 'App\Http\Controllers\Filter_locationController@locations_filter')->middleware('auth');
+Route::get('/songs_bylocation/{id}', 'App\Http\Controllers\Filter_locationController@songs_bylocation')->middleware('auth');
 
 // PLAY SONG
 Route::get('/play_bar', function () {
     return view('play_bar');
-});
+})->middleware('auth');
 
 Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middleware('auth');
 Route::get('/favsongs/{id}', 'App\Http\Controllers\FavSongController@delete');
@@ -92,185 +91,187 @@ Route::get('/user_rates', 'App\Http\Controllers\User_ratesController@index')->mi
 Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete');
 
 Route::get('/user_playlists','App\Http\Controllers\User_playlistsController@index')->middleware('auth');
+Route::get('/user_playlists/{id}','App\Http\Controllers\User_playlistsController@delete');
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
 // PLAY SONG
 Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@show');
 
-Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
+Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index')->middleware('admin');
 
 
 
 // UPDATE PROFILE
 Route::get('profile/update_profile', function () {
     return view('profile/update_profile');
-});
+})->middleware('auth'); //¿Admin?
 
 // ARTISTS
-Route::get('/artists', 'App\Http\Controllers\ArtistController@index');
-Route::get('/songsArtists/{id}', 'App\Http\Controllers\SongController@index3');
+Route::get('/artists', 'App\Http\Controllers\ArtistController@index')->middleware('auth');
+Route::get('/songsArtists/{id}', 'App\Http\Controllers\SongController@index3')->middleware('auth');
 
 
 
 // USER
-Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index');
+Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index')->middleware('admin');
 Route::get('/crud/user_crud/user_create', function () {
     return view('/crud/user_crud/user_create');
-});
+})->middleware('admin');
+
 Route::get('/crud/user_crud/user_update', function () {
     return view('/crud/user_crud/user_update');
-});
+})->middleware('admin');
 
 Route::get('/crud/user_crud/user_show', function () {
     return view('/crud/user_crud/user_show');
-});
+})->middleware('admin');
 
 // ROLE
-Route::get('/crud/role_crud/role_index', 'App\Http\Controllers\AdmincrudController@role_index');
+Route::get('/crud/role_crud/role_index', 'App\Http\Controllers\AdmincrudController@role_index')->middleware('admin');
 Route::get('/crud/role_crud/role_create', function () {
     return view('/crud/role_crud/role_create');
-});
+})->middleware('admin');
 Route::get('/crud/role_crud/role_update', function () {
     return view('/crud/role_crud/role_update');
-});
+})->middleware('admin');
 Route::get('/crud/role_crud/role_show', function () {
     return view('/crud/role_crud/role_show');
-});
+})->middleware('admin');
 
 // LOCATION
-Route::get('/crud/location_crud/location_index', 'App\Http\Controllers\AdmincrudController@location_index');
+Route::get('/crud/location_crud/location_index', 'App\Http\Controllers\AdmincrudController@location_index')->middleware('admin');
 Route::get('/crud/location_crud/location_create', function () {
     return view('/crud/location_crud/location_create');
-});
+})->middleware('admin');
 Route::get('/crud/location_crud/location_update', function () {
     return view('/crud/location_crud/location_update');
-});
+})->middleware('admin');
 Route::get('/crud/location_crud/location_show', function () {
     return view('/crud/location_crud/location_show');
-});
+})->middleware('admin');
 
 // GENRE
-Route::get('/crud/genre_crud/genre_index', 'App\Http\Controllers\AdmincrudController@genre_index');
+Route::get('/crud/genre_crud/genre_index', 'App\Http\Controllers\AdmincrudController@genre_index')->middleware('admin');
 Route::get('/crud/genre_crud/genre_create', function () {
     return view('/crud/genre_crud/genre_create');
-});
+})->middleware('admin');
 Route::get('/crud/genre_crud/genre_update', function () {
     return view('/crud/genre_crud/genre_update');
-});
+})->middleware('admin');
 Route::get('/crud/genre_crud/genre_show', function () {
     return view('/crud/genre_crud/genre_show');
-});
+})->middleware('admin');
 
 // PAYMENT_METHOD
-Route::get('/crud/payment_method_crud/payment_method_index', 'App\Http\Controllers\AdmincrudController@payment_method_index');
+Route::get('/crud/payment_method_crud/payment_method_index', 'App\Http\Controllers\AdmincrudController@payment_method_index')->middleware('admin');
 Route::get('/crud/payment_method_crud/payment_method_create', function () {
     return view('/crud/payment_method_crud/payment_method_create');
-});
+})->middleware('admin');
 Route::get('/crud/payment_method_crud/payment_method_update', function () {
     return view('/crud/payment_method_crud/payment_method_update');
-});
+})->middleware('admin');
 Route::get('/crud/payment_method_crud/payment_method_show', function () {
     return view('/crud/payment_method_crud/payment_method_show');
-});
+})->middleware('admin');
 
 // RATE
-Route::get('/crud/rate_crud/rate_index', 'App\Http\Controllers\AdmincrudController@rate_index');
+Route::get('/crud/rate_crud/rate_index', 'App\Http\Controllers\AdmincrudController@rate_index')->middleware('admin');
 Route::get('/crud/rate_crud/rate_create', function () {
     return view('/crud/rate_crud/rate_create');
-});
+})->middleware('admin');
 Route::get('/crud/rate_crud/rate_update', function () {
     return view('/crud/rate_crud/rate_update');
-});
+})->middleware('admin');
 Route::get('/crud/rate_crud/rate_show', function () {
     return view('/crud/rate_crud/rate_show');
-});
+})->middleware('admin');
 
 // SONG_GENRE
-Route::get('/crud/song_genre_crud/song_genre_index', 'App\Http\Controllers\AdmincrudController@song_genre_index');
+Route::get('/crud/song_genre_crud/song_genre_index', 'App\Http\Controllers\AdmincrudController@song_genre_index')->middleware('admin');
 Route::get('/crud/song_genre_crud/song_genre_create', function () {
     return view('/crud/song_genre_crud/song_genre_create');
-});
+})->middleware('admin');
 Route::get('/crud/song_genre_crud/song_genre_update', function () {
     return view('/crud/song_genre_crud/song_genre_update');
-});
+})->middleware('admin');
 Route::get('/crud/song_genre_crud/song_genre_show', function () {
     return view('/crud/song_genre_crud/song_genre_show');
-});
+})->middleware('admin');
 
  // FOLLOW
- Route::get('/crud/follow_crud/follow_index', 'App\Http\Controllers\AdmincrudController@follow_index');
+ Route::get('/crud/follow_crud/follow_index', 'App\Http\Controllers\AdmincrudController@follow_index')->middleware('admin');
  Route::get('/crud/follow_crud/follow_create', function () {
      return view('/crud/follow_crud/follow_create');
- });
+ })->middleware('admin');
  Route::get('/crud/follow_crud/follow_update', function () {
      return view('/crud/follow_crud/follow_update');
- });
+ })->middleware('admin');
  Route::get('/crud/follow_crud/follow_show', function () {
      return view('/crud/follow_crud/follow_show');
- });
+ })->middleware('admin');
 
   // RECEIPT
-  Route::get('/crud/receipt_crud/receipt_index', 'App\Http\Controllers\AdmincrudController@receipt_index');
+  Route::get('/crud/receipt_crud/receipt_index', 'App\Http\Controllers\AdmincrudController@receipt_index')->middleware('admin');
   Route::get('/crud/receipt_crud/receipt_create', function () {
       return view('/crud/receipt_crud/receipt_create');
-  });
+  })->middleware('admin');
   Route::get('/crud/receipt_crud/receipt_update', function () {
       return view('/crud/receipt_crud/receipt_update');
-  });
+  })->middleware('admin');
   Route::get('/crud/receipt_crud/receipt_show', function () {
       return view('/crud/receipt_crud/receipt_show');
-  });
+  })->middleware('admin');
 
  // ALBUM
-Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index');
+Route::get('/crud/album_crud/album_index', 'App\Http\Controllers\AdmincrudController@album_index')->middleware('admin');
 Route::get('/crud/album_crud/album_create', function () {
     return view('/crud/album_crud/album_create');
-});
+})->middleware('admin');
 Route::get('/crud/album_crud/album_update', function () {
     return view('/crud/album_crud/album_update');
-});
+})->middleware('admin');
 Route::get('/crud/album_crud/album_show', function () {
     return view('/crud/album_crud/album_show');
-});
+})->middleware('admin');
 
 // PLAYLIST
-Route::get('/crud/playlist_crud/playlist_index', 'App\Http\Controllers\AdmincrudController@playlist_index');
+Route::get('/crud/playlist_crud/playlist_index', 'App\Http\Controllers\AdmincrudController@playlist_index')->middleware('admin');
 Route::get('/crud/playlist_crud/playlist_create', function () {
     return view('/crud/playlist_crud/playlist_create');
-});
+})->middleware('admin');
 Route::get('/crud/playlist_crud/playlist_update', function () {
     return view('/crud/playlist_crud/playlist_update');
-});
+})->middleware('admin');
 Route::get('/crud/playlist_crud/playlist_show', function () {
     return view('/crud/playlist_crud/playlist_show');
-});
+})->middleware('admin');
 
 // SONG
-Route::get('/crud/song_crud/song_index', 'App\Http\Controllers\AdmincrudController@song_index');
+Route::get('/crud/song_crud/song_index', 'App\Http\Controllers\AdmincrudController@song_index')->middleware('admin');
 
 Route::get('/crud/song_crud/song_create', function () {
     return view('/crud/song_crud/song_create');
-});
+})->middleware('admin');
 Route::get('/crud/song_crud/song_update', function () {
     return view('/crud/song_crud/song_update');
-});
+})->middleware('admin');
 Route::get('/crud/song_crud/song_show', function () {
     return view('/crud/song_crud/song_show');
-});
+})->middleware('admin');
 
 // LIKE 
-Route::get('/crud/like_crud/like_index', 'App\Http\Controllers\AdmincrudController@like_index');
+Route::get('/crud/like_crud/like_index', 'App\Http\Controllers\AdmincrudController@like_index')->middleware('admin');
 
 Route::get('/crud/like_crud/like_create', function () {
     return view('/crud/like_crud/like_create');
-});
+})->middleware('admin');
 Route::get('/crud/like_crud/like_update', function () {
     return view('/crud/like_crud/like_update');
-});
+})->middleware('admin');
 Route::get('/crud/like_crud/like_show', function () {
     return view('/crud/like_crud/like_show');
-});
+})->middleware('admin');
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');
@@ -360,6 +361,7 @@ Route::post('/song_playlists/create','App\Http\Controllers\Song_playlistControll
 //Route::get('/song_playlist/edit/{id}','App\Http\Controllers\Song_playlistController@edit');
 Route::put('/song_playlists/update/{id}','App\Http\Controllers\Song_playlistController@update');
 Route::put('/song_playlists/delete/{id}','App\Http\Controllers\Song_playlistController@delete');
+Route::put('/song_playlists/deletePlaylistSong/{id}','App\Http\Controllers\Song_playlistController@deletePlaylistSong');
 
 Route::get('/songs','App\Http\Controllers\SongController@index');
 Route::get('/songs/{id}','App\Http\Controllers\SongController@show');
