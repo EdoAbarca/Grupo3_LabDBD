@@ -32,17 +32,17 @@
       <form method="POST" action="/payment_methods/create">
           <div class="form-group">    
               <label for="method_name">Nombre de método de pago:</label>
-              <input type="text" class="form-control" name="method_name" value=""/>
+              <input type="text" class="form-control" name="method_name" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="pmp">Pmp:</label>
-              <input type="text" class="form-control" name="pmp" value=""/>
+              <input type="text" class="form-control" name="pmp" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="available_budget">Saldo disponible:</label>
-              <input type="text" class="form-control" name="available_budget" value=""/>
+              <input type="text" class="form-control" name="available_budget" value="" required/>
           </div>
 
           <div class="form-group">

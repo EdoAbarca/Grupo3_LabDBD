@@ -34,37 +34,37 @@
        @method('PUT')
           <div class="form-group">    
               <label for="nickname">Nombre de usuario:</label>
-              <input type="text" class="form-control" name="nickname" value="" placeholder="123"/>
+              <input type="text" class="form-control" name="nickname" value="" placeholder="123" required/>
           </div>
  
           <div class="form-group">
               <label for="email">Email:</label>
-              <input type="text" class="form-control" name="email" value=""/>
+              <input type="text" class="form-control" name="email" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="password">Contraseña:</label>
-              <input type="text" class="form-control" name="password" value=""/>
+              <input type="text" class="form-control" name="password" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="birth_date">Fecha de nacimiento:</label>
-              <input type="text" class="form-control" name="birth_date" value=""/>
+              <input type="text" class="form-control" name="birth_date" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="biography">Biografia:</label>
-              <input type="text" class="form-control" name="biography" value=""/>
+              <input type="text" class="form-control" name="biography" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="location">Ubicacion:</label>
-              <input type="number" class="form-control" name="location_id" value=""/>
+              <input type="number" class="form-control" name="location_id" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="role">Rol:</label>
-              <input type="number" class="form-control" name="role_id" value=""/>
+              <input type="number" class="form-control" name="role_id" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Editar Usuario</button>
       </form>

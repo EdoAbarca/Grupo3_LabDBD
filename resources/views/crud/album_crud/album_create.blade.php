@@ -32,27 +32,27 @@
       <form method="POST" action="/albums/create2">
           <div class="form-group">    
               <label for="album_name">Nombre de album:</label>
-              <input type="text" class="form-control" name="album_name" value=""/>
+              <input type="text" class="form-control" name="album_name" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="release_date">Fecha de publicacion:</label>
-              <input type="text" class="form-control" name="release_date" value=""/>
+              <input type="text" class="form-control" name="release_date" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="songs_quantity">Cantidad de canciones:</label>
-              <input type="text" class="form-control" name="songs_quantity" value=""/>
+              <input type="text" class="form-control" name="songs_quantity" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="duration">Duracion:</label>
-              <input type="text" class="form-control" name="duration" value=""/>
+              <input type="text" class="form-control" name="duration" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="user_id">ID de artista asociado:</label>
-              <input type="number" class="form-control" name="user_id" value=""/>
+              <input type="number" class="form-control" name="user_id" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Crear Album</button>
       </form>

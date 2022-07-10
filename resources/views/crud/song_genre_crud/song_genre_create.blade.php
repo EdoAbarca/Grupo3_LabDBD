@@ -32,12 +32,12 @@
       <form method="POST" action="/song_genres/create">
           <div class="form-group">    
               <label for="song_id">ID canción:</label>
-              <input type="text" class="form-control" name="song_id" value=""/>
+              <input type="text" class="form-control" name="song_id" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="genre_id">ID genero:</label>
-              <input type="text" class="form-control" name="genre_id" value=""/>
+              <input type="text" class="form-control" name="genre_id" value="" required/>
           </div>
  
 

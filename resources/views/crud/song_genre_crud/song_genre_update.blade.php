@@ -34,12 +34,12 @@
        @method('PUT')
           <div class="form-group">    
               <label for="song_id">ID Canción:</label>
-              <input type="text" class="form-control" name="song_id" value="" placeholder="123"/>
+              <input type="text" class="form-control" name="song_id" value="" placeholder="123" required/>
           </div>
  
           <div class="form-group">
               <label for="genre_id">ID Genero:</label>
-              <input type="text" class="form-control" name="genre_id" value=""/>
+              <input type="text" class="form-control" name="genre_id" value="" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Editar Genero Canción</button>

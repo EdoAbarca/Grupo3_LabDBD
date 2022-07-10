@@ -32,7 +32,7 @@
       <form method="POST" action="/locations/create">
           <div class="form-group">    
               <label for="location_name">Nombre de Ubicación:</label>
-              <input type="text" class="form-control" name="location_name" value=""/>
+              <input type="text" class="form-control" name="location_name" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Crear Ubicación</button>
       </form>

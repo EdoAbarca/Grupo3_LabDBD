@@ -32,17 +32,17 @@
       <form method="POST" action="/playlists/create2">
           <div class="form-group">    
               <label for="playlist_name">Nombre de lista de reproduccion:</label>
-              <input type="text" class="form-control" name="playlist_name" value=""/>
+              <input type="text" class="form-control" name="playlist_name" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="description"> Descripcion:</label>
-              <input type="text" class="form-control" name="description" value=""/>
+              <input type="text" class="form-control" name="description" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="user_id"> ID del usuario creador:</label>
-              <input type="number" class="form-control" name="user_id" value=""/>
+              <input type="number" class="form-control" name="user_id" value="" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Crear Lista de reproduccion</button>

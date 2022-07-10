@@ -32,7 +32,7 @@
       <form method="POST" action="/genres/create">
           <div class="form-group">    
               <label for="genre_name">Nombre del genero:</label>
-              <input type="text" class="form-control" name="genre_name" value=""/>
+              <input type="text" class="form-control" name="genre_name" value="" required/>
           </div>
  
 

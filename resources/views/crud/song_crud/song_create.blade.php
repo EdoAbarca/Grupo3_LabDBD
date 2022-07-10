@@ -32,7 +32,12 @@
       <form method="POST" action="/songs/create2">
           <div class="form-group">    
               <label for="song_name">Nombre de lista de reproduccion:</label>
-              <input type="text" class="form-control" name="song_name" value=""/>
+              <input type="text" class="form-control" name="song_name" value="" required/>
+          </div>
+ 
+          <div class="form-group">
+              <label for="duration"> Duracion:</label>
+              <input type="text" class="form-control" name="duration" value="" required/>
           </div>
 
           <div class="form-group">
@@ -46,17 +51,17 @@
 
           <div class="form-group">
               <label for="URL"> URL:</label>
-              <input type="text" class="form-control" name="URL" value=""/>
+              <input type="text" class="form-control" name="URL" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="album_id"> ID del album al que pertenece:</label>
-              <input type="number" class="form-control" name="album_id" value=""/>
+              <input type="number" class="form-control" name="album_id" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="location_id"> ID de la locacion:</label>
-              <input type="number" class="form-control" name="location_id" value=""/>
+              <input type="number" class="form-control" name="location_id" value="" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Crear Cancion</button>

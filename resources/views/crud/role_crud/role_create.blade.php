@@ -32,7 +32,7 @@
       <form method="POST" action="/roles/create">
           <div class="form-group">    
               <label for="role_name">Nombre de rol:</label>
-              <input type="text" class="form-control" name="role_name" value=""/>
+              <input type="text" class="form-control" name="role_name" value="" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Crear Rol</button>

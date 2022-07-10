@@ -34,12 +34,12 @@
        @method('PUT')
        <div class="form-group">    
               <label for="user_id1">ID usuario 1:</label>
-              <input type="text" class="form-control" name="user_id1" value=""/>
+              <input type="text" class="form-control" name="user_id1" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="user_id2">ID usuario 2:</label>
-              <input type="text" class="form-control" name="user_id2" value=""/>
+              <input type="text" class="form-control" name="user_id2" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Editar Usuario</button>
       </form>

@@ -34,22 +34,22 @@
        @method('PUT')
           <div class="form-group">    
               <label for="method_name">Nombre de método de pago:</label>
-              <input type="text" class="form-control" name="method_name" value="" placeholder=""/>
+              <input type="text" class="form-control" name="method_name" value="" placeholder="" required/>
           </div>
  
           <div class="form-group">
               <label for="pmp">Pmp:</label>
-              <input type="text" class="form-control" name="pmp" value=""/>
+              <input type="text" class="form-control" name="pmp" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="available_budget">Saldo disponible:</label>
-              <input type="text" class="form-control" name="available_budget" value=""/>
+              <input type="text" class="form-control" name="available_budget" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="user_id">ID usuario asociado:</label>
-              <input type="text" class="form-control" name="user_id" value=""/>
+              <input type="text" class="form-control" name="user_id" value="" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Editar Método de pago</button>

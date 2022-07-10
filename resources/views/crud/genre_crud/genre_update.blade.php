@@ -34,7 +34,7 @@
        @method('PUT')
           <div class="form-group">    
               <label for="gere_name">Nombre del genero:</label>
-              <input type="text" class="form-control" name="genre_name" value="" placeholder="123"/>
+              <input type="text" class="form-control" name="genre_name" value="" placeholder="123" required/>
           </div>
 
           <button type="submit" class="btn btn-primary">Editar Genero</button>

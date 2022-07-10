@@ -69,7 +69,7 @@ class SongController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'song_name' => 'required|min:1|max:30',
-               //'duration'=> 'required|date_format:H:i:s',
+               'duration'=> 'required|date_format:H:i:s',
                //'stream' => 'required|integer|min:0',
                //'release_date' => 'required|date',
                'parental_advisory' => 'required|boolean',
@@ -120,7 +120,7 @@ class SongController extends Controller
        
         $newSong = new Song();
         $newSong->song_name         = $request->song_name;
-        $newSong->duration          = "00:00:00";
+        $newSong->duration          =  $request->duration;
         $newSong->stream            = 0;
         $newSong->release_date      = date('y-m-d');
         $newSong->parental_advisory = $request->parental_advisory;
@@ -264,7 +264,7 @@ class SongController extends Controller
         $validator=Validator::make(
             $request->all(),[
                'song_name' => 'required|min:1|max:30',
-              // 'duration'=> 'required|date_format:H:i:s',
+              'duration'=> 'required|date_format:H:i:s',
                //'stream' => 'required|integer|min:0',
                //'release_date' => 'required|date',
                'parental_advisory' => 'required|boolean',
@@ -279,8 +279,8 @@ class SongController extends Controller
                 'song_name.min'      => 'El nombre de la cancion debe tener un largo minimo de 1 caracter',
                 'song_name.max'      => 'El nombre de la cancion debe tener un largo maximo de 30 caracteres',
 
-                /*'duration.required' => 'Debes ingresar la duracion del album',
-                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',*/
+                'duration.required' => 'Debes ingresar la duracion del album',
+                'duration.date_format' => 'El formato de la duracion debe ser el siguiente: "H:i:s"',
 
                 /*'stream.required' => 'Debes ingresar el numero de reproducciones de la cancion',
                 'stream.integer'  => 'El numero de reproducciones debe ser un tipo de dato integer',
@@ -326,7 +326,7 @@ class SongController extends Controller
         }
 
         $song->song_name         = $request->song_name;
-        $song->duration          = "00:00:00";
+        $song->duration          = $request->duration;
         $song->stream            = 0;
         $song->release_date      = date('y-m-d');
         $song->parental_advisory = $request->parental_advisory;

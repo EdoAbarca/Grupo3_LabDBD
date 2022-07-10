@@ -32,32 +32,32 @@
       <form method="POST" action="/receipts/create">
           <div class="form-group">    
               <label for="name">Nombre:</label>
-              <input type="text" class="form-control" name="name" value=""/>
+              <input type="text" class="form-control" name="name" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="sum">Total:</label>
-              <input type="text" class="form-control" name="sum" value=""/>
+              <input type="text" class="form-control" name="sum" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="payment_time">Hora del pago:</label>
-              <input type="text" class="form-control" name="payment_time" value=""/>
+              <input type="text" class="form-control" name="payment_time" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="payment_date">Fecha del pago:</label>
-              <input type="text" class="form-control" name="payment_date" value=""/>
+              <input type="text" class="form-control" name="payment_date" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="user_id">ID usuario asociado:</label>
-              <input type="number" class="form-control" name="user_id" value=""/>
+              <input type="number" class="form-control" name="user_id" value="" required/>
           </div>
 
           <div class="form-group">
               <label for="payment_method_id">ID método de pago asociado:</label>
-              <input type="number" class="form-control" name="payment_method_id" value=""/>
+              <input type="number" class="form-control" name="payment_method_id" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Crear Boleta</button>
       </form>

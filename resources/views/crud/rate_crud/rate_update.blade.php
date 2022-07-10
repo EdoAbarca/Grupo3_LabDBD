@@ -34,17 +34,17 @@
        @method('PUT')
        <div class="form-group">    
               <label for="score">Valoración:</label>
-              <input type="text" class="form-control" name="score" value=""/>
+              <input type="text" class="form-control" name="score" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="user_id">ID usuario asociado:</label>
-              <input type="text" class="form-control" name="user_id" value=""/>
+              <input type="text" class="form-control" name="user_id" value="" required/>
           </div>
  
           <div class="form-group">
               <label for="song_id">ID canción asociada:</label>
-              <input type="text" class="form-control" name="song_id" value=""/>
+              <input type="text" class="form-control" name="song_id" value="" required/>
           </div>
           <button type="submit" class="btn btn-primary">Editar Usuario</button>
       </form>
