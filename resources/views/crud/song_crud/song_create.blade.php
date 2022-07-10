@@ -34,11 +34,6 @@
               <label for="song_name">Nombre de lista de reproduccion:</label>
               <input type="text" class="form-control" name="song_name" value=""/>
           </div>
- 
-          <div class="form-group">
-              <label for="duration"> Duracion:</label>
-              <input type="text" class="form-control" name="duration" value=""/>
-          </div>
 
           <div class="form-group">
               <label for="parental_Advisory"> Parental Advisory:</label>
@@ -64,7 +59,7 @@
               <input type="number" class="form-control" name="location_id" value=""/>
           </div>
 
-          <button type="submit" class="btn btn-primary">Crear Lista de reproduccion</button>
+          <button type="submit" class="btn btn-primary">Crear Cancion</button>
       </form>
   </div>
 </div>

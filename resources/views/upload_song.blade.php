@@ -64,20 +64,8 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group row">
-                <label for="" class="col-form-label col-sm-4">CANCIONES RESTANTES:</label> <!-- (a hacer selección parecida a usada en register) -->
                 <div class="col-sm-8">
-                  <input type="number" name="" id="" value="{{$canciones}}" class="form-control" readonly="readonly">
-                </div>
-              </div>
-            </div>
-
-
-          <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-              <div class="form-group row">
-                <label for="album_id" class="col-form-label col-sm-4">Album:</label> <!-- (a hacer selección parecida a usada en register) -->
-                <div class="col-sm-8">
-                  <input type="number" name="album_id" id="album_id" value="{{$id_album}}" class="form-control" readonly="readonly">
+                  <input type="number" name="album_id" id="album_id" value="{{$id_album}}" class="invisible" readonly="readonly">
                 </div>
               </div>
             </div>
@@ -124,7 +112,7 @@
 
     <div class="row">
       <div class="col-xs-6 col-md-6">
-        <a class="btn btn-outline-success" href="/home">Volver al Menu</a>
+        <a class="btn btn-outline-success" href="/home">Terminar de Crear album</a>
       </div>
     </div>
     @include('includes.footer')

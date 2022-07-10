@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Album;
 use App\Models\Location;
+use App\Models\Genre;
+use App\Models\Song_genre;
 
 class Upload_songController extends Controller
 {
@@ -19,6 +21,7 @@ class Upload_songController extends Controller
         $users = User::where('delete',false)->get();
         $albums = Album::get();
         $locations = Location::where('delete',false)->get();
-        return view('upload_song', ['users'=>$users, 'albums'=>$albums,'locations'=>$locations]);
+        $genres = Genre::where('delete',false)->get();
+        return view('upload_song', ['users'=>$users, 'albums'=>$albums,'locations'=>$locations,'genres'=>$genres]);
     }
 }

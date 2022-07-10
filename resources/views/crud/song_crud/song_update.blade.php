@@ -37,11 +37,7 @@
               <label for="song_name">Nombre canción:</label>
               <input type="text" class="form-control" name="song_name" value=""/>
           </div>
- 
-          <div class="form-group">
-              <label for="duration"> Duracion:</label>
-              <input type="text" class="form-control" name="duration" value=""/>
-          </div>
+
 
           <div class="form-group">
               <label for="parental_Advisory"> Parental Advisory:</label>
