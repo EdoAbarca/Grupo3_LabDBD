@@ -65,7 +65,7 @@
                 <a href="" class="btn">Reproducir</a>
               </td>
               <td>
-                <form action="song_playlists/{{$sp->id}}" method="POST">
+                <form action="song_playlists/deletePlaylistSong/{{$sp->id}}" method="POST">
                   @csrf
                   @method('PUT')
                   <div>
