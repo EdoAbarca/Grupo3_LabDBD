@@ -57,6 +57,15 @@ Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album');
 
+// MY SONGS
+Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2');
+Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2');
+Route::put('/songs/update2/{id}','App\Http\Controllers\SongController@update2');
+
+Route::get('update_song', function () {
+    return view('update_song');
+});
+
 // FILTERS SONGS
 Route::get('/songs_bygenre', function () {
     return view('/songs_bygenre');
@@ -88,6 +97,11 @@ Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index');
 Route::get('profile/update_profile', function () {
     return view('profile/update_profile');
 });
+
+// ARTISTS
+Route::get('/artists', 'App\Http\Controllers\ArtistController@index');
+Route::get('/songsArtists/{id}', 'App\Http\Controllers\SongController@index3');
+
 
 
 // USER
@@ -353,6 +367,9 @@ Route::post('/users_role/create','App\Http\Controllers\User_roleController@store
 Route::put('/users_role/update/{id}','App\Http\Controllers\User_roleController@update');
 Route::put('/users_role/delete/{id}','App\Http\Controllers\User_roleController@delete');
 
+
+Route::get('/users/edit2/{id}','App\Http\Controllers\UserController@edit2');
+Route::put('/users/update2/{id}','App\Http\Controllers\UserController@update2');
 Route::get('/users','App\Http\Controllers\UserController@index');
 Route::get('/users/{id}','App\Http\Controllers\UserController@show');
 Route::post('/users/create','App\Http\Controllers\UserController@store');

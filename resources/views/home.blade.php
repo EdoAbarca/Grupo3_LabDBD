@@ -165,9 +165,11 @@
         <button class="btn btn-outline-success" type="submit">Mis canciones</button>
       </form>
       <a class="btn btn-outline-success" href="/songs_filter">Filtrar canciones por genero</a>
+      <a class="btn btn-outline-success" href="/artists">Explorar artistas</a>
       <a class="btn btn-outline-success" href="/profile">Perfil</a>
       <a class="btn btn-outline-success" href="/create_album">Subir cancion</a>
       <a class="btn btn-outline-success" href="/crud">Administración de plataforma</a>
+      
     </div>
   </div>
   </ul>

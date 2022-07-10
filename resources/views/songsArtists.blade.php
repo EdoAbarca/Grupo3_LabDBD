@@ -30,33 +30,38 @@
                         <tr>
                             <td>ID</td>
                             <td>Nombre Cancion</td>
+                            <td>Reproducciones</td>
                             <td>ID Album Asociado</td>
                             <td>Fecha</td>
-                            <td colspan=2>Acciones</td>
+
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($users as $user)
                         @foreach($albums as $album)
-                            @if($album->user_id == auth()->user()->id)
-                                @foreach($songs as $song)
-                                    @if($album->id == $song->album_id)
-                                    <tr>
+                        @foreach($songs as $song)
+                        @if($user->role_id == 2)
+
+                        @if($album->user_id == $id)
+
+                        @if($album->id == $song->album_id)
+                        
+                        <tr>
                             <td>{{$song->id}}</td>
                             <td>{{$song->song_name}}</td>
+                            <td>{{$song->stream}}</td>
                             <td>{{$song->album_id}}</td>
                             <td>{{$song->release_date}}</td>
-                            <td>
-                                <form action="/songs/edit2/{{$song->id}}" method="GET">
-                                    <button type="submit" class="btn btn-primary">Editar</button>
-                                </form>
-                            </td>
+
                             <td>
                             </td>
                         </tr>
-                                    @endif
-                                @endforeach
-                            @endif
 
+                        @endif
+                        @endif
+                        @endif
+                        @endforeach
+                        @endforeach
                         @endforeach
                     </tbody>
                 </table>
