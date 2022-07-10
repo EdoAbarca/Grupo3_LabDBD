@@ -35,28 +35,21 @@ Route::post('/logout', function(){
     return redirect('/home');
 });
 
-
-Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
+Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index')->middleware('auth');
 Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
-Route::get('/playlist', 'App\Http\Controllers\PlaylistController@show');
+Route::get('/playlist', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
 
-Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index');
-
-Route::get('/create_role', function () {
-    return view('create_role');
-})->name('create_role');
-
-Route::get('/create_payment_method', function () {
-    return view('create_payment_method');
-})->name('create_payment_method');
+Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index')->middleware('artista');
 
 Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album');
 
+//Iperaciones CRUD: ->middleware('admin');
+//Operaciones artista: ->middleware('artista');
 // MY SONGS
 Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2');
 Route::get('/my_songs/{id}', 'App\Http\Controllers\SongController@index2');
@@ -84,7 +77,7 @@ Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middlew
 Route::get('/user_rates', 'App\Http\Controllers\User_ratesController@index')->middleware('auth');
 Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete')->middleware('auth');
 
-Route::get('/user_playlists','App\Http\Controllers\User_playlistsController@index');
+Route::get('/user_playlists','App\Http\Controllers\User_playlistsController@index')->middleware('auth');
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
