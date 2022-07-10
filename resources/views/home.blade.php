@@ -112,7 +112,7 @@
   <div class="grid">
     <div class="element1">
       <ul class="menu">
-        <h1>Joakin Toro Records</h1>
+        <h1>JELfy Music</h1>
         <p>Descubre Música</p>
         <li><a class="btn btnsuccess" href="/songranking">Canciones más escuchadas</a></li>
         <li><a class="btn btnsuccess" href="#">Buscador</a></li>
@@ -150,6 +150,7 @@
                 <div>
                   <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
                 </div>
+                <button type="submit" class="btn btn-primary">Like</button>
                 <div>
                 </div>
               </form>
