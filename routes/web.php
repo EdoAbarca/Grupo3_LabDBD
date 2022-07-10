@@ -37,7 +37,7 @@ Route::post('/logout', function(){
 
 
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
-Route::post('/checkout/{id}', 'App\Http\Controllers\CheckoutController@pay');
+Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
@@ -71,6 +71,9 @@ Route::get('/play_bar', function () {
 });
 
 Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middleware('auth');
+
+Route::get('/user_rates', 'App\Http\Controllers\User_ratesController@index')->middleware('auth');
+Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete')->middleware('auth');
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
@@ -245,8 +248,6 @@ Route::get('/crud/like_crud/like_update', function () {
 Route::get('/crud/like_crud/like_show', function () {
     return view('/crud/like_crud/like_show');
 });
-
-Route::get('/home','App\Http\Controllers\SongController@index');
 
 Route::get('/albums','App\Http\Controllers\AlbumController@index');
 Route::get('/albums/{id}','App\Http\Controllers\AlbumController@show');

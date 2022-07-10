@@ -19,9 +19,7 @@ class Payment_methodFactory extends Factory
     public function definition()
     {
         return [
-            'method_name'=>$this->faker->randomElement($array = array('credito', 'debito', 'paypal')),
-            //'cvv'=> $this->faker->text(), //Evaluar su retiro
-            //'card_number'=> $this->faker->text(), //Evaluar su retiro
+            'method_name'=>$this->faker->randomElement($array = array('Credito', 'Debito', 'PayPal')),
             'pmp'=> $this->faker->password,
             'available_budget'=>$this->faker->numberBetween($min=0),
             'user_id'=>User::all()->random()->id,

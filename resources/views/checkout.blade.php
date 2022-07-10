@@ -2,74 +2,76 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Checkout</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Checkout</title>
 
-    <!-- <link href="{{ asset('css/checkout.css') }}" rel="stylesheet"> -->
+  <!-- <link href="{{ asset('css/checkout.css') }}" rel="stylesheet"> -->
 </head>
 
 <body style="margin-bottom:22px">
 
 
-    @include('includes.navbar')
-    <!-- Aquí irá el form para realizar el pago de la suscripcion -->
-    <div class="container">
-        <div class="py-5 text-center">
-            <h2>Checkout</h2>
-            <p class="lead">Proceda a llenar los campos del formulario para hacer efectivo el pago de la suscripción.</p>
-        </div>
+  @include('includes.navbar')
+  <!-- Aquí irá el form para realizar el pago de la suscripcion -->
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Checkout</h2>
+      <p class="lead">Proceda a llenar los campos del formulario para hacer efectivo el pago de la suscripción.</p>
+    </div>
 
-        <div class="row">
-        <div class="col-3"></div>
-        <div id="columnaCentral" class="col-6">
-            <form class="row g-4" action="/checkout/{{$pm->id}}" method="POST"> 
-                <div class="col-md-4">
-                    <label for="validationDefault01" class="form-label">Fecha</label>
-                    <input id="date" name="date" type="string" class="form-control" value="{{  date('Y-m-d') }}" required style="text-align: center;" readonly="readonly">
-                </div>
-                <div class="col-md-4">
-                    <label for="validationDefault02" class="form-label">Monto</label>
-                    <input id="amount" name="amount" type="number" class="form-control" value="2990" required style="text-align: center;" readonly="readonly">
-                </div>
-                <div class="col-md-4">
-                    <label for="validationDefaultUsername" class="form-label">Método de pago</label>
-                    <div class="input-group">
-                        <select id="payment_method_id" name="payment_method_id" class="form-select" required>
-                            @foreach($payment_method as $pm)
-                            @if($pm->user_id == auth()->user()->id)
-                            <option value="Seleccione un método" disabled>Método de pago</option>
-                            <option value="{{$pm->id}">{{$pm->method_name}}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div>
-                  <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
-                </div>
-                    
-                <br>
-                <div class="col-12">
-                    <div class="text-center">
-                        <a class="btn" href="/home">Cancelar</a>
-                        <input id="boton-pago" class="btn btn-outline-success" type="submit" value="Realizar pago">
-                    </div>
-                </div>
-            </form>
+    <div class="row">
+      <div class="col-3"></div>
+      <div id="columnaCentral" class="col-6">
+        <form class="row g-4" action="/checkout" method="POST">
+          <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">Fecha</label>
+            <input id="date" name="date" type="string" class="form-control" value="{{  date('Y-m-d') }}" required
+              style="text-align: center;" readonly="readonly">
+          </div>
+          <div class="col-md-4">
+            <label for="validationDefault02" class="form-label">Monto</label>
+            <input id="amount" name="amount" type="number" class="form-control" value="2990" required
+              style="text-align: center;" readonly="readonly">
+          </div>
+          <div class="col-md-4">
+            <label for="validationDefaultUsername" class="form-label">Método de pago</label>
+            <div class="input-group">
+              <select id="payment_method_id" name="payment_method_id" class="form-select" required>
+                @foreach($payment_method as $pm)
+                @if($pm->user_id == auth()->user()->id)
+                <option value="Seleccione un método" disabled>Método de pago</option>
+                <option value="{{$pm->id}">{{$pm->method_name}} ({{$pm->avaliable_budget}})</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div>
+            <input class="invisible" id="user_id" name="user_id" value="{{auth()->user()->id}}">
+          </div>
 
-        </div>
-        <div class="col-6"></div>
+          <br>
+          <div class="col-12">
+            <div class="text-center">
+              <a class="btn" href="/home">Cancelar</a>
+              <input id="boton-pago" class="btn btn-outline-success" type="submit" value="Realizar pago">
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="col-6"></div>
 
 
     </div>
     @include('includes.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>

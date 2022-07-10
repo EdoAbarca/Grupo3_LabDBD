@@ -21,7 +21,4 @@ class Upload_songController extends Controller
         $locations = Location::where('delete',false)->get();
         return view('upload_song', ['users'=>$users, 'albums'=>$albums,'locations'=>$locations]);
     }
-
-    
-
 }

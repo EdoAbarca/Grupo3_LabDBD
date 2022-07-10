@@ -16,7 +16,6 @@ class FavSongController extends Controller
         $likes = Like::where('delete',false)->get();
         $songs = Song::where('delete',false)->get();
         $albums = Album::where('delete',false)->get();
-
         return view('favsongs', ['users'=>$users,'songs'=>$songs,'likes'=>$likes,'albums'=>$albums]);
     }
 }

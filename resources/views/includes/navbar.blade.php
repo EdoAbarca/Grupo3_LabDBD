@@ -10,8 +10,22 @@
         <li class="nav-item dropdown">
           <!-- <a class="nav-link dropdown-toggle" href="/suscription" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> ¿Suscripcion? </a>-->
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/favorites">Canciones favoritas</a></li>
-            <li><a class="dropdown-item" href="/playlists">Listas de reproducción</a></li>
+            <li>
+              <!-- <form action="favsongs" method="GET"></form>-->
+              
+                <a class="dropdown-item" href="/favsongs">Canciones favoritas</a>
+              
+            </li>
+            <li>
+              
+                <a class="dropdown-item" href="/user_playlists">Listas de reproducción</a>
+              
+            </li>
+            <li>
+              
+                <a class="dropdown-item" href="/user_rates">Ver valoraciones</a>
+                
+            </li>
           </ul>
         </li>
       </ul>

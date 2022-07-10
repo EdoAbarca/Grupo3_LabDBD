@@ -19,7 +19,7 @@ class RateFactory extends Factory
     public function definition()
     {
         return [
-            'score'=>$this->faker->numberBetween($min=0,$max=100),
+            'score'=>$this->faker->numberBetween($min=0,$max=10),
             'user_id' =>User::all()->random()->id,
             'song_id' =>Song::all()->random()->id,
             'delete'=>$this->faker->boolean($chanceOfGettingTrue = 0)

@@ -47,7 +47,7 @@ class RateController extends Controller
             $request->all(),[
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
-                'score' => 'required|integer|min:0|max:100',
+                'score' => 'required|integer|min:0|max:10',
                 /*'delete' => 'required|boolean',*/
             ],
             [
@@ -60,7 +60,7 @@ class RateController extends Controller
                 'score.required' => 'Debes ingresar el puntaje de la valoracion',
                 'score.integer' => 'El puntaje debe ser un tipo de dato integer',
                 'score.min' => 'El puntaje minimo asignable es 0',
-                'score.max' => 'El puntaje maximo asignable es 100',
+                'score.max' => 'El puntaje maximo asignable es 10',
 
                 /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',*/
@@ -128,7 +128,7 @@ class RateController extends Controller
             $request->all(),[
                 'user_id' => 'required|integer',
                 'song_id' => 'required|integer',
-                'score' => 'required|integer|min:0|max:100',
+                'score' => 'required|integer|min:0|max:10',
                 /*'delete' => 'required|boolean',*/
             ],
             [
@@ -141,7 +141,7 @@ class RateController extends Controller
                 'score.required' => 'Debes ingresar el puntaje de la valoracion',
                 'score.integer' => 'El puntaje debe ser un tipo de dato integer',
                 'score.min' => 'El puntaje minimo asignable es 0',
-                'score.max' => 'El puntaje maximo asignable es 100',
+                'score.max' => 'El puntaje maximo asignable es 10',
 
                 /*'delete.required' => 'Debes indicar si el elemento esta en estado de "delete" o no',
                 'delete.boolean' => '"delete" debe ser un booleano',*/
