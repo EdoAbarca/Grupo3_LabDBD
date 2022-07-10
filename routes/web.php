@@ -59,13 +59,21 @@ Route::get('update_song', function () {
     return view('update_song');
 });
 
-// FILTERS SONGS
+// FILTERS SONGS GENRE
 Route::get('/songs_bygenre', function () {
     return view('/songs_bygenre');
 });
 
 Route::get('/songs_filter', 'App\Http\Controllers\Filter_genreController@songs_filter');
 Route::get('/songs_bygenre/{id}', 'App\Http\Controllers\Filter_genreController@songs_bygenre');
+
+// FILTERS SONGS LOCATION
+Route::get('/songs_bylocation', function () {
+    return view('/songs_bylocation');
+});
+
+Route::get('/locations_filter', 'App\Http\Controllers\Filter_locationController@locations_filter');
+Route::get('/songs_bylocation/{id}', 'App\Http\Controllers\Filter_locationController@songs_bylocation');
 
 // PLAY SONG
 Route::get('/play_bar', function () {

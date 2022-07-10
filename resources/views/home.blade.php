@@ -117,7 +117,7 @@
         <li><a class="btn btnsuccess" href="/songranking">Canciones más escuchadas</a></li>
         <li><a class="btn btnsuccess" href="#">Buscador</a></li>
         <li><a class="btn btnsuccess" href="/songs_filter">Filtrar canciones por genero</a></li>
-        <li><a class="btn btnsuccess" href="#">Filtrar canciones por categoría</a></li>
+        <li><a class="btn btnsuccess" href="/locations_filter">Filtrar canciones por ubicación</a></li>
         <li><a class="btn btnsuccess" href="/artists">Explorar artistas</a></li>
         <p>Tu Biblioteca de música</p>
         <li><a class="btn btnsuccess" href="/favsongs">Canciones que te gustan</a></li>
