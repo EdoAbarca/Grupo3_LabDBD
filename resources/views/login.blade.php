@@ -63,6 +63,7 @@
 		<div class="col-md-4">
 			<div class="card px-5 py-5" style="background-color:#313060">
 				<h5 style="color:white; font-size:25px;">Inicio Sesión</h5>
+				<hr>
 				<!--<div class="col-md-12" style= "color:#f1f1f1">Iniciar Sesión</div>-->
 				@if(session('status'))
 				<br>
@@ -84,13 +85,16 @@
 							<p class="p">Correo Electrónico</p>
 							<input class="input" id="email" name=email type="text" required placeholder="Correo Electrónico">
 						</div>
+						<hr>
 						<div class="field">
 							<p class="p">Contraseña</p>
 							<input class="input" id="password" name=password type="password" required placeholder="Contraseña">
 						</div>
+						<hr>
 						<div class="text-center">
 							<input id="botonLog" class="btn btn-outline-success" type="submit" value="Iniciar Sesión">
 						</div>
+						<hr>
 						<div class="signup-link" style="color:#f1f1f1">¿No eres miembro? <a href="/register" style="color:#f1f1f1">Regístrate aquí</a>
 						</div>
 					</form>

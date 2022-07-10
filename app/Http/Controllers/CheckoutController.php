@@ -32,11 +32,8 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $payment_method->avaliable_budget = $payment_method->avaliable_budget - $request->amount;
-        $payment_method->save();
         $user = User::find($request->user_id);
         
-
         $newReceipt= new Receipt();
         $newReceipt->name               = "Pago de suscripción de ".$user->nickname;
         $newReceipt->sum                = $request->amount;
@@ -46,6 +43,10 @@ class CheckoutController extends Controller
         $newReceipt->payment_method_id  = $request->id;
         $newReceipt->delete             = 0;
         $newReceipt->save();
+
+        $payment_method->avaliable_budget = $payment_method->avaliable_budget - $request->amount;
+        $payment_method->save();
+        
 
         return redirect('home')->with('success', 'Suscripción pagada exitósamente!');
     }

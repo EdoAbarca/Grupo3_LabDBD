@@ -15,10 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {   
         $this->call(RoleSeeder::class);
-        //\App\Models\Role::factory(10)->create();
         \App\Models\Location::factory(10)->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Permission::factory(10)->create();
         \App\Models\Genre::factory(10)->create();
         \App\Models\Payment_method::factory(10)->create();
         \App\Models\Receipt::factory(10)->create();
@@ -30,6 +28,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Rate::factory(10)->create();
         \App\Models\Song_genre::factory(10)->create();
         \App\Models\Follow::factory(10)->create();
-        \App\Models\Role_permission::factory(10)->create();
     }
 }

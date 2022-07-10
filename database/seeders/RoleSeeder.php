@@ -17,19 +17,19 @@ class RoleSeeder extends Seeder
     {
         $role = new Role();
         $role->id = 1;
-        $role->role_name = "Administrador";
+        $role->role_name = "admin"; //Administrador
         $role->delete = false;
         $role->save();
 
         $role = new Role();
         $role->id = 2;
-        $role->role_name = "Artista";
+        $role->role_name = "artista"; //Artista
         $role->delete = false;
         $role->save();
 
         $role = new Role();
         $role->id = 3;
-        $role->role_name = "Usuario";
+        $role->role_name = "usuario"; //Usuario
         $role->delete = false;
         $role->save();
 

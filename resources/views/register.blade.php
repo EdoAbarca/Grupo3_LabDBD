@@ -77,47 +77,47 @@
 			<div class="card px-5 py-5" style="background-color:#313060" >
 				<form class="login" method="POST" action="/users/create">
 					<h5 style="color:white; font-size:25px;">Registro</h5>
-					
+					<hr>
 					<div class="field">
 						<p class="p">Nombre Usuario</p>
 						<input class="controls" type="text" id="nickname" name=nickname value = "" size="45" placeholder="Nombre de Usuario" required>
 					</div>
-					
+					<hr>
 					<div class="field">
 						<p class="p">Contraseña</p>
 						<input class="controls" type="text" id="password" name=password value = "" size="45" placeholder="Contraseña" required>
 					</div>
-
+					<hr>
 					<div class="field">
 						<p class="p">Fecha de Nacimiento</p>
 						<input class="controls" type="text" id="birth_date" name=birth_date value = "" size="45" placeholder="Fecha de nacimiento: AAAA-MM-DD" required>
 					</div>
-
-					<div>
+					<hr>
+					<div class="field">
 						<p class="p">Correo Electronico</p>
 						<input class="controls" type="text" id="email" name=email value = "" size="45" placeholder="Correo electronico" required>
 					</div>
-
-					<div class="text-center">
+					<hr>
+					<div class="field">
 						<!-- <select class="form-select" name=location_id id="location_id" size="45" aria-label="Default select example"> -->
 						<select class="form-select" name=location_id id="location_id" aria-label="Default select example">
-							<option selected>Selecciona una ubicación</option>
+							<option disabled selected>Selecciona una ubicación</option>
 							@foreach($locations as $l)
 							<option value="{{$l->id}}">{{$l->location_name}}</option>
 							@endforeach
 						</select>
 					</div>
-					
-					<div class="text-center">
+					<hr>
+					<div class="field">
 						<select class="form-select" name=role_id id="role_id" aria-label="Default select example">
 						<!--<select class="form-select" name=role_id id="role_id" size="45" aria-label="Default select example"> -->
-							<option selected>Selecciona un rol</option>
+							<option disabled selected>Selecciona un rol</option>
                				<option value=1>Administrador</option>
 							<option value=2>Artista</option>
                 			<option value=3>Usuario</option>
 						</select>
 					</div>
-
+					<hr>
 					<a class="btn btn-outline-success" href="/home">Cancelar</a>
 					
 					<input id="boton-registro" class="btn btn-outline-success" type="submit" name="" value="Registrarse">
