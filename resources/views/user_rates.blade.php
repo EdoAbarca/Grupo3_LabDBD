@@ -115,7 +115,7 @@
                 <td>ID</td>
                 <td>Canción</td>
                 <td>Puntaje</td>
-                <td colspan=2>Acciones</td>
+                <td colspan=1>Acciones</td>
               </tr>
             </thead>
             <tbody>
@@ -128,20 +128,16 @@
                 <td>{{$s->song_name}}</td>
                 <td>{{$r->score}}</td>
                 <td>
-                  <form action="#" method="GET">
-                    <!-- A implementar ruta -->
-                    <button type="submit" class="btn btn-primary">Ver</button>
-                  </form>
-                </td>
-                <td>
-                  <form action="#" method="POST">
-                    <!-- A implementar ruta -->
+                  <form action="user_rates/{{$r->id}}" method="POST">
                     @csrf
                     @method('PUT')
                     <button class="btn btn-danger" type="submit">Eliminar</button>
                   </form>
                 </td>
               </tr>
+              @endif
+              @endforeach
+              @endif
               @endforeach
             </tbody>
           </table>

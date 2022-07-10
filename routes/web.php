@@ -17,7 +17,11 @@ use App\Http\Controllers\CrudController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','App\Http\Controllers\SongController@index');
+//Route::get('/','App\Http\Controllers\SongController@index');
+
+Route::get('/', function () {
+    return redirect('/home');
+})->name('home');
 
 Route::get('/home', 'App\Http\Controllers\SongController@index');
 
@@ -40,7 +44,8 @@ Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
-Route::get('/playlist', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
+Route::get('/playlist/{id}', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
+Route::post('/playlist/{id}', 'App\Http\Controllers\Song_playlistController@deletePlaylistSong');
 
 Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index')->middleware('artista');
 
@@ -81,9 +86,10 @@ Route::get('/play_bar', function () {
 });
 
 Route::get('/favsongs', 'App\Http\Controllers\FavSongController@index')->middleware('auth');
+Route::get('/favsongs/{id}', 'App\Http\Controllers\FavSongController@delete');
 
 Route::get('/user_rates', 'App\Http\Controllers\User_ratesController@index')->middleware('auth');
-Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete')->middleware('auth');
+Route::put('/user_rates/{id}', 'App\Http\Controllers\User_ratesController@delete');
 
 Route::get('/user_playlists','App\Http\Controllers\User_playlistsController@index')->middleware('auth');
 

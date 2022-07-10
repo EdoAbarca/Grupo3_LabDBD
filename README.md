@@ -7,18 +7,28 @@
 ### Base
  - Integrantes:
     - Eduardo Abarca
-    - Gonzalo Ordenes
+    - Gonzalo Ordenes (✞)
     - Joakin Roa
     - Luis Toro
  - Semestre: 1-2022
- - Fecha de entrega MER-MR: TBA
+ - Fecha de entrega MER-MR: 20/05/2022
     - Implementación de página web que simula una plataforma de servicios digitales de música, lograda a nivel de **Modelo**.
- - Fecha de entrega CRUD: TBA
+ - Fecha de entrega CRUD: 13/06/2022
     - Implementación de página web que simula una plataforma de servicios digitales de música, lograda a nivel de **Modelo** y **Controlador**.
- - Fecha de entrega final: TBA
-    - Implementación de página web que simula una plataforma de servicios digitales de música, lograda a nivel MVC.
+ - Fecha de entrega aplicación funcional: 10/07/2022
+    - Implementación de página web que simula una plataforma de servicios digitales de música, lograda a nivel **MVC**.
 
 ### Implementación
- - Frontend: TBA
- 
- - Backend: TBA
+ - Frontend:
+   - HTML
+   - CSS
+   - Javascript
+   - Bootstrap
+ - Backend:
+   - PHP
+   - Laravel
+   - Composer
+   - NPM
+   - XAMPP
+   - Node.js
+   - PostgreSQL

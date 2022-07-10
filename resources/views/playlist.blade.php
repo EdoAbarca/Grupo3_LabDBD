@@ -65,11 +65,17 @@
                 <a href="" class="btn btn-primary">Reproducir</a>
               </td>
               <td>
-                <a href="" class="btn btn-primary">Like</a>
+                <form action="song_playlists/{{$sp->id}}" method="POST">
+                  @csrf
+                  @method('PUT')
+                  <div>
+                    <input class="invisible" id="playlist_id" name=playlist_id value="{{$playlist->id}}">
+                  </div>
+                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                </form>
               </td>
             </tr>
             @endif
-            @endforeach
             @endforeach
             @endforeach
           </tbody>

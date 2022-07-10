@@ -13,89 +13,89 @@
 </head>
 
 <style>
+  .grid {
+    justify-content: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    grid-template-rows: 70px 150px 270px;
+    padding-left: 2em;
+    padding-right: 2em;
 
-.grid {
-  justify-content: stretch;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 1em;
-  grid-template-rows: 70px 150px 270px;
-  padding-left: 2em;
-  padding-right: 2em;
+  }
 
-}
-
-/*.grid > div{
+  /*.grid > div{
   background: #6148cf;
   padding: 1em;
 }*/
 
-/*.grid > div:hover{
+  /*.grid > div:hover{
   border: 1px solid #f1c40f;
 }*/
 
-.element1{
-  grid-column: 1/3;
-}
+  .element1 {
+    grid-column: 1/3;
+  }
 
-.element2{
-  grid-row: 2/3;
-  grid-column: 1/2;
-}
+  .element2 {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
 
-.element3{
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
+  .element3 {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
 
-.element4{
-  grid-column: 1/3;
-}
+  .element4 {
+    grid-column: 1/3;
+  }
 
 
-body{
-  background-color: #f1f1f1;
-  font-family: "Century Gothic";
+  body {
+    background-color: #f1f1f1;
+    font-family: "Century Gothic";
 
-}
+  }
 
-#main-container{
-  margin: 150px auto;
-  width: 1000px;
-}
+  #main-container {
+    margin: 150px auto;
+    width: 1000px;
+  }
 
-table{
-  background-color: white;
-  text-align: left;
-  width: 100%;
-  border-collapse: collapse;
-}
+  table {
+    background-color: white;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-th, td{
-  /*border: solid 1px black;*/
-  padding: 20;
-}
+  th,
+  td {
+    /*border: solid 1px black;*/
+    padding: 20;
+  }
 
-thead{
-  background-color: #313060;
-  border-bottom: slid 5pc #0f362d;
-  color: white;
-}
+  thead {
+    background-color: #313060;
+    border-bottom: slid 5pc #0f362d;
+    color: white;
+  }
 
-tr:nth-child(even){
-  background-color: #ddd;
-}
+  tr:nth-child(even) {
+    background-color: #ddd;
+  }
 
-tr:hover td{
-  background-color: #313060;
-  color: white;
-}
-
+  tr:hover td {
+    background-color: #313060;
+    color: white;
+  }
 </style>
 
-  @include('includes.navbar')
-  <!-- Aquí irá la vista de las listas de reproducción creadas por el usuario -->
-  <body style="margin-bottom:22px">
+@include('includes.navbar')
+<!-- Aquí irá la vista de las listas de reproducción creadas por el usuario -->
+
+<body style="margin-bottom:22px">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -119,31 +119,34 @@ tr:hover td{
           </thead>
           <tbody>
             @foreach($playlists as $p)
+            @if($p->user_id == auth()->user()->id)
             <tr>
               <td>{{$p->id}}</td>
               <td>{{$p->playlist_name}}</td>
               <td>{{$p->creation_date}}</td>
               <td>
-                <form action="#" method="GET"><!-- A implementar ruta -->
+                <form action="playlists/{{$p->id}}" method="GET">
                   <button type="submit" class="btn btn-primary">Ver</button>
-                  </form>
+                </form>
               </td>
               <td>
-             
-                <form action="#" method="POST"><!-- A implementar ruta -->
+                <form action="user_playlists/{{$p->id}}" method="POST">
                   @csrf
                   @method('PUT')
                   <button class="btn btn-danger" type="submit">Eliminar</button>
                 </form>
               </td>
             </tr>
+            @endif
             @endforeach
           </tbody>
         </table>
         <div>
         </div>
       </div>
-      <script src="{{ asset('js/app.js') }}" type="text/js"></script>
+    </div>
+  </div>
+  <script src="{{ asset('js/app.js') }}" type="text/js"></script>
   @include('includes.footer')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

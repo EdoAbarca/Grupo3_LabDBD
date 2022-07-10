@@ -187,4 +187,12 @@ class Song_playlistController extends Controller
             'id' => $song_playlist->id,
         ],200);
     }
+
+    public function deletePlaylistSong(Request $request, $id)
+    {
+        $song_playlist = Song_playlist::find($id);
+        $song_playlist->delete = true;
+        $song_playlist->save();
+        return redirect('/playlists/{{$request->playlist_id}}')->with('success','Se ha quitado la canción de la lista de reproducción exitósamente!');  
+    }
 }
