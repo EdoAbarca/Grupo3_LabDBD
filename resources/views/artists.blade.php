@@ -43,7 +43,7 @@
 
                                 <td>
                                     <form action="/songsArtists/{{$user->id}}" method="GET">
-                                        <button type="submit" class="btn">Visitar Perfil</button>
+                                        <button type="submit" class="btn">Ver canciones</button>
                                     </form>
                                 </td>
 

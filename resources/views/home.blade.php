@@ -115,6 +115,14 @@
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.navbar')
   @guest
+  <div class="grid">
+    <div class="element1">
+      <ul class="menu">
+        <h1>JELfy Music</h1>
+        <p>Regístrese para ser parte de la comunidad. Inicie sesión para acceder a las funcionalidades de la plataforma.</p>
+      </ul>
+    </div>
+  </div>
   @endguest
   @auth
   <div class="grid">

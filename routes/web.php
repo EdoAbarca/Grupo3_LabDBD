@@ -42,6 +42,8 @@ Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
+// PLAY SONG
+Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@show');
 
 Route::get('/playlist/{id}', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
 Route::post('/playlist/{id}', 'App\Http\Controllers\Song_playlistController@deletePlaylistSong');
@@ -51,9 +53,6 @@ Route::get('/upload_song', 'App\Http\Controllers\Upload_songController@index')->
 Route::get('/create_album', function () {
     return view('create_album');
 })->name('create_album')->middleware('artista'); //Esto sigue?
-
-//Iperaciones CRUD: ->middleware('admin');
-//Operaciones artista: ->middleware('artista');
 
 // MY SONGS
 Route::get('/songs/edit2/{id}','App\Http\Controllers\SongController@edit2')->middleware('artista');
@@ -96,12 +95,6 @@ Route::get('/user_playlists/{id}','App\Http\Controllers\User_playlistsController
 
 Route::get('/songranking', 'App\Http\Controllers\SongrankingController@index')->middleware('auth'); 
 
-// PLAY SONG
-Route::get('/playing_song/{id}', 'App\Http\Controllers\Playing_songController@show');
-
-Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index')->middleware('admin');
-
-
 
 // UPDATE PROFILE
 Route::get('profile/update_profile', function () {
@@ -112,7 +105,10 @@ Route::get('profile/update_profile', function () {
 Route::get('/artists', 'App\Http\Controllers\ArtistController@index')->middleware('auth');
 Route::get('/songsArtists/{id}', 'App\Http\Controllers\SongController@index3')->middleware('auth');
 
-
+//CRUD
+//Operaciones CRUD: ->middleware('admin');
+//Operaciones artista: ->middleware('artista');
+Route::get('/crud', 'App\Http\Controllers\AdmincrudController@index')->middleware('admin');
 
 // USER
 Route::get('/crud/user_crud/user_index', 'App\Http\Controllers\AdmincrudController@user_index')->middleware('admin');
