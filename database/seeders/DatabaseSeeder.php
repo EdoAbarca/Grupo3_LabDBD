@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Song_playlist::factory(20)->create();
         \App\Models\Like::factory(20)->create();
         \App\Models\Rate::factory(20)->create();
-        \App\Models\Song_genre::factory(20)->create();
+        \App\Models\Song_genre::factory(150)->create();
         \App\Models\Follow::factory(20)->create();
     }
 }
