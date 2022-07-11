@@ -65,8 +65,8 @@ Route::get('update_song', function () {
 
 // FILTERS SONGS GENRE
 Route::get('/songs_bygenre', function () {
-    return view('/songs_bygenre')->middleware('auth');
-});
+    return view('/songs_bygenre');
+})->middleware('auth');
 
 Route::get('/songs_filter', 'App\Http\Controllers\Filter_genreController@songs_filter')->middleware('auth');
 Route::get('/songs_bygenre/{id}', 'App\Http\Controllers\Filter_genreController@songs_bygenre')->middleware('auth');
