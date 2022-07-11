@@ -27,7 +27,7 @@
             <div class="form-group row">
               <label for="nombre" class="col-form-label col-sm-4">Nombre album:</label>
               <div class="col-sm-8">
-                <input type="text" name="album_name" id=album_name class="form-control" value="" placeholder="Nombre del Album" tabindex="1">
+                <input type="text" name="album_name" id=album_name class="form-control" value="" placeholder="Nombre del Album" tabindex="1" required>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
               <div class="col-sm-8">
-                <input type="number" name="user_id" id="user_id" class="invisible" value = "{{auth()->user()->id}}" readonly="readonly">
+                <input type="number" name="user_id" id="user_id" class="invisible" value = "{{auth()->user()->id}}" readonly="readonly" required>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
 
         <div class="row">
           <div class="col-xs-6 col-md-6">
-            <input id="boton-subir" class="btn btn-outline-success" type="submit" name="" value="Crear álbum">
+            <input id="boton-subir" class="btn btn-outline-success" type="submit" name="" value="Crear álbum" required>
           </div>
 
           <div class="col-xs-6 col-md-6">

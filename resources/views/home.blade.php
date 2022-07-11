@@ -115,7 +115,6 @@
   <!-- Aquí irá lo que se verá al montar la página web, será el punto de partida para realizar las distintas acciones-->
   @include('includes.navbar')
   @guest
-  <a class="btn btn-outline-success" href="/playlist">Lista reproducción</a>
   @endguest
   @auth
   <div class="grid">

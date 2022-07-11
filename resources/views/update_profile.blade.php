@@ -33,27 +33,23 @@
           @method('PUT')
           <div class="form-group">
             <label for="nickname">Nombre de usuario:</label>
-            <input type="text" class="form-control" name="nickname" value="{{$user->nickname}}" placeholder="" />
+            <input type="text" class="form-control" name="nickname" value="{{$user->nickname}}" placeholder="" required/>
           </div>
 
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" class="form-control" name="email" value="{{$user->email}}" />
+            <input type="text" class="form-control" name="email" value="{{$user->email}}" required/>
           </div>
 
-          <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="text" class="form-control" name="password" value="" />
-          </div>
 
           <div class="form-group">
             <label for="birth_date">Fecha de nacimiento:</label>
-            <input type="text" class="form-control" name="birth_date" value="" />
+            <input type="text" class="form-control" name="birth_date" value="" required/>
           </div>
 
           <div class="form-group">
             <label for="biography">Biografia:</label>
-            <input type="text" class="form-control" name="biography" value="" />
+            <input type="text" class="form-control" name="biography" value="" required/>
           </div>
 
           <div class="form-group">Ubicación

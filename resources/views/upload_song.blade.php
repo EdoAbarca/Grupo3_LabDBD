@@ -45,7 +45,7 @@
             <div class="form-group row">
               <label for="song_name" class="col-form-label col-sm-4">Nombre canción:</label>
               <div class="col-sm-8">
-                <input type="text" name="song_name" id="song_name" value="" class="form-control" placeholder="Nombre de cancion" tabindex="1">
+                <input type="text" name="song_name" id="song_name" value="" class="form-control" placeholder="Nombre de cancion" tabindex="1" required>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group row">
                 <div class="col-sm-8">
-                  <input type="number" name="album_id" id="album_id" value="{{$id_album}}" class="invisible" readonly="readonly">
+                  <input type="number" name="album_id" id="album_id" value="{{$id_album}}" class="invisible" readonly="readonly" required>
                 </div>
               </div>
             </div>

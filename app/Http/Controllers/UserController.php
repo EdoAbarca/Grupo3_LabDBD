@@ -153,7 +153,7 @@ class UserController extends Controller
         $newUser->location_id   = $request->location_id;
         $newUser->role_id       = $request->role_id;
         $newUser->save();
-        return redirect('/home');
+        return redirect('/login');
     }
 
     /**
@@ -288,7 +288,7 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),[
                 'nickname' => 'required|min:2|max:30',
-                'password' => 'required|min:10|max:300',
+                /*'password' => 'required|min:10|max:300',*/
                 'email' => 'required|min:7|max:200',
                 'biography' => 'required|max:500',
                 //'signup_date' => 'required|date|after:birth_date',
@@ -339,7 +339,7 @@ class UserController extends Controller
         
 
         $user->nickname         = $request->nickname;
-        $user->password         = $request->password;
+        $user->password         = $user->password;
         $user->email            = $request->email;
         $user->biography        = $request->biography;
         $user->signup_date      = date('y-m-d');

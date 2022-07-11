@@ -41,9 +41,15 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#f1f1f1; border-color:#313060">
             <!--<li><a class="dropdown-item" href="/upload_song">Subir canción</a></li>-->
-            <li><a class="dropdown-item" href="/create_album">Crear álbum</a></li>
-            <li><a class="dropdown-item" href="/crud">Administración de plataforma</a></li>
+            @if(auth()->user()->role_id == 3)
             <li><a class="dropdown-item" href="/checkout">Pagar suscripción</a></li>
+            @endif
+            @if(auth()->user()->role_id == 2)
+            <li><a class="dropdown-item" href="/create_album">Crear álbum</a></li>
+            @endif
+            @if(auth()->user()->role_id == 1)
+            <li><a class="dropdown-item" href="/crud">Administración de plataforma</a></li>
+            @endif
           </ul>
         </li>
       </ul>

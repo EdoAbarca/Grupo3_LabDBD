@@ -35,13 +35,13 @@
 
                     <div class="form-group">
                         <label for="song_name">Nombre canción:</label>
-                        <input type="text" class="form-control" name="song_name" value="" />
+                        <input type="text" class="form-control" name="song_name" value="" required/>
                     </div>
 
 
                     <div class="form-group">
                         <label for="parental_Advisory"> Parental Advisory:</label>
-                        <select class="form-select" name="parental_advisory" aria-label="Default select example">
+                        <select class="form-select" name="parental_advisory" aria-label="Default select example" >
                             <option selected>Parental Advisory</option>
                             <option value="1">Si</option>
                             <option value="0">No</option>
@@ -50,12 +50,12 @@
 
                     <div class="form-group">
                         <label for="URL"> URL:</label>
-                        <input type="text" class="form-control" name="URL" value="" />
+                        <input type="text" class="form-control" name="URL" value="" required/>
                     </div>
 
                     <div class="form-group">
                      
-                        <input type="number" class="invisible" name="album_id" value="{{$song->album_id}}" />
+                        <input type="number" class="invisible" name="album_id" value="{{$song->album_id}}" required/>
                     </div>
 
                     <div>
