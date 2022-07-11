@@ -346,7 +346,7 @@ class UserController extends Controller
         $user->birth_date       = $request->birth_date;
         $user->delete           = 0;
         $user->location_id      = $request->location_id;
-        $user->role_id          = $request->role_id;
+        $user->role_id          = $user->role_id;
         $user->save();
 
         return redirect('/profile');

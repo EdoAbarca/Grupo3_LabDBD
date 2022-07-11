@@ -68,7 +68,7 @@
   @include('includes.navbar')
   <a class="btn btn-outline-success" href="/home">Volver</a>
   <div class="head">
-    <!--<img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />-->
+    <img class="avatar" src="https://pbs.twimg.com/profile_images/1301751032398004224/rGaROP0I_400x400.jpg" />
     <!-- Nombre Usuario -->
     <h1 class="user-name">{{$u->nickname}}</h1>
     <!-- Rol Usuario -->

@@ -42,6 +42,7 @@ Route::post('/checkout', 'App\Http\Controllers\CheckoutController@pay');
 
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->middleware('auth');
 
+
 Route::get('/playlist/{id}', 'App\Http\Controllers\PlaylistController@show')->middleware('auth');
 Route::post('/playlist/{id}', 'App\Http\Controllers\Song_playlistController@deletePlaylistSong');
 
